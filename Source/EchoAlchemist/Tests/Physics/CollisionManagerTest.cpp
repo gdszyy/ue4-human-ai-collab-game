@@ -11,7 +11,7 @@
 // 测试：碰撞管理器初始化
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerInitTest, 
 	"EchoAlchemist.Physics.CollisionManager.Init", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerInitTest::RunTest(const FString& Parameters)
 {
@@ -39,7 +39,7 @@ bool FCollisionManagerInitTest::RunTest(const FString& Parameters)
 // 测试：注册碰撞体
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerRegisterTest, 
 	"EchoAlchemist.Physics.CollisionManager.Register", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerRegisterTest::RunTest(const FString& Parameters)
 {
@@ -78,7 +78,7 @@ bool FCollisionManagerRegisterTest::RunTest(const FString& Parameters)
 // 测试：圆-圆碰撞检测
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerCircleCircleTest, 
 	"EchoAlchemist.Physics.CollisionManager.CircleCircle", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerCircleCircleTest::RunTest(const FString& Parameters)
 {
@@ -129,7 +129,7 @@ bool FCollisionManagerCircleCircleTest::RunTest(const FString& Parameters)
 // 测试：圆-圆无碰撞
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerCircleCircleNoCollisionTest, 
 	"EchoAlchemist.Physics.CollisionManager.CircleCircleNoCollision", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerCircleCircleNoCollisionTest::RunTest(const FString& Parameters)
 {
@@ -173,7 +173,7 @@ bool FCollisionManagerCircleCircleNoCollisionTest::RunTest(const FString& Parame
 // 测试：圆-矩形碰撞检测
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerCircleRectangleTest, 
 	"EchoAlchemist.Physics.CollisionManager.CircleRectangle", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerCircleRectangleTest::RunTest(const FString& Parameters)
 {
@@ -219,7 +219,7 @@ bool FCollisionManagerCircleRectangleTest::RunTest(const FString& Parameters)
 // 测试：空间网格优化
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerSpatialGridTest, 
 	"EchoAlchemist.Physics.CollisionManager.SpatialGrid", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerSpatialGridTest::RunTest(const FString& Parameters)
 {
@@ -268,7 +268,7 @@ bool FCollisionManagerSpatialGridTest::RunTest(const FString& Parameters)
 // 测试：性能基准（100个碰撞体）
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerPerformanceTest, 
 	"EchoAlchemist.Physics.CollisionManager.Performance", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerPerformanceTest::RunTest(const FString& Parameters)
 {
@@ -335,7 +335,7 @@ bool FCollisionManagerPerformanceTest::RunTest(const FString& Parameters)
 // 测试：碰撞事件委托
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCollisionManagerEventTest, 
 	"EchoAlchemist.Physics.CollisionManager.Event", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FCollisionManagerEventTest::RunTest(const FString& Parameters)
 {

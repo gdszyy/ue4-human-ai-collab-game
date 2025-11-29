@@ -14,7 +14,7 @@
 // 测试：对象池初始化
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarbleActorPoolInitTest, 
 	"EchoAlchemist.Physics.MarbleActorPool.Init", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarbleActorPoolInitTest::RunTest(const FString& Parameters)
 {
@@ -36,7 +36,7 @@ bool FMarbleActorPoolInitTest::RunTest(const FString& Parameters)
 // 测试：对象池获取和归还
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarbleActorPoolAcquireReleaseTest, 
 	"EchoAlchemist.Physics.MarbleActorPool.AcquireRelease", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarbleActorPoolAcquireReleaseTest::RunTest(const FString& Parameters)
 {
@@ -57,7 +57,7 @@ bool FMarbleActorPoolAcquireReleaseTest::RunTest(const FString& Parameters)
 // 测试：对象池统计信息
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarbleActorPoolStatisticsTest, 
 	"EchoAlchemist.Physics.MarbleActorPool.Statistics", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarbleActorPoolStatisticsTest::RunTest(const FString& Parameters)
 {
@@ -79,7 +79,7 @@ bool FMarbleActorPoolStatisticsTest::RunTest(const FString& Parameters)
 // 测试：分级降级策略
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarbleActorPoolGenerationTest, 
 	"EchoAlchemist.Physics.MarbleActorPool.Generation", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarbleActorPoolGenerationTest::RunTest(const FString& Parameters)
 {
@@ -105,7 +105,7 @@ bool FMarbleActorPoolGenerationTest::RunTest(const FString& Parameters)
 // 测试：对象池性能（预创建vs动态创建）
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarbleActorPoolPerformanceTest, 
 	"EchoAlchemist.Physics.MarbleActorPool.Performance", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarbleActorPoolPerformanceTest::RunTest(const FString& Parameters)
 {

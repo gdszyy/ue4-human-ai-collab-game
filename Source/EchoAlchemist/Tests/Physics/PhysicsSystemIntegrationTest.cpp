@@ -18,7 +18,7 @@
 // 测试：完整战斗场景模拟
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FPhysicsSystemIntegrationCombatTest, 
 	"EchoAlchemist.Physics.Integration.CombatScene", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FPhysicsSystemIntegrationCombatTest::RunTest(const FString& Parameters)
 {
@@ -202,7 +202,7 @@ bool FPhysicsSystemIntegrationCombatTest::RunTest(const FString& Parameters)
 // 测试：炼金工作台场景模拟
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FPhysicsSystemIntegrationWorkbenchTest, 
 	"EchoAlchemist.Physics.Integration.WorkbenchScene", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FPhysicsSystemIntegrationWorkbenchTest::RunTest(const FString& Parameters)
 {
@@ -338,7 +338,7 @@ bool FPhysicsSystemIntegrationWorkbenchTest::RunTest(const FString& Parameters)
 // 测试：分级降级策略集成
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FPhysicsSystemIntegrationGenerationTest, 
 	"EchoAlchemist.Physics.Integration.GenerationStrategy", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FPhysicsSystemIntegrationGenerationTest::RunTest(const FString& Parameters)
 {
@@ -425,7 +425,7 @@ bool FPhysicsSystemIntegrationGenerationTest::RunTest(const FString& Parameters)
 // 测试：性能压力测试（大量魔力露珠）
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FPhysicsSystemIntegrationStressTest, 
 	"EchoAlchemist.Physics.Integration.StressTest", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FPhysicsSystemIntegrationStressTest::RunTest(const FString& Parameters)
 {

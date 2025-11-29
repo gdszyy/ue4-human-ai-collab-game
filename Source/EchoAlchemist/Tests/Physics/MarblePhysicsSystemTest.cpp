@@ -11,7 +11,7 @@
 // 测试：场景初始化
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarblePhysicsSystemInitTest, 
 	"EchoAlchemist.Physics.MarblePhysicsSystem.Init", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarblePhysicsSystemInitTest::RunTest(const FString& Parameters)
 {
@@ -42,7 +42,7 @@ bool FMarblePhysicsSystemInitTest::RunTest(const FString& Parameters)
 // 测试：魔力露珠发射
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarblePhysicsSystemLaunchTest, 
 	"EchoAlchemist.Physics.MarblePhysicsSystem.Launch", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarblePhysicsSystemLaunchTest::RunTest(const FString& Parameters)
 {
@@ -86,7 +86,7 @@ bool FMarblePhysicsSystemLaunchTest::RunTest(const FString& Parameters)
 // 测试：物理更新循环
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarblePhysicsSystemTickTest, 
 	"EchoAlchemist.Physics.MarblePhysicsSystem.Tick", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarblePhysicsSystemTickTest::RunTest(const FString& Parameters)
 {
@@ -130,7 +130,7 @@ bool FMarblePhysicsSystemTickTest::RunTest(const FString& Parameters)
 // 测试：边界处理（战斗场景反弹）
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarblePhysicsSystemBoundaryTest, 
 	"EchoAlchemist.Physics.MarblePhysicsSystem.Boundary", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarblePhysicsSystemBoundaryTest::RunTest(const FString& Parameters)
 {
@@ -176,7 +176,7 @@ bool FMarblePhysicsSystemBoundaryTest::RunTest(const FString& Parameters)
 // 测试：药效强度消耗
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarblePhysicsSystemPotencyTest, 
 	"EchoAlchemist.Physics.MarblePhysicsSystem.Potency", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarblePhysicsSystemPotencyTest::RunTest(const FString& Parameters)
 {
@@ -210,7 +210,7 @@ bool FMarblePhysicsSystemPotencyTest::RunTest(const FString& Parameters)
 // 测试：多个魔力露珠
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarblePhysicsSystemMultipleTest, 
 	"EchoAlchemist.Physics.MarblePhysicsSystem.Multiple", 
-	EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarblePhysicsSystemMultipleTest::RunTest(const FString& Parameters)
 {
