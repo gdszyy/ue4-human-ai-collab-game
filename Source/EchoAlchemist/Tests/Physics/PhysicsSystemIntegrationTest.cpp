@@ -47,8 +47,8 @@ bool FPhysicsSystemIntegrationCombatTest::RunTest(const FString& Parameters)
 	
 	// 初始化碰撞管理器
 	CollisionManager->Initialize(
-		Config.BoundsMin,
-		Config.BoundsMax,
+		Config.BoundaryBox.Min,
+		Config.BoundaryBox.Max,
 		100.0f  // 网格尺寸
 	);
 	TestTrue(TEXT("CollisionManager should be initialized"), CollisionManager->IsInitialized());
@@ -82,7 +82,7 @@ bool FPhysicsSystemIntegrationCombatTest::RunTest(const FString& Parameters)
 		FCollisionBody Body;
 		Body.ID = MarbleID;
 		Body.Position = State.Position;
-		Body.ShapeType = CollisionShape_Circle;
+		Body.ShapeType = EEchoCollisionShapeType::Circle;
 		Body.Radius = State.Radius;
 		
 		CollisionManager->RegisterBody(Body);
@@ -98,7 +98,7 @@ bool FPhysicsSystemIntegrationCombatTest::RunTest(const FString& Parameters)
 			0,
 			(i / 5) * 100.0f + 500.0f  // 在魔力露珠上方
 		);
-		Enemy.ShapeType = CollisionShape_Rectangle;
+		Enemy.ShapeType = EEchoCollisionShapeType::Rectangle;
 		Enemy.Size = FVector2D(80.0f, 50.0f);
 		Enemy.Rotation = 0.0f;
 		
@@ -221,13 +221,12 @@ bool FPhysicsSystemIntegrationWorkbenchTest::RunTest(const FString& Parameters)
 	UCollisionManager* CollisionManager = NewObject<UCollisionManager>();
 	
 	// 初始化炼金工作台场景
-	FPhysicsSceneConfig Config = USceneConfigFactory::CreateWorkbenchConfig(
-		FVector(-500, -500, 0),
-		FVector(500, 500, 500)
-	);
+	FPhysicsSceneConfig Config = USceneConfigFactory::CreateWorkbenchConfig();
+	// 设置边界
+	Config.BoundaryBox = FBox(FVector(-500, -500, 0), FVector(500, 500, 500));
 	
 	PhysicsSystem->InitializeScene(Config);
-	CollisionManager->Initialize(Config.BoundsMin, Config.BoundsMax, 50.0f);
+	CollisionManager->Initialize(Config.BoundaryBox.Min, Config.BoundaryBox.Max, 50.0f);
 	
 	// ========================================
 	// 2. 创建工作台场景：3个魔力露珠 + 5个注入点
@@ -258,7 +257,7 @@ bool FPhysicsSystemIntegrationWorkbenchTest::RunTest(const FString& Parameters)
 		FCollisionBody Body;
 		Body.ID = MarbleID;
 		Body.Position = State.Position;
-		Body.ShapeType = CollisionShape_Circle;
+		Body.ShapeType = EEchoCollisionShapeType::Circle;
 		Body.Radius = State.Radius;
 		
 		CollisionManager->RegisterBody(Body);
@@ -489,7 +488,7 @@ bool FPhysicsSystemIntegrationStressTest::RunTest(const FString& Parameters)
 		FCollisionBody Body;
 		Body.ID = MarbleID;
 		Body.Position = State.Position;
-		Body.ShapeType = CollisionShape_Circle;
+		Body.ShapeType = EEchoCollisionShapeType::Circle;
 		Body.Radius = State.Radius;
 		
 		CollisionManager->RegisterBody(Body);
@@ -505,7 +504,7 @@ bool FPhysicsSystemIntegrationStressTest::RunTest(const FString& Parameters)
 			FMath::FRandRange(-1000, 1000),
 			FMath::FRandRange(100, 1000)
 		);
-		Enemy.ShapeType = CollisionShape_Rectangle;
+		Enemy.ShapeType = EEchoCollisionShapeType::Rectangle;
 		Enemy.Size = FVector2D(80.0f, 50.0f);
 		Enemy.Rotation = 0.0f;
 		

@@ -21,11 +21,6 @@ bool FShapeGeneratorTest::RunTest(const FString& Parameters)
     TestEqual("Noise Shape should have correct height", NoiseShape.Height, 20);
     TestEqual("Noise Shape grid should have 400 elements", NoiseShape.Grid.Num(), 400);
 
-    return true;
-}
-
-#endif //WITH_DEV_AUTOMATION_TESTS
-
     // Test 3: Voronoi
     FShapeData VoronoiShape = UShapeGenerator::GenerateShapeWithVoronoi(15, 15, 789);
     TestEqual("Voronoi Shape should have correct width", VoronoiShape.Width, 15);
@@ -37,3 +32,8 @@ bool FShapeGeneratorTest::RunTest(const FString& Parameters)
     TestEqual("Crystal Shape should have correct width", CrystalShape.Width, 25);
     TestEqual("Crystal Shape should have correct height", CrystalShape.Height, 25);
     TestEqual("Crystal Shape grid should have 625 elements", CrystalShape.Grid.Num(), 625);
+
+    return true;
+}
+
+#endif //WITH_DEV_AUTOMATION_TESTS
