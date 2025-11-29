@@ -1,0 +1,4 @@
+MonsterID,Habitat,ElementType,Rarity
+Monster_001,Forest,Nature,Common
+Monster_002,Cave,Crystal,Rare
+Monster_003,Volcano,Fire,Epic
