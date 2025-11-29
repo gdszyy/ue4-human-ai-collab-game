@@ -1,4 +1,5 @@
-'''#pragma once
+
+#pragma once
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
@@ -85,4 +86,3 @@ public:
     UFUNCTION(BlueprintCallable, Category = "PCG | WFC", meta = (DisplayName = "Assemble with WFC", Keywords = "wfc wave function collapse assemble creature"))
     static FWFCAssembly AssembleWithWFC(const TArray<FWFCModule>& Modules, int32 Width, int32 Height, int32 Seed);
 };
-'''
