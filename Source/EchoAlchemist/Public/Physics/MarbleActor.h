@@ -116,10 +116,11 @@ public:
 	/**
 	 * 获取当前速度
 	 * 
+	 * 注意：此函数重写了AActor::GetVelocity()，不需要UFUNCTION宏
+	 * 
 	 * @return 速度向量（单位：cm/s）
 	 */
-	UFUNCTION(BlueprintPure, Category = "Physics|Marble")
-	FVector GetVelocity() const;
+	virtual FVector GetVelocity() const override;
 
 	/**
 	 * 获取当前速率
