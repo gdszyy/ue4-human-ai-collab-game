@@ -63,7 +63,6 @@ public:
      */
     UFUNCTION(BlueprintCallable, Category = "PCG | Shape", meta = (DisplayName = "Generate Shape with Simplex Noise", Keywords = "shape generator simplex noise perlin"))
     static FShapeData GenerateShapeWithSimplexNoise(int32 Width, int32 Height, int32 Seed, float Scale = 20.0f, float Threshold = 0.5f);
-};
 
     /**
      * Generates a 2D shape using a Voronoi diagram.
@@ -89,3 +88,4 @@ public:
      */
     UFUNCTION(BlueprintCallable, Category = "PCG | Shape", meta = (DisplayName = "Generate Shape with Crystal Growth", Keywords = "shape generator crystal growth"))
     static FShapeData GenerateShapeWithCrystalGrowth(int32 Width, int32 Height, int32 Seed, int32 Iterations = 5, float GrowthChance = 0.3f);
+};
