@@ -34,3 +34,17 @@ bool FWFCAssemblerTest::RunTest(const FString& Parameters)
     TestEqual("Assembly2 should have correct width", Assembly2.Width, 2);
     TestEqual("Assembly2 should have correct height", Assembly2.Height, 2);
     TestEqual("Assembly2 grid should have 4 elements", Assembly2.PlacedModules.Num(), 4);
+
+    // Test 3: Assembly with constraints
+    TArray<FWFCModule> ConstrainedModules;
+    FWFCModule Top, Bottom;
+    Top.ModuleId = "Top";
+    Top.Connectors.Add({ "socket", "South" });
+    Bottom.ModuleId = "Bottom";
+    Bottom.Connectors.Add({ "socket", "North" });
+    ConstrainedModules.Add(Top);
+    ConstrainedModules.Add(Bottom);
+
+    FWFCAssembly Assembly3 = UWFCAssembler::AssembleWithWFC(ConstrainedModules, 1, 2, 789);
+    TestEqual("Constrained assembly should have Top at (0,0)", Assembly3.PlacedModules[0], FName("Top"));
+    TestEqual("Constrained assembly should have Bottom at (0,1)", Assembly3.PlacedModules[1], FName("Bottom"));

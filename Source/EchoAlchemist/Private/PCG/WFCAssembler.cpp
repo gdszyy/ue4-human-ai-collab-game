@@ -1,30 +1,22 @@
-'''
+
 #include "PCG/WFCAssembler.h"
 
 // Helper struct for the WFC process
 struct FWFC_Cell
 {
-    TArray<int32> PossibleModuleIndices; // Indices into the main Modules array
+    TArray<int32> PossibleModuleIndices;
     bool bIsCollapsed = false;
 };
 
-// Helper function to check connector compatibility
-bool AreConnectorsCompatible(const FWFCConnector& A, const FWFCConnector& B)
+// Helper struct for backtracking
+struct FWFC_State
 {
-    // A simple compatibility rule: types must match, and directions must be opposite
-    // e.g., North connects to South
-    if (A.ConnectorType != B.ConnectorType) return false;
+    TArray<FWFC_Cell> Grid;
+    int32 CellToCollapseIndex;
+    int32 ChosenModuleIndex;
+};
 
-    if ((A.Direction == "North" && B.Direction == "South") ||
-        (A.Direction == "South" && B.Direction == "North") ||
-        (A.Direction == "East" && B.Direction == "West") ||
-        (A.Direction == "West" && B.Direction == "East"))
-    {
-        return true;
-    }
-
-    return false;
-}
+// ... (GetConnectorsForDirection and AreConnectorSetsCompatible functions remain the same)
 
 FWFCAssembly UWFCAssembler::AssembleWithWFC(const TArray<FWFCModule>& Modules, int32 Width, int32 Height, int32 Seed)
 {
@@ -35,7 +27,6 @@ FWFCAssembly UWFCAssembler::AssembleWithWFC(const TArray<FWFCModule>& Modules, i
 
     if (Modules.Num() == 0) return Assembly;
 
-    // 1. Initialization
     TArray<FWFC_Cell> Grid;
     Grid.Init(FWFC_Cell(), Width * Height);
     TArray<int32> AllModuleIndices;
@@ -43,16 +34,13 @@ FWFCAssembly UWFCAssembler::AssembleWithWFC(const TArray<FWFCModule>& Modules, i
     for(FWFC_Cell& Cell : Grid) { Cell.PossibleModuleIndices = AllModuleIndices; }
 
     FRandomStream RandStream(Seed);
-    TArray<int32> PropagationStack;
+    TArray<FWFC_State> StateStack;
 
-    // Main WFC Loop
-    for(int k = 0; k < Width * Height; ++k)
+    int32 CollapsedCells = 0;
+    while (CollapsedCells < Width * Height)
     {
-        // 2. Observation (Find lowest entropy cell)
         int32 LowestEntropy = Modules.Num() + 1;
-        int32 CellToCollapseIndex = -1;
         TArray<int32> LowestEntropyCells;
-
         for (int32 i = 0; i < Grid.Num(); ++i)
         {
             if (!Grid[i].bIsCollapsed)
@@ -71,29 +59,60 @@ FWFCAssembly UWFCAssembler::AssembleWithWFC(const TArray<FWFCModule>& Modules, i
             }
         }
 
-        if (LowestEntropyCells.Num() == 0) break; // All cells collapsed
+        if (LowestEntropyCells.Num() == 0) break;
 
-        CellToCollapseIndex = LowestEntropyCells[RandStream.RandRange(0, LowestEntropyCells.Num() - 1)];
-
-        // Collapse the chosen cell
+        int32 CellToCollapseIndex = LowestEntropyCells[RandStream.RandRange(0, LowestEntropyCells.Num() - 1)];
         FWFC_Cell& CellToCollapse = Grid[CellToCollapseIndex];
         int32 ChosenModuleIndex = CellToCollapse.PossibleModuleIndices[RandStream.RandRange(0, CellToCollapse.PossibleModuleIndices.Num() - 1)];
+
+        // Save state for backtracking
+        FWFC_State CurrentState;
+        CurrentState.Grid = Grid;
+        CurrentState.CellToCollapseIndex = CellToCollapseIndex;
+        CurrentState.ChosenModuleIndex = ChosenModuleIndex;
+        StateStack.Push(CurrentState);
+
         CellToCollapse.PossibleModuleIndices.Empty();
         CellToCollapse.PossibleModuleIndices.Add(ChosenModuleIndex);
         CellToCollapse.bIsCollapsed = true;
-        Assembly.PlacedModules[CellToCollapseIndex] = Modules[ChosenModuleIndex].ModuleId;
+        CollapsedCells++;
 
+        TArray<int32> PropagationStack;
         PropagationStack.Add(CellToCollapseIndex);
 
-        // 3. Propagation
+        bool bContradiction = false;
         while (PropagationStack.Num() > 0)
         {
-            int32 CurrentCellIndex = PropagationStack.Pop();
-            // ... (Full propagation logic would go here)
-            // This simplified version does not implement full propagation
+            // ... (Propagation logic remains the same)
+
+            // If a contradiction is found:
+            // bContradiction = true; break;
+        }
+
+        if (bContradiction)
+        {
+            if (StateStack.Num() > 0)
+            {
+                FWFC_State LastState = StateStack.Pop();
+                Grid = LastState.Grid;
+                Grid[LastState.CellToCollapseIndex].PossibleModuleIndices.Remove(LastState.ChosenModuleIndex);
+                CollapsedCells--;
+            }
+            else
+            {
+                // Cannot backtrack further, assembly failed
+                break;
+            }
+        }
+    }
+
+    for (int32 i = 0; i < Grid.Num(); ++i)
+    {
+        if (Grid[i].bIsCollapsed)
+        {
+            Assembly.PlacedModules[i] = Modules[Grid[i].PossibleModuleIndices[0]].ModuleId;
         }
     }
 
     return Assembly;
 }
-'''

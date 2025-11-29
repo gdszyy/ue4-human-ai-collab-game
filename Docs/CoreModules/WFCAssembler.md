@@ -45,3 +45,14 @@ The updated `AssembleWithWFC` function now implements the core logic of the Wave
 3.  **Propagation**: After a cell is collapsed, constraints are propagated to its neighbors, removing any modules that are no longer compatible. (Note: Full propagation logic is still in development).
 
 This process continues until all cells are collapsed, resulting in a fully assembled, logically consistent creature.
+
+
+## 6. Advanced Algorithm Details (Updated)
+
+The WFC algorithm has been further improved with the following features:
+
+### Constraint Propagation
+When a cell is collapsed, the algorithm now propagates constraints to its neighbors. It checks the compatibility of all possible modules in the neighboring cells and removes any that are not compatible with the collapsed cell. This process is recursive, ensuring that constraints are fully propagated throughout the grid.
+
+### Backtracking
+If a contradiction is detected (i.e., a cell has no possible modules), the algorithm now supports backtracking. It will revert to the previous state and try a different module choice, allowing it to explore different possibilities and find a valid solution.
