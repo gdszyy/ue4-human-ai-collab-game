@@ -12,7 +12,8 @@ public class EchoAlchemist : ModuleRules
 			"Core", 
 			"CoreUObject", 
 			"Engine", 
-			"InputCore" 
+			"InputCore",
+			"Niagara"  // 混合物理系统需要Niagara粒子系统
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CollisionShape.h"
 #include "PhysicsSceneConfig.generated.h"
 
 /**
@@ -34,19 +35,6 @@ enum class EBoundaryBehavior : uint8
 	
 	/** 无边界限制 */
 	None UMETA(DisplayName = "None")
-};
-
-/**
- * 碰撞体形状类型
- */
-UENUM(BlueprintType)
-enum class ECollisionShapeType : uint8
-{
-	/** 圆形碰撞体 */
-	Circle UMETA(DisplayName = "Circle"),
-	
-	/** 矩形碰撞体 */
-	Rectangle UMETA(DisplayName = "Rectangle")
 };
 
 /**
