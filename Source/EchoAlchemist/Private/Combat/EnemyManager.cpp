@@ -84,11 +84,11 @@ FGuid UEnemyManager::SpawnEnemyAtAngle(EEnemyType EnemyType, float Angle, float 
 			FVector Position = CircularScene->GetEnemyPosition(Angle);
 			FGuid EnemyID = SpawnEnemy(EnemyType, Position, MaxHealth);
 			
-			// 存储角度到ExtraData
-			int32 Index = FindEnemyIndex(EnemyID);
-			if (Index != INDEX_NONE)
-			{
-				Enemies[Index].ExtraData.Add(TEXT("Angle"), Angle);
+				// 存储角度到ExtraData
+				int32 Index = FindEnemyIndex(EnemyID);
+				if (Index != INDEX_NONE)
+				{
+					Enemies[Index].ExtraData.Add(TEXT("Angle"), FString::SanitizeFloat(Angle));
 			}
 			
 			return EnemyID;
@@ -344,7 +344,8 @@ void UEnemyManager::UpdateEnemyMovementCircular(FEnemyData& Enemy, float DeltaTi
 	}
 	
 	// 获取当前角度
-	float CurrentAngle = Enemy.ExtraData.FindRef(TEXT("Angle"));
+	FString AngleStr = Enemy.ExtraData.FindRef(TEXT("Angle"));
+	float CurrentAngle = FCString::Atof(*AngleStr);
 	
 	// 更新角度
 	float NewAngle = CircularScene->UpdateEnemyAngle(CurrentAngle, EnemyAngularVelocity, DeltaTime);
@@ -353,7 +354,7 @@ void UEnemyManager::UpdateEnemyMovementCircular(FEnemyData& Enemy, float DeltaTi
 	Enemy.Position = CircularScene->GetEnemyPosition(NewAngle);
 	
 	// 存储新角度
-	Enemy.ExtraData.Add(TEXT("Angle"), NewAngle);
+	Enemy.ExtraData.Add(TEXT("Angle"), FString::SanitizeFloat(NewAngle));
 }
 
 void UEnemyManager::UpdateEnemyAttack(FEnemyData& Enemy, float DeltaTime)

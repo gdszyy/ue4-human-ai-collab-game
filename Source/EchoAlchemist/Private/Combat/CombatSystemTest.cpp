@@ -253,16 +253,16 @@ bool UCombatSystemTest::TestDamageCalculator()
 {
 	UE_LOG(LogTemp, Log, TEXT("=== Testing DamageCalculator ==="));
 	
-	// 测试1：伤害递增计算
-	{
-		int32 Damage1 = UDamageCalculator::CalculateDamageIncrement(1);
-		int32 Damage2 = UDamageCalculator::CalculateDamageIncrement(2);
-		int32 Damage3 = UDamageCalculator::CalculateDamageIncrement(3);
-		
-		bool bTest1 = Damage1 == 1 && Damage2 == 3 && Damage3 == 6;
-		PrintTestResult(TEXT("Damage increment"), bTest1);
-		if (!bTest1) return false;
-	}
+		// 测试1：伤害递增计算（使用 CalculateRicochetDamageBonus）
+		{
+			float Damage1 = UDamageCalculator::CalculateRicochetDamageBonus(1);
+			float Damage2 = UDamageCalculator::CalculateRicochetDamageBonus(3);
+			float Damage3 = UDamageCalculator::CalculateRicochetDamageBonus(6);
+			
+			bool bTest1 = Damage1 == 1.0f && Damage2 == 2.0f && Damage3 == 3.0f;
+			PrintTestResult(TEXT("Damage increment"), bTest1);
+			if (!bTest1) return false;
+		}
 	
 	// 测试2：药效削减计算
 	{
