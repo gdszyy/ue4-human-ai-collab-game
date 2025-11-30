@@ -5,10 +5,10 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "CombatConfig.h"
-#include "MarbleState.h"
+#include "Physics/MarbleState.h"
 #include "EnemyData.h"
 #include "DamageInfo.h"
-#include "PhysicsSceneConfig.h"
+#include "Physics/PhysicsSceneConfig.h"
 #include "CombatBlueprintLibrary.generated.h"
 
 /**

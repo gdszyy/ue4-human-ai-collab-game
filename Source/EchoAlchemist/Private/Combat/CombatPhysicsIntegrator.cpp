@@ -1,7 +1,7 @@
 // Copyright Echo Alchemist Game. All Rights Reserved.
 
 #include "Combat/CombatPhysicsIntegrator.h"
-#include "Combat/MarbleState.h"
+#include "Physics/MarbleState.h"
 #include "Combat/EnemyData.h"
 #include "Physics/CollisionShape.h"
 

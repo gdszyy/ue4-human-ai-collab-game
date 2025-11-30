@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PhysicsSceneConfig.h"
+#include "Physics/PhysicsSceneConfig.h"
 #include "EnemyData.generated.h"
 
 /**

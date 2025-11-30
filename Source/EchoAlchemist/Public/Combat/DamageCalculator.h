@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "DamageInfo.h"
-#include "MarbleState.h"
+#include "Physics/MarbleState.h"
 #include "EnemyData.h"
 #include "DamageCalculator.generated.h"
 

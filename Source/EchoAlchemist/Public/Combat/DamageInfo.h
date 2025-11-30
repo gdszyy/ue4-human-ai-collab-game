@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "MarbleState.h"
+#include "Physics/MarbleState.h"
 #include "DamageInfo.generated.h"
 
 /**

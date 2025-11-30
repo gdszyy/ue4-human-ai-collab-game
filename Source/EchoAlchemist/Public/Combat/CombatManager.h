@@ -6,7 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "CombatConfig.h"
 #include "CombatEvents.h"
-#include "MarbleState.h"
+#include "Physics/MarbleState.h"
 #include "EnemyData.h"
 #include "SceneManager.h"
 #include "Physics/MarblePhysicsSystem.h"
