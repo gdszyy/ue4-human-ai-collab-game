@@ -17,29 +17,67 @@ WorldMorphingSystem 可视化测试脚本
 
 import unreal
 import os
+
 def get_world_context():
     """获取世界上下文对象（UE4 PIE模式兼容）"""
     try:
+        # 方法1: 尝试获取编辑器世界
         try:
-            player_controller = unreal.GameplayStatics.get_player_controller(None, 0)
-            if player_controller:
-                return player_controller
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                return editor_world
         except:
             pass
+        
+        # 方法2: 尝试通过编辑器子系统获取
         try:
-            player_pawn = unreal.GameplayStatics.get_player_pawn(None, 0)
-            if player_pawn:
-                return player_pawn
+            editor_subsystem = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem)
+            if editor_subsystem:
+                editor_world = editor_subsystem.get_editor_world()
+                if editor_world:
+                    # 尝试获取游戏实例
+                    game_instance = editor_world.get_game_instance()
+                    if game_instance:
+                        return game_instance
+                    else:
+                        return editor_world
+        except Exception as e:
+            unreal.log(f"尝试方法2失败: {str(e)}")
+            pass
+        
+        # 方法3: 尝试使用GameplayStatics
+        try:
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                player_controller = unreal.GameplayStatics.get_player_controller(editor_world, 0)
+                if player_controller:
+                    return player_controller
         except:
             pass
+        
+        # 方法4: 尝试获取PlayerPawn
         try:
-            game_mode = unreal.GameplayStatics.get_game_mode(None)
-            if game_mode:
-                return game_mode
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                player_pawn = unreal.GameplayStatics.get_player_pawn(editor_world, 0)
+                if player_pawn:
+                    return player_pawn
         except:
             pass
+        
+        # 方法5: 尝试获取GameMode
+        try:
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                game_mode = unreal.GameplayStatics.get_game_mode(editor_world)
+                if game_mode:
+                    return game_mode
+        except:
+            pass
+        
         unreal.log_error("❌ 无法获取WorldContext")
         return None
+        
     except Exception as e:
         unreal.log_error(f"❌ 错误: {str(e)}")
         return None

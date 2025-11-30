@@ -31,44 +31,68 @@ def log_section(title):
 def get_world_context():
     """获取世界上下文对象（UE4 PIE模式兼容）
     
-    在PIE模式下，我们需要使用GameplayStatics来获取游戏世界中的Actor。
-    EditorLevelLibrary在PIE模式下不可用。
+    在PIE模式下，我们需要正确获取游戏世界的上下文。
     """
     try:
-        # 方法1: 尝试使用GameplayStatics获取PlayerController
+        # 方法1: 尝试获取编辑器世界（在PIE模式外）
         try:
-            player_controller = unreal.GameplayStatics.get_player_controller(None, 0)
-            if player_controller:
-                unreal.log("✅ 使用PlayerController作为上下文")
-                return player_controller
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                unreal.log("✅ 使用EditorWorld作为上下文")
+                return editor_world
         except:
             pass
         
-        # 方法2: 尝试获取PlayerPawn
+        # 方法2: 尝试获取游戏实例
         try:
-            player_pawn = unreal.GameplayStatics.get_player_pawn(None, 0)
-            if player_pawn:
-                unreal.log("✅ 使用PlayerPawn作为上下文")
-                return player_pawn
+            # 获取所有世界
+            editor_subsystem = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem)
+            if editor_subsystem:
+                editor_world = editor_subsystem.get_editor_world()
+                if editor_world:
+                    # 尝试获取游戏实例
+                    game_instance = editor_world.get_game_instance()
+                    if game_instance:
+                        unreal.log("✅ 使用GameInstance作为上下文")
+                        return game_instance
+                    else:
+                        unreal.log("✅ 使用EditorWorld作为上下文")
+                        return editor_world
+        except Exception as e:
+            unreal.log(f"尝试方法2失败: {str(e)}")
+            pass
+        
+        # 方法3: 尝试使用GameplayStatics (需要有效的世界上下文)
+        try:
+            # 先获取编辑器世界
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                player_controller = unreal.GameplayStatics.get_player_controller(editor_world, 0)
+                if player_controller:
+                    unreal.log("✅ 使用PlayerController作为上下文")
+                    return player_controller
         except:
             pass
         
-        # 方法3: 尝试获取GameMode
+        # 方法4: 尝试获取PlayerPawn
         try:
-            game_mode = unreal.GameplayStatics.get_game_mode(None)
-            if game_mode:
-                unreal.log("✅ 使用GameMode作为上下文")
-                return game_mode
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                player_pawn = unreal.GameplayStatics.get_player_pawn(editor_world, 0)
+                if player_pawn:
+                    unreal.log("✅ 使用PlayerPawn作为上下文")
+                    return player_pawn
         except:
             pass
         
-        # 方法4: 尝试使用全局对象
+        # 方法5: 尝试获取GameMode
         try:
-            # 创建一个临时对象
-            temp_obj = unreal.new_object(unreal.Object, outer=None, name="TempWorldContext")
-            if temp_obj:
-                unreal.log("✅ 使用临时对象作为上下文")
-                return temp_obj
+            editor_world = unreal.EditorLevelLibrary.get_editor_world()
+            if editor_world:
+                game_mode = unreal.GameplayStatics.get_game_mode(editor_world)
+                if game_mode:
+                    unreal.log("✅ 使用GameMode作为上下文")
+                    return game_mode
         except:
             pass
         
