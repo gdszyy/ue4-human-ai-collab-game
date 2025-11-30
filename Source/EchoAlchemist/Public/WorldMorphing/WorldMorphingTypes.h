@@ -238,3 +238,90 @@ struct FCell
 		return State;
 	}
 };
+
+/**
+ * 模拟状态结构体
+ * 用于获取模拟的整体状态信息
+ */
+USTRUCT(BlueprintType)
+struct FSimulationStatus
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadOnly, Category = "Status")
+	bool bInitialized = false;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Status")
+	bool bPaused = false;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Status")
+	int32 Width = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Status")
+	int32 Height = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Status")
+	int32 TimeStep = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Status")
+	int32 CycleCount = 0;
+};
+
+/**
+ * 世界统计信息结构体
+ * 用于获取世界的统计数据
+ */
+USTRUCT(BlueprintType)
+struct FWorldStatistics
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	int32 TotalCells = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	int32 TerrainCells = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	int32 AlphaCrystals = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	int32 BetaCrystals = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	int32 HumanSettlements = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	int32 ThunderstormCells = 0;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	float AverageMantleEnergy = 0.0f;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Statistics")
+	float AverageTemperature = 0.0f;
+};
+
+/**
+ * 热力图数据类型枚举
+ */
+UENUM(BlueprintType)
+enum class EHeatmapDataType : uint8
+{
+	MantleEnergy    UMETA(DisplayName = "Mantle Energy"),
+	Temperature     UMETA(DisplayName = "Temperature"),
+	CrystalDensity  UMETA(DisplayName = "Crystal Density"),
+	HumanDensity    UMETA(DisplayName = "Human Density")
+};
+
+/**
+ * 模拟预设枚举
+ */
+UENUM(BlueprintType)
+enum class ESimulationPreset : uint8
+{
+	Default         UMETA(DisplayName = "Default"),
+	FastGrowth      UMETA(DisplayName = "Fast Growth"),
+	SlowEvolution   UMETA(DisplayName = "Slow Evolution"),
+	HighEnergy      UMETA(DisplayName = "High Energy"),
+	Stable          UMETA(DisplayName = "Stable")
+};

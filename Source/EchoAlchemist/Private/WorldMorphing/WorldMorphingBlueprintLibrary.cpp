@@ -1,133 +1,64 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "WorldMorphing/WorldMorphingBlueprintLibrary.h"
-#include "WorldMorphing/WorldMorphingSubsystem.h"
-#include "Engine/GameInstance.h"
+#include "WorldMorphing/WorldMorphingSimulation.h"
+#include "WorldMorphing/WorldMorphingVisualization.h"
+#include "WorldMorphing/WorldMorphingConfiguration.h"
 
 void UWorldMorphingBlueprintLibrary::InitializeWorld(UObject* WorldContextObject, int32 Width, int32 Height, const FSimulationParams& Params)
 {
-	if (!WorldContextObject) return;
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return;
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		Subsystem->InitializeWorld(Width, Height, Params);
-	}
+	// 调用新API
+	UWorldMorphingSimulation::Initialize(WorldContextObject, Width, Height, Params);
 }
 
 void UWorldMorphingBlueprintLibrary::TickSimulation(UObject* WorldContextObject, float DeltaTime)
 {
-	if (!WorldContextObject) return;
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return;
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		Subsystem->TickSimulation(DeltaTime);
-	}
+	// 调用新API
+	UWorldMorphingSimulation::Tick(WorldContextObject, DeltaTime);
 }
 
 FCellState UWorldMorphingBlueprintLibrary::GetCellAt(UObject* WorldContextObject, int32 X, int32 Y)
 {
-	if (!WorldContextObject) return FCellState();
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return FCellState();
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		return Subsystem->GetCellAt(X, Y);
-	}
-	
-	return FCellState();
+	// 调用新API
+	return UWorldMorphingVisualization::GetCellState(WorldContextObject, X, Y);
 }
 
 void UWorldMorphingBlueprintLibrary::SetSimulationParams(UObject* WorldContextObject, const FSimulationParams& NewParams)
 {
-	if (!WorldContextObject) return;
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return;
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		Subsystem->SetSimulationParams(NewParams);
-	}
+	// 调用新API
+	UWorldMorphingConfiguration::Apply(WorldContextObject, NewParams);
 }
 
 FSimulationParams UWorldMorphingBlueprintLibrary::GetSimulationParams(UObject* WorldContextObject)
 {
-	if (!WorldContextObject) return FSimulationParams();
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return FSimulationParams();
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		return Subsystem->GetSimulationParams();
-	}
-	
-	return FSimulationParams();
+	// 调用新API
+	return UWorldMorphingConfiguration::GetCurrent(WorldContextObject);
 }
 
 void UWorldMorphingBlueprintLibrary::GetGridSize(UObject* WorldContextObject, int32& OutWidth, int32& OutHeight)
 {
-	OutWidth = 0;
-	OutHeight = 0;
-	
-	if (!WorldContextObject) return;
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return;
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		Subsystem->GetGridSize(OutWidth, OutHeight);
-	}
+	// 调用新API
+	FSimulationStatus Status = UWorldMorphingSimulation::GetStatus(WorldContextObject);
+	OutWidth = Status.Width;
+	OutHeight = Status.Height;
 }
 
 int32 UWorldMorphingBlueprintLibrary::GetTimeStep(UObject* WorldContextObject)
 {
-	if (!WorldContextObject) return 0;
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return 0;
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		return Subsystem->GetTimeStep();
-	}
-	
-	return 0;
+	// 调用新API
+	FSimulationStatus Status = UWorldMorphingSimulation::GetStatus(WorldContextObject);
+	return Status.TimeStep;
 }
 
 int32 UWorldMorphingBlueprintLibrary::GetCycleCount(UObject* WorldContextObject)
 {
-	if (!WorldContextObject) return 0;
-	
-	UGameInstance* GameInstance = WorldContextObject->GetWorld()->GetGameInstance();
-	if (!GameInstance) return 0;
-	
-	UWorldMorphingSubsystem* Subsystem = GameInstance->GetSubsystem<UWorldMorphingSubsystem>();
-	if (Subsystem)
-	{
-		return Subsystem->GetCycleCount();
-	}
-	
-	return 0;
+	// 调用新API
+	FSimulationStatus Status = UWorldMorphingSimulation::GetStatus(WorldContextObject);
+	return Status.CycleCount;
 }
 
 FSimulationParams UWorldMorphingBlueprintLibrary::MakeDefaultParams()
 {
-	return FSimulationParams();
+	// 调用新API
+	return UWorldMorphingConfiguration::MakeDefault();
 }
