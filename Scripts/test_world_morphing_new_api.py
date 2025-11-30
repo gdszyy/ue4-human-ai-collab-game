@@ -80,7 +80,17 @@ def test_simulation_module():
         unreal.log("\n1.3 获取模拟状态...")
         status = unreal.WorldMorphingSimulation.get_status(world_context)
         unreal.log(f"✅ 状态信息:")
-        unreal.log(f"  - 已初始化: {status.b_initialized}")
+        
+        # 处理属性命名约定
+        try:
+            initialized = status.b_initialized
+        except AttributeError:
+            try:
+                initialized = status.initialized
+            except AttributeError:
+                initialized = getattr(status, 'bInitialized', False)
+        
+        unreal.log(f"  - 已初始化: {initialized}")
         unreal.log(f"  - 网格尺寸: {status.width}x{status.height}")
         unreal.log(f"  - 时间步: {status.time_step}")
         unreal.log(f"  - 周期计数: {status.cycle_count}")
