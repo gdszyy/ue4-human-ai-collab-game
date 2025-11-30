@@ -1,6 +1,7 @@
 // Copyright Echo Alchemist Game. All Rights Reserved.
 
 #include "Combat/CombatManager.h"
+#include "Combat/CombatPhysicsIntegrator.h"
 
 UCombatManager::UCombatManager()
 {
@@ -19,6 +20,13 @@ void UCombatManager::Initialize(const FCombatConfig& InConfig, TScriptInterface<
 	
 	UE_LOG(LogTemp, Log, TEXT("CombatManager: Initialized with scene type: %s"), 
 		SceneManager.GetInterface() ? *SceneManager->GetSceneType() : TEXT("None"));
+}
+
+void UCombatManager::SetPhysicsIntegrator(UCombatPhysicsIntegrator* InIntegrator)
+{
+	PhysicsIntegrator = InIntegrator;
+	
+	UE_LOG(LogTemp, Log, TEXT("CombatManager: Physics integrator set"));
 }
 
 void UCombatManager::StartCombat()
@@ -76,6 +84,12 @@ void UCombatManager::Tick(float DeltaTime)
 	
 	// 更新战斗时间
 	CombatTime += DeltaTime;
+	
+	// 更新物理集成器
+	if (PhysicsIntegrator)
+	{
+		PhysicsIntegrator->Tick(DeltaTime);
+	}
 	
 	// 根据当前阶段更新
 	switch (CurrentPhase)
@@ -217,4 +231,35 @@ bool UCombatManager::CheckCombatEndConditions()
 	}
 	
 	return false;
+}
+
+FGuid UCombatManager::LaunchMarble(const FMarbleLaunchParams& Params)
+{
+	if (!PhysicsIntegrator)
+	{
+		UE_LOG(LogTemp, Error, TEXT("CombatManager: Physics integrator not set"));
+		return FGuid();
+	}
+	
+	return PhysicsIntegrator->LaunchMarble(Params);
+}
+
+TArray<FMarbleState> UCombatManager::GetAllMarbles() const
+{
+	if (!PhysicsIntegrator)
+	{
+		return TArray<FMarbleState>();
+	}
+	
+	return PhysicsIntegrator->GetAllMarbles();
+}
+
+bool UCombatManager::AreAllMarblesStopped(float SpeedThreshold) const
+{
+	if (!PhysicsIntegrator)
+	{
+		return true;
+	}
+	
+	return PhysicsIntegrator->AreAllMarblesStopped(SpeedThreshold);
 }

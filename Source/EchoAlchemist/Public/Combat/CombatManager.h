@@ -9,7 +9,10 @@
 #include "MarbleState.h"
 #include "EnemyData.h"
 #include "SceneManager.h"
+#include "Physics/MarblePhysicsSystem.h"
 #include "CombatManager.generated.h"
+
+class UCombatPhysicsIntegrator;
 
 /**
  * 战斗管理器
@@ -45,6 +48,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Combat")
 	void Initialize(const FCombatConfig& InConfig, TScriptInterface<ISceneManager> InSceneManager);
 
+	/**
+	 * 设置物理集成器
+	 * @param InIntegrator 物理集成器
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Combat")
+	void SetPhysicsIntegrator(UCombatPhysicsIntegrator* InIntegrator);
+
 	// ========== 战斗流程控制 ==========
 	
 	/**
@@ -66,6 +76,31 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Combat")
 	void Tick(float DeltaTime);
+
+	// ========== 魔药管理 ==========
+	
+	/**
+	 * 发射魔药
+	 * @param Params 发射参数
+	 * @return 魔药ID
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Combat")
+	FGuid LaunchMarble(const FMarbleLaunchParams& Params);
+
+	/**
+	 * 获取所有魔药状态
+	 * @return 魔药状态列表
+	 */
+	UFUNCTION(BlueprintPure, Category = "Combat")
+	TArray<FMarbleState> GetAllMarbles() const;
+
+	/**
+	 * 检查是否所有魔药都已停止
+	 * @param SpeedThreshold 速度阈值（cm/s）
+	 * @return 是否所有魔药都已停止
+	 */
+	UFUNCTION(BlueprintPure, Category = "Combat")
+	bool AreAllMarblesStopped(float SpeedThreshold = 10.0f) const;
 
 	/**
 	 * 切换到指定阶段
@@ -156,6 +191,10 @@ protected:
 	/** 场景管理器 */
 	UPROPERTY(BlueprintReadOnly, Category = "Combat")
 	TScriptInterface<ISceneManager> SceneManager;
+
+	/** 物理集成器 */
+	UPROPERTY(BlueprintReadOnly, Category = "Combat")
+	UCombatPhysicsIntegrator* PhysicsIntegrator = nullptr;
 
 	// ========== 战斗状态 ==========
 	

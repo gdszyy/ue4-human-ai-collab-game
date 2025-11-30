@@ -9,6 +9,9 @@
 #include "CircularSceneManager.h"
 #include "FallingSceneManager.h"
 #include "DamageCalculator.h"
+#include "CombatPhysicsIntegrator.h"
+#include "Physics/MarblePhysicsSystem.h"
+#include "Physics/CollisionManager.h"
 #include "CombatSystemTest.generated.h"
 
 /**
@@ -64,6 +67,13 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Combat|Test")
 	bool TestDamageCalculator();
+
+	/**
+	 * 测试物理集成器
+	 * @return 测试是否通过
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Combat|Test")
+	bool TestPhysicsIntegrator();
 
 	/**
 	 * 运行所有测试
