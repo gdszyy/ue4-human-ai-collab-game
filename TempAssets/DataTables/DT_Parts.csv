@@ -1,0 +1,9 @@
+Name,PartID,PartName,PartSprite,AnchorPoint,RelativeLocation,RelativeRotation,RelativeScale,ZOrder
+FireWings,FireWings,火焰之翼,REPLACE_WITH_SPRITE_PATH,Back,"(X=0.0,Y=0.0,Z=20.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.0,Y=1.0,Z=1.0)",1
+FireTail,FireTail,火焰尾巴,REPLACE_WITH_SPRITE_PATH,Tail,"(X=0.0,Y=0.0,Z=0.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.0,Y=1.0,Z=1.0)",0
+RockArmor,RockArmor,岩石外壳,REPLACE_WITH_SPRITE_PATH,Back,"(X=0.0,Y=0.0,Z=10.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.0,Y=1.0,Z=1.0)",2
+IceHorns,IceHorns,冰霜之角,REPLACE_WITH_SPRITE_PATH,Head,"(X=0.0,Y=0.0,Z=30.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.0,Y=1.0,Z=1.0)",3
+PoisonSpikes,PoisonSpikes,毒刺,REPLACE_WITH_SPRITE_PATH,Back,"(X=0.0,Y=0.0,Z=15.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.0,Y=1.0,Z=1.0)",1
+LightningBolt,LightningBolt,闪电标记,REPLACE_WITH_SPRITE_PATH,Center,"(X=0.0,Y=0.0,Z=5.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.0,Y=1.0,Z=1.0)",4
+ShadowCloak,ShadowCloak,暗影斗篷,REPLACE_WITH_SPRITE_PATH,Back,"(X=0.0,Y=0.0,Z=-5.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.0,Y=1.0,Z=1.0)",-1
+HealingAura,HealingAura,治愈光环,REPLACE_WITH_SPRITE_PATH,Center,"(X=0.0,Y=0.0,Z=0.0)","(Pitch=0.0,Yaw=0.0,Roll=0.0)","(X=1.2,Y=1.2,Z=1.2)",5
