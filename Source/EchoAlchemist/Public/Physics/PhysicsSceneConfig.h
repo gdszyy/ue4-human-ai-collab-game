@@ -4,18 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "CollisionShape.h"
+#include "Combat/CombatSceneTypes.h"
 #include "PhysicsSceneConfig.generated.h"
-
-/**
- * 战斗场景类型
- * 用于区分不同的战斗场景，例如下落式或环形
- */
-UENUM(BlueprintType)
-enum class ECombatSceneType : uint8
-{
-    Falling     UMETA(DisplayName = "Falling"),
-    Circular    UMETA(DisplayName = "Circular")
-};
 
 /**
  * 物理场景类型
