@@ -11,6 +11,19 @@
 #include "MonsterActor.generated.h"
 
 /**
+ * @enum EMonsterAnimationType
+ * @brief Types of monster animations.
+ */
+UENUM(BlueprintType)
+enum class EMonsterAnimationType : uint8
+{
+    Idle UMETA(DisplayName = "Idle"),
+    Walk UMETA(DisplayName = "Walk"),
+    Attack UMETA(DisplayName = "Attack"),
+    Death UMETA(DisplayName = "Death")
+};
+
+/**
  * @class AMonsterActor
  * @brief A complete monster actor that assembles appearance from attributes.
  * 
@@ -180,17 +193,4 @@ private:
 
     /** Applies scale based on size class */
     void ApplyScale();
-};
-
-/**
- * @enum EMonsterAnimationType
- * @brief Types of monster animations.
- */
-UENUM(BlueprintType)
-enum class EMonsterAnimationType : uint8
-{
-    Idle UMETA(DisplayName = "Idle"),
-    Walk UMETA(DisplayName = "Walk"),
-    Attack UMETA(DisplayName = "Attack"),
-    Death UMETA(DisplayName = "Death")
 };

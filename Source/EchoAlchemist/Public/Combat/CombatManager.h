@@ -115,8 +115,20 @@ public:
 	 * 获取当前阶段
 	 * @return 当前阶段
 	 */
-	UFUNCTION(BlueprintPure, Category = "Combat")
-	ECombatPhase GetCurrentPhase() const { return CurrentPhase; }
+UFUNCTION(BlueprintPure, Category = "Combat")
+		ECombatPhase GetCurrentPhase() const { return CurrentPhase; }
+
+		/**
+		 * 获取物理集成器
+		 * @return 物理集成器
+		 */
+		UCombatPhysicsIntegrator* GetPhysicsIntegrator() const { return PhysicsIntegrator; }
+
+		/**
+		 * 获取场景管理器
+		 * @return 场景管理器
+		 */
+		TScriptInterface<ISceneManager> GetSceneManager() const { return SceneManager; }
 
 	/**
 	 * 是否正在战斗中

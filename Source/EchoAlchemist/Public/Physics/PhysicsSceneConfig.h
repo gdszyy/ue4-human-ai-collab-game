@@ -11,6 +11,22 @@
  * 用于区分炼金工作台和战斗场景的不同物理规则
  */
 UENUM(BlueprintType)
+/**
+ * 战斗场景类型
+ * 用于区分不同的战斗场景，例如下落式或环形
+ */
+UENUM(BlueprintType)
+enum class ECombatSceneType : uint8
+{
+    Falling     UMETA(DisplayName = "Falling"),
+    Circular    UMETA(DisplayName = "Circular")
+};
+
+/**
+ * 物理场景类型
+ * 用于区分炼金工作台和战斗场景的不同物理规则
+ */
+UENUM(BlueprintType)
 enum EPhysicsSceneType
 {
 	/** 炼金工作台场景 - 有重力，高精度物理 */
