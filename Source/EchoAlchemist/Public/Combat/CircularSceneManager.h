@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "SceneManager.h"
+#include "Combat/SceneManagerBase.h"
 #include "CircularSceneManager.generated.h"
 
 /**
@@ -23,7 +23,7 @@
  * - 半径范围：[InnerRadius, OuterRadius]
  */
 UCLASS(Blueprintable)
-class ECHOALCHEMIST_API UCircularSceneManager : public UObject, public ISceneManager
+class ECHOALCHEMIST_API UCircularSceneManager : public USceneManagerBase
 {
 	GENERATED_BODY()
 
@@ -63,9 +63,7 @@ public:
 	
 	virtual void HandleBoundaryInteraction(FVector& Position, FVector& Velocity) override;
 	
-	virtual FVector WorldToScreen(const FVector& LogicalPosition) const override;
-	
-	virtual FVector ScreenToWorld(const FVector& ScreenPosition) const override;
+	// WorldToScreen 和 ScreenToWorld 使用基类 USceneManagerBase 的默认实现
 
 	// ========== 极坐标转换 ==========
 	
@@ -145,7 +143,5 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Combat|Scene")
 	float EnemyRadius = 400.0f;
 
-	/** 边界反弹系数 */
-	UPROPERTY(BlueprintReadOnly, Category = "Combat|Scene")
-	float BounceCoefficient = 0.8f;
+	// BounceCoefficient 已移至基类 USceneManagerBase
 };

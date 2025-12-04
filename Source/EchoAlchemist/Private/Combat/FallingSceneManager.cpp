@@ -7,7 +7,7 @@ UFallingSceneManager::UFallingSceneManager()
 	SceneWidth = 800.0f;
 	SceneHeight = 600.0f;
 	Gravity = FVector(0, 0, -980.0f);
-	BounceCoefficient = 0.8f;
+	// BounceCoefficient 已在基类中初始化
 }
 
 void UFallingSceneManager::Initialize(float Width, float Height)
@@ -89,14 +89,4 @@ void UFallingSceneManager::HandleBoundaryInteraction(FVector& Position, FVector&
 	}
 }
 
-FVector UFallingSceneManager::WorldToScreen(const FVector& LogicalPosition) const
-{
-	// 下落式场景的逻辑坐标和屏幕坐标相同
-	return LogicalPosition;
-}
-
-FVector UFallingSceneManager::ScreenToWorld(const FVector& ScreenPosition) const
-{
-	// 下落式场景的屏幕坐标和逻辑坐标相同
-	return ScreenPosition;
-}
+// WorldToScreen 和 ScreenToWorld 已移至基类，使用默认实现

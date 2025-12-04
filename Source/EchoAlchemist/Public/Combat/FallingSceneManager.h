@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "SceneManager.h"
+#include "Combat/SceneManagerBase.h"
 #include "FallingSceneManager.generated.h"
 
 /**
@@ -17,7 +17,7 @@
  * - 简单的物理模拟
  */
 UCLASS(Blueprintable)
-class ECHOALCHEMIST_API UFallingSceneManager : public UObject, public ISceneManager
+class ECHOALCHEMIST_API UFallingSceneManager : public USceneManagerBase
 {
 	GENERATED_BODY()
 
@@ -57,9 +57,7 @@ public:
 	
 	virtual void HandleBoundaryInteraction(FVector& Position, FVector& Velocity) override;
 	
-	virtual FVector WorldToScreen(const FVector& LogicalPosition) const override;
-	
-	virtual FVector ScreenToWorld(const FVector& ScreenPosition) const override;
+	// WorldToScreen 和 ScreenToWorld 使用基类 USceneManagerBase 的默认实现
 
 protected:
 	// ========== 场景参数 ==========
@@ -76,7 +74,5 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Combat|Scene")
 	FVector Gravity = FVector(0, 0, -980.0f);
 
-	/** 边界反弹系数 */
-	UPROPERTY(BlueprintReadOnly, Category = "Combat|Scene")
-	float BounceCoefficient = 0.8f;
+	// BounceCoefficient 已移至基类 USceneManagerBase
 };

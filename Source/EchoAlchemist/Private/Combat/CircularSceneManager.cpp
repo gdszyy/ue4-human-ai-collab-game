@@ -8,7 +8,7 @@ UCircularSceneManager::UCircularSceneManager()
 	InnerRadius = 300.0f;
 	OuterRadius = 500.0f;
 	EnemyRadius = 400.0f;
-	BounceCoefficient = 0.8f;
+	// BounceCoefficient 已在基类中初始化
 }
 
 void UCircularSceneManager::Initialize(float InInnerRadius, float InOuterRadius)
@@ -98,12 +98,12 @@ void UCircularSceneManager::HandleBoundaryInteraction(FVector& Position, FVector
 		// 限制到外半径
 		Radius = OuterRadius;
 		
-		// 计算法向量（径向向内）
-		FVector Normal = -PolarToCartesian(1.0f, Angle);
-		
-		// 反弹速度
-		Velocity = Velocity - 2.0f * FVector::DotProduct(Velocity, Normal) * Normal;
-		Velocity *= BounceCoefficient;
+			// 计算法向量（径向向内）
+			FVector Normal = -PolarToCartesian(1.0f, Angle);
+			
+			// 使用基类辅助函数计算反弹
+			Velocity = CalculateBounceVelocity(Velocity, Normal);
+			ApplyBounceCoefficient(Velocity);
 		
 		UE_LOG(LogTemp, Verbose, TEXT("CircularSceneManager: Boundary bounce (outer) at angle %.1f"), 
 			FMath::RadiansToDegrees(Angle));
@@ -114,12 +114,12 @@ void UCircularSceneManager::HandleBoundaryInteraction(FVector& Position, FVector
 		// 限制到内半径
 		Radius = InnerRadius;
 		
-		// 计算法向量（径向向外）
-		FVector Normal = PolarToCartesian(1.0f, Angle);
-		
-		// 反弹速度
-		Velocity = Velocity - 2.0f * FVector::DotProduct(Velocity, Normal) * Normal;
-		Velocity *= BounceCoefficient;
+			// 计算法向量（径向向外）
+			FVector Normal = PolarToCartesian(1.0f, Angle);
+			
+			// 使用基类辅助函数计算反弹
+			Velocity = CalculateBounceVelocity(Velocity, Normal);
+			ApplyBounceCoefficient(Velocity);
 		
 		UE_LOG(LogTemp, Verbose, TEXT("CircularSceneManager: Boundary bounce (inner) at angle %.1f"), 
 			FMath::RadiansToDegrees(Angle));
@@ -130,17 +130,7 @@ void UCircularSceneManager::HandleBoundaryInteraction(FVector& Position, FVector
 	Position = RelativePosition + Center;
 }
 
-FVector UCircularSceneManager::WorldToScreen(const FVector& LogicalPosition) const
-{
-	// 环形场景的逻辑坐标就是世界坐标
-	return LogicalPosition;
-}
-
-FVector UCircularSceneManager::ScreenToWorld(const FVector& ScreenPosition) const
-{
-	// 环形场景的世界坐标就是逻辑坐标
-	return ScreenPosition;
-}
+// WorldToScreen 和 ScreenToWorld 已移至基类，使用默认实现
 
 void UCircularSceneManager::CartesianToPolar(const FVector& CartesianPosition, float& OutRadius, float& OutAngle) const
 {
@@ -186,19 +176,13 @@ float UCircularSceneManager::UpdateEnemyAngle(float CurrentAngle, float AngularV
 
 float UCircularSceneManager::NormalizeAngle(float Angle)
 {
-	// 归一化角度到[0, 2π)
+	// 使用 FMath::Fmod 优化角度归一化，替换 while 循环
 	const float TwoPI = 2.0f * PI;
-	
-	while (Angle < 0.0f)
+	Angle = FMath::Fmod(Angle, TwoPI);
+	if (Angle < 0.0f)
 	{
 		Angle += TwoPI;
 	}
-	
-	while (Angle >= TwoPI)
-	{
-		Angle -= TwoPI;
-	}
-	
 	return Angle;
 }
 
