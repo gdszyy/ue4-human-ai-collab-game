@@ -14,6 +14,13 @@ void UMarblePhysicsSystem::InitializeScene(const FPhysicsSceneConfig& Config)
 	// 重置游戏时间
 	CurrentGameTime = 0.0f;
 	
+	// 初始化效果管理器
+	if (EffectManager == nullptr)
+	{
+		EffectManager = NewObject<UPhysicsEffectManager>(this);
+	}
+	EffectManager->Initialize();
+	
 	// 标记为已初始化
 	bIsInitialized = true;
 	
@@ -127,6 +134,23 @@ void UMarblePhysicsSystem::Tick(float DeltaTime)
 	
 	// 更新游戏时间
 	CurrentGameTime += DeltaTime;
+	
+	// 应用特殊物理效果
+	if (EffectManager && EffectManager->IsInitialized())
+	{
+		TArray<FMarbleState> Marbles = GetAllMarbles();
+		EffectManager->UpdateEffects(Marbles, DeltaTime);
+		
+		// 更新魔力露珠状态
+		for (const FMarbleState& UpdatedMarble : Marbles)
+		{
+			FMarbleState* ExistingMarble = ActiveMarbles.Find(UpdatedMarble.ID);
+			if (ExistingMarble)
+			{
+				*ExistingMarble = UpdatedMarble;
+			}
+		}
+	}
 	
 	// 收集需要删除的魔力露珠
 	TArray<FGuid> MarblesToRemove;

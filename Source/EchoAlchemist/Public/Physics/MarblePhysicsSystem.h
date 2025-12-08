@@ -7,6 +7,7 @@
 #include "Physics/PhysicsSceneConfig.h"
 #include "Physics/MarbleState.h"
 #include "Physics/MarbleActorPool.h"
+#include "Physics/PhysicsEffectManager.h"
 #include "MarblePhysicsSystem.generated.h"
 
 class UNiagaraComponent;
@@ -95,6 +96,23 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Physics|System")
 	void CleanupScene();
+
+	// ========== 特殊物理效果 ==========
+	
+	/**
+	 * 获取效果管理器
+	 * 
+	 * @return 效果管理器实例
+	 * 
+	 * 使用示例：
+	 * ```
+	 * UPhysicsEffectManager* EffectManager = PhysicsSystem->GetEffectManager();
+	 * UGravityFieldEffect* GravityEffect = NewObject<UGravityFieldEffect>();
+	 * EffectManager->AddEffect(GravityEffect);
+	 * ```
+	 */
+	UFUNCTION(BlueprintPure, Category = "Physics|Effects")
+	UPhysicsEffectManager* GetEffectManager() const { return EffectManager; }
 
 	// ========== 魔力露珠管理 ==========
 	
@@ -247,6 +265,10 @@ private:
 	/** Actor对象池 */
 	UPROPERTY()
 	UMarbleActorPool* ActorPool;
+
+	/** 特殊物理效果管理器 */
+	UPROPERTY()
+	UPhysicsEffectManager* EffectManager;
 
 	/** Actor魔力露珠映射表（ID -> Actor） */
 	TMap<FGuid, AMarbleActor*> MarbleActors;
