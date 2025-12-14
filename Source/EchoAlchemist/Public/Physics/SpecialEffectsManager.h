@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Physics/SpecialEffects.h"
+#include "Physics/SpecialEffectData.h"
 #include "Physics/MarbleState.h"
 #include "SpecialEffectsManager.generated.h"
 
