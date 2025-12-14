@@ -201,8 +201,8 @@ bool FWFCAssemblerTest_GridCoordinates::RunTest(const FString& Parameters)
     // Check that all coordinates are within bounds
     for (const FWFCCell& Cell : Assembly.Grid)
     {
-        TestTrue(TEXT("X coordinate should be within bounds"), Cell.Position.X >= 0 && Cell.Position.X < Width, true);
-        TestTrue(TEXT("Y coordinate should be within bounds"), Cell.Position.Y >= 0 && Cell.Position.Y < Height, true);
+        TestTrue(TEXT("X coordinate should be within bounds"), Cell.Position.X >= 0 && Cell.Position.X < Width);
+        TestTrue(TEXT("Y coordinate should be within bounds"), Cell.Position.Y >= 0 && Cell.Position.Y < Height);
     }
     
     // Check that all positions are unique

@@ -457,16 +457,16 @@ bool FPhysicsSystemIntegrationStressTest::RunTest(const FString& Parameters)
 	{
 		FMarbleLaunchParams Params;
 		Params.LaunchPosition = FVector(
-			FMath::FRandRange(-1000, 1000),
-			FMath::FRandRange(-1000, 1000),
-			FMath::FRandRange(100, 500)
+			FMath::FRandRange(-1000.0f, 1000.0f),
+			FMath::FRandRange(-1000.0f, 1000.0f),
+			FMath::FRandRange(100.0f, 500.0f)
 		);
 		Params.LaunchDirection = FVector(
-			FMath::FRandRange(-1, 1),
-			FMath::FRandRange(-1, 1),
-			FMath::FRandRange(-1, 1)
+			FMath::FRandRange(-1.0f, 1.0f),
+			FMath::FRandRange(-1.0f, 1.0f),
+			FMath::FRandRange(-1.0f, 1.0f)
 		).GetSafeNormal();
-		Params.LaunchSpeed = FMath::FRandRange(500, 1000);
+		Params.LaunchSpeed = FMath::FRandRange(500.0f, 1000.0f);
 		Params.EffectRadius = 10.0f;
 		Params.Mass = 1.0f;
 		Params.PotencyMultiplier = 5.0f;
@@ -494,9 +494,9 @@ bool FPhysicsSystemIntegrationStressTest::RunTest(const FString& Parameters)
 		FCollisionBody Enemy;
 		Enemy.ID = FGuid::NewGuid();
 		Enemy.Position = FVector(
-			FMath::FRandRange(-1000, 1000),
-			FMath::FRandRange(-1000, 1000),
-			FMath::FRandRange(100, 1000)
+			FMath::FRandRange(-1000.0f, 1000.0f),
+			FMath::FRandRange(-1000.0f, 1000.0f),
+			FMath::FRandRange(100.0f, 1000.0f)
 		);
 		Enemy.ShapeType = EEchoCollisionShapeType::Rectangle;
 		Enemy.Size = FVector2D(80.0f, 50.0f);
