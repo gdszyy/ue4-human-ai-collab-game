@@ -156,6 +156,10 @@ struct FSplitParams
 	/** 分裂角度（单位：度） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
 	float SplitAngle = 30.0f;
+	
+	/** 角度范围（单位：度，用于随机分布） */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
+	float AngleRange = 60.0f;
 
 	/** 子弹珠速度倍率 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")

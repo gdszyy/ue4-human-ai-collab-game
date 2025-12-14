@@ -5,7 +5,7 @@
 
 #if WITH_DEV_AUTOMATION_TESTS
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FPaletteGeneratorTest, "Project.UnitTests.PCG.PaletteGenerator", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::SmokeFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FPaletteGeneratorTest, "Project.UnitTests.PCG.PaletteGenerator", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::SmokeFilter)
 
 bool FPaletteGeneratorTest::RunTest(const FString& Parameters)
 {

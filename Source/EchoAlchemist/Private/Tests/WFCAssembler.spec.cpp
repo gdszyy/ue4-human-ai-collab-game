@@ -5,7 +5,7 @@
 
 #if WITH_DEV_AUTOMATION_TESTS
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWFCAssemblerTest, "Project.UnitTests.PCG.WFCAssembler", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::SmokeFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FWFCAssemblerTest, "Project.UnitTests.PCG.WFCAssembler", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::SmokeFilter)
 
 bool FWFCAssemblerTest::RunTest(const FString& Parameters)
 {

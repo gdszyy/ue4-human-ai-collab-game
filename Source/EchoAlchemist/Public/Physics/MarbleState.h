@@ -57,9 +57,9 @@ struct FMarbleState
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Physics")
 	FVector Velocity = FVector::ZeroVector;
 
-	/** 半径（单位：cm，用于碰撞检测） */
+	/** 影响范围半径（单位：cm，用于碰撞检测） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Physics", meta = (ClampMin = "0.1"))
-	float Radius = 10.0f;
+	float EffectRadius = 10.0f;
 
 	/** 质量（单位：g，影响碰撞后的速度变化） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Physics", meta = (ClampMin = "0.1"))
@@ -77,13 +77,13 @@ struct FMarbleState
 	
 	// ========== 生命周期（仅战斗场景） ==========
 	
-	/** 当前药效强度（每次碰撞消耗，耗尽后删除） */
+	/** 当前药效倍率（每次碰撞消耗，耗尽后删除） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lifecycle", meta = (ClampMin = "0.0"))
-	float Potency = 1.0f;
+	float PotencyMultiplier = 1.0f;
 
-	/** 最大药效强度（由持续药剂决定） */
+	/** 最大药效倍率（由持续药剂决定） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lifecycle", meta = (ClampMin = "0.0"))
-	float MaxPotency = 1.0f;
+	float MaxPotencyMultiplier = 1.0f;
 
 	// ========== 伤害递增（仅战斗场景，弹射药剂专用） ==========
 	
@@ -132,7 +132,7 @@ struct FMarbleState
 	 */
 	FORCEINLINE bool IsValid() const
 	{
-		return Potency > 0.0f;
+		return PotencyMultiplier > 0.0f;
 	}
 
 	/**
@@ -143,8 +143,8 @@ struct FMarbleState
 	 */
 	FORCEINLINE float ConsumePotency(float Amount = 1.0f)
 	{
-		Potency = FMath::Max(0.0f, Potency - Amount);
-		return Potency;
+		PotencyMultiplier = FMath::Max(0.0f, PotencyMultiplier - Amount);
+		return PotencyMultiplier;
 	}
 
 	/**
@@ -195,9 +195,9 @@ struct FMarbleLaunchParams
 
 	// ========== 物理属性 ==========
 	
-	/** 半径（单位：cm） */
+	/** 影响范围半径（单位：cm） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Physics", meta = (ClampMin = "0.1"))
-	float Radius = 10.0f;
+	float EffectRadius = 10.0f;
 
 	/** 质量（单位：g） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Physics", meta = (ClampMin = "0.1"))
@@ -205,9 +205,9 @@ struct FMarbleLaunchParams
 
 	// ========== 生命周期（仅战斗场景） ==========
 	
-	/** 初始药效强度（由配方系统决定） */
+	/** 初始药效倍率（由配方系统决定） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lifecycle", meta = (ClampMin = "0.0"))
-	float Potency = 1.0f;
+	float PotencyMultiplier = 1.0f;
 	
 	/** 基础伤害（仅战斗场景） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lifecycle", meta = (ClampMin = "0.0"))

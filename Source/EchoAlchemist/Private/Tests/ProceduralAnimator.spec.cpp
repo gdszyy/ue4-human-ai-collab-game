@@ -5,7 +5,7 @@
 
 #if WITH_DEV_AUTOMATION_TESTS
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest, "Project.UnitTests.PCG.ProceduralAnimator", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::SmokeFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest, "Project.UnitTests.PCG.ProceduralAnimator", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::SmokeFilter)
 
 bool FProceduralAnimatorTest::RunTest(const FString& Parameters)
 {
@@ -15,7 +15,7 @@ bool FProceduralAnimatorTest::RunTest(const FString& Parameters)
     Root.BoneName = "Root";
     Skeleton.Bones.Add(Root);
 
-    TArray<FTransform> Animation = UProceduralAnimator::GenerateWalkAnimation(Skeleton);
+    TArray<FAnimationFrame> Animation = UProceduralAnimator::GenerateWalkAnimation(Skeleton);
     TestTrue("Animation should have frames", Animation.Num() > 0);
 
     return true;

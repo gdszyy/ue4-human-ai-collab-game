@@ -57,9 +57,9 @@ struct FCollisionBody
 
 	// ========== 圆形参数 ==========
 	
-	/** 半径（单位：cm，仅圆形使用） */
+	/** 影响范围半径（单位：cm，仅圆形使用） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision|Circle", meta = (ClampMin = "0.1"))
-	float Radius = 10.0f;
+	float EffectRadius = 10.0f;
 
 	// ========== 矩形参数 ==========
 	
@@ -86,7 +86,7 @@ struct FCollisionBody
 	{
 		if (ShapeType == EEchoCollisionShapeType::Circle)
 		{
-			FVector Extent(Radius, Radius, Radius);
+			FVector Extent(EffectRadius, EffectRadius, EffectRadius);
 			return FBox(Position - Extent, Position + Extent);
 		}
 		else
