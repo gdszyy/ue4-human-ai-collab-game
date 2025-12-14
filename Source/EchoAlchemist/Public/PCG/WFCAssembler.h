@@ -40,10 +40,6 @@ struct FWFCModule
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WFC")
     TArray<FWFCConnector> Connectors;
     
-    /** Module ID (alternative naming). */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WFC")
-    FName ModuleID;
-    
     /** North connectors. */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WFC")
     TArray<FName> NorthConnectors;
@@ -72,7 +68,7 @@ struct FWFCCell
     
     /** The module ID placed in this cell. */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WFC")
-    FName ModuleID;
+    FName ModuleId;
     
     /** The position in the grid. */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WFC")

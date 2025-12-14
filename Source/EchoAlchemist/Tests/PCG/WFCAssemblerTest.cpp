@@ -22,7 +22,7 @@ bool FWFCAssemblerTest_BasicAssembly::RunTest(const FString& Parameters)
     {
         TArray<FWFCModule> SingleModule;
         FWFCModule Module;
-        Module.ModuleID = TEXT("TestModule");
+        Module.ModuleId = TEXT("TestModule");
         Module.NorthConnectors.Add(TEXT("A"));
         Module.SouthConnectors.Add(TEXT("A"));
         Module.EastConnectors.Add(TEXT("A"));
@@ -37,7 +37,7 @@ bool FWFCAssemblerTest_BasicAssembly::RunTest(const FString& Parameters)
         // All cells should have the same module
         for (const FWFCCell& Cell : Assembly.Grid)
         {
-            TestEqual(TEXT("All cells should use the same module"), Cell.ModuleID, TEXT("TestModule"));
+            TestEqual(TEXT("All cells should use the same module"), Cell.ModuleId, TEXT("TestModule"));
         }
     }
 
@@ -45,7 +45,7 @@ bool FWFCAssemblerTest_BasicAssembly::RunTest(const FString& Parameters)
     {
         TArray<FWFCModule> Modules;
         FWFCModule Module;
-        Module.ModuleID = TEXT("TestModule");
+        Module.ModuleId = TEXT("TestModule");
         Module.NorthConnectors.Add(TEXT("A"));
         Module.SouthConnectors.Add(TEXT("A"));
         Module.EastConnectors.Add(TEXT("A"));
@@ -72,7 +72,7 @@ bool FWFCAssemblerTest_ConnectorCompatibility::RunTest(const FString& Parameters
         
         // Module A: North=X, South=Y, East=Z, West=W
         FWFCModule ModuleA;
-        ModuleA.ModuleID = TEXT("A");
+        ModuleA.ModuleId = TEXT("A");
         ModuleA.NorthConnectors.Add(TEXT("X"));
         ModuleA.SouthConnectors.Add(TEXT("Y"));
         ModuleA.EastConnectors.Add(TEXT("Z"));
@@ -81,7 +81,7 @@ bool FWFCAssemblerTest_ConnectorCompatibility::RunTest(const FString& Parameters
         
         // Module B: North=Y, South=X, East=W, West=Z (compatible with A)
         FWFCModule ModuleB;
-        ModuleB.ModuleID = TEXT("B");
+        ModuleB.ModuleId = TEXT("B");
         ModuleB.NorthConnectors.Add(TEXT("Y"));
         ModuleB.SouthConnectors.Add(TEXT("X"));
         ModuleB.EastConnectors.Add(TEXT("W"));
@@ -100,7 +100,7 @@ bool FWFCAssemblerTest_ConnectorCompatibility::RunTest(const FString& Parameters
         
         // Module A: All connectors are "X"
         FWFCModule ModuleA;
-        ModuleA.ModuleID = TEXT("A");
+        ModuleA.ModuleId = TEXT("A");
         ModuleA.NorthConnectors.Add(TEXT("X"));
         ModuleA.SouthConnectors.Add(TEXT("X"));
         ModuleA.EastConnectors.Add(TEXT("X"));
@@ -109,7 +109,7 @@ bool FWFCAssemblerTest_ConnectorCompatibility::RunTest(const FString& Parameters
         
         // Module B: All connectors are "Y" (incompatible with A)
         FWFCModule ModuleB;
-        ModuleB.ModuleID = TEXT("B");
+        ModuleB.ModuleId = TEXT("B");
         ModuleB.NorthConnectors.Add(TEXT("Y"));
         ModuleB.SouthConnectors.Add(TEXT("Y"));
         ModuleB.EastConnectors.Add(TEXT("Y"));
@@ -122,10 +122,10 @@ bool FWFCAssemblerTest_ConnectorCompatibility::RunTest(const FString& Parameters
         if (Assembly.bSuccess)
         {
             // If successful, all cells should use the same module
-            FString FirstModuleID = Assembly.Grid[0].ModuleID;
+            FString FirstModuleID = Assembly.Grid[0].ModuleId;
             for (const FWFCCell& Cell : Assembly.Grid)
             {
-                TestEqual(TEXT("All cells should use same module when incompatible"), Cell.ModuleID, FirstModuleID);
+                TestEqual(TEXT("All cells should use same module when incompatible"), Cell.ModuleId, FirstModuleID);
             }
         }
     }
@@ -141,7 +141,7 @@ bool FWFCAssemblerTest_Determinism::RunTest(const FString& Parameters)
     TArray<FWFCModule> Modules;
     
     FWFCModule ModuleA;
-    ModuleA.ModuleID = TEXT("A");
+    ModuleA.ModuleId = TEXT("A");
     ModuleA.NorthConnectors.Add(TEXT("X"));
     ModuleA.SouthConnectors.Add(TEXT("X"));
     ModuleA.EastConnectors.Add(TEXT("X"));
@@ -149,7 +149,7 @@ bool FWFCAssemblerTest_Determinism::RunTest(const FString& Parameters)
     Modules.Add(ModuleA);
     
     FWFCModule ModuleB;
-    ModuleB.ModuleID = TEXT("B");
+    ModuleB.ModuleId = TEXT("B");
     ModuleB.NorthConnectors.Add(TEXT("X"));
     ModuleB.SouthConnectors.Add(TEXT("X"));
     ModuleB.EastConnectors.Add(TEXT("X"));
@@ -169,7 +169,7 @@ bool FWFCAssemblerTest_Determinism::RunTest(const FString& Parameters)
         for (int32 i = 0; i < Assembly1.Grid.Num(); ++i)
         {
             TestEqual(TEXT("Same seed should produce same module at each position"),
-                     Assembly1.Grid[i].ModuleID, Assembly2.Grid[i].ModuleID);
+                     Assembly1.Grid[i].ModuleId, Assembly2.Grid[i].ModuleId);
         }
     }
 
@@ -184,7 +184,7 @@ bool FWFCAssemblerTest_GridCoordinates::RunTest(const FString& Parameters)
     TArray<FWFCModule> Modules;
     
     FWFCModule Module;
-    Module.ModuleID = TEXT("TestModule");
+    Module.ModuleId = TEXT("TestModule");
     Module.NorthConnectors.Add(TEXT("A"));
     Module.SouthConnectors.Add(TEXT("A"));
     Module.EastConnectors.Add(TEXT("A"));
@@ -228,7 +228,7 @@ bool FWFCAssemblerTest_DifferentSeeds::RunTest(const FString& Parameters)
     for (int32 i = 0; i < 5; ++i)
     {
         FWFCModule Module;
-        Module.ModuleID = FString::Printf(TEXT("Module%d"), i);
+        Module.ModuleId = FString::Printf(TEXT("Module%d"), i);
         Module.NorthConnectors.Add(TEXT("A"));
         Module.SouthConnectors.Add(TEXT("A"));
         Module.EastConnectors.Add(TEXT("A"));
@@ -248,11 +248,11 @@ bool FWFCAssemblerTest_DifferentSeeds::RunTest(const FString& Parameters)
     {
         for (int32 i = 0; i < Assembly1.Grid.Num(); ++i)
         {
-            if (Assembly1.Grid[i].ModuleID != Assembly2.Grid[i].ModuleID)
+            if (Assembly1.Grid[i].ModuleId != Assembly2.Grid[i].ModuleId)
             {
                 DifferenceCount12++;
             }
-            if (Assembly2.Grid[i].ModuleID != Assembly3.Grid[i].ModuleID)
+            if (Assembly2.Grid[i].ModuleId != Assembly3.Grid[i].ModuleId)
             {
                 DifferenceCount23++;
             }
@@ -274,7 +274,7 @@ bool FWFCAssemblerTest_EdgeCases::RunTest(const FString& Parameters)
     TArray<FWFCModule> Modules;
     
     FWFCModule Module;
-    Module.ModuleID = TEXT("TestModule");
+    Module.ModuleId = TEXT("TestModule");
     Module.NorthConnectors.Add(TEXT("A"));
     Module.SouthConnectors.Add(TEXT("A"));
     Module.EastConnectors.Add(TEXT("A"));
