@@ -86,7 +86,7 @@
 | **分辨率** | 256×256 或 512×512 | 根据游戏需求选择 |
 | **背景** | 透明 | Alpha通道 |
 | **枢轴点** | 居中或底部中心 | 统一所有精灵 |
-| **颜色空间** | sRGB | UE4默认 |
+| **颜色空间** | sRGB | UE5默认 |
 | **位深度** | 32位（RGBA） | 包含Alpha通道 |
 
 #### 2.1.2 命名规范
@@ -207,9 +207,9 @@ S_IceHorns.png
 
 #### 2.5.1 导入步骤
 
-1. 在UE4中打开项目
+1. 在UE5中打开项目
 2. 在内容浏览器中创建文件夹：`Content/Textures/Monsters/Temp/`
-3. 将临时精灵拖入UE4编辑器
+3. 将临时精灵拖入UE5编辑器
 4. 确认导入设置：
    - Texture Group: 2D Pixels (Unfiltered)
    - Compression Settings: UserInterface2D (RGBA)
@@ -253,9 +253,9 @@ S_IceHorns.png
    ...
    ```
 
-#### 3.2.2 导入到UE4
+#### 3.2.2 导入到UE5
 
-1. 将所有序列帧拖入UE4
+1. 将所有序列帧拖入UE5
 2. 为每帧创建Sprite（右键 → Create Sprite）
 
 #### 3.2.3 创建Flipbook
@@ -412,7 +412,7 @@ Palette Swap Material: M_PaletteSwap_Master
 
 ### 7.1 单元测试
 
-1. 打开UE4编辑器
+1. 打开UE5编辑器
 2. 菜单栏 → Window → Test Automation
 3. 找到PCG类别
 4. 运行所有测试
@@ -599,9 +599,9 @@ Palette Swap Material: M_PaletteSwap_Master
 - [ ] 创建Attack动画（30个）
 - [ ] 创建Death动画（30个）
 
-#### 阶段3：UE4集成（1-2天）
+#### 阶段3：UE5集成（1-2天）
 
-- [ ] 导入所有精灵到UE4
+- [ ] 导入所有精灵到UE5
 - [ ] 创建所有Flipbook
 - [ ] 创建调色板材质
 - [ ] 配置数据表

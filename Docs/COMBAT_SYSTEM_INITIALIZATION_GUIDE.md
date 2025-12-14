@@ -20,7 +20,7 @@
 ### 第一步：拉取并编译代码
 
 ```bash
-cd ue4-human-ai-collab-game
+cd ue5-human-ai-collab-game
 git pull origin main
 ```
 
@@ -28,7 +28,7 @@ git pull origin main
 
 ### 第二步：创建测试蓝图
 
-1. 在 UE4 编辑器中，打开 Content Browser
+1. 在 UE5 编辑器中，打开 Content Browser
 2. 右键 → Blueprint Class → Actor
 3. 命名为 `BP_CombatTest`
 4. 双击打开蓝图编辑器
@@ -261,9 +261,9 @@ Is Combat System Valid?
 ### Q: 为什么我找不到这些节点？
 
 **A**: 确保您已经编译了 C++ 代码。如果还是找不到，尝试：
-1. 关闭 UE4 编辑器
+1. 关闭 UE5 编辑器
 2. 在 Visual Studio 中重新编译
-3. 重新打开 UE4 编辑器
+3. 重新打开 UE5 编辑器
 
 ### Q: 如何修改难度参数？
 

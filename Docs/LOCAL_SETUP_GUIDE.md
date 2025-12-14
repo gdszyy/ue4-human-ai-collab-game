@@ -4,8 +4,8 @@
 
 ### 必需软件
 
-1. **Unreal Engine 4.27.2**
-   - 确保已安装 UE4 4.27.2 版本
+1. **Unreal Engine 5.27.2**
+   - 确保已安装 UE5 5.7 版本
    - 如果没有安装，请从 Epic Games Launcher 下载安装
 
 2. **Git 和 Git LFS**
@@ -29,8 +29,8 @@
 ### 2. 克隆仓库
 
 ```bash
-git clone https://github.com/gdszyy/ue4-human-ai-collab-game.git
-cd ue4-human-ai-collab-game
+git clone https://github.com/gdszyy/ue5-human-ai-collab-game.git
+cd ue5-human-ai-collab-game
 ```
 
 ### 3. 验证 Git LFS
@@ -52,10 +52,10 @@ git lfs pull
 
 这将生成 Visual Studio 解决方案文件（`.sln`）。
 
-**注意**：如果没有看到此选项，说明 UE4 4.27 没有正确关联 `.uproject` 文件。请：
+**注意**：如果没有看到此选项，说明 UE5 5.7 没有正确关联 `.uproject` 文件。请：
 - 打开 Epic Games Launcher
 - 进入 "Library" -> "Engine Versions"
-- 点击 UE4 4.27 旁边的 "..." 按钮
+- 点击 UE5 5.7 旁边的 "..." 按钮
 - 选择 "Set as default"
 
 ### 3. 等待生成完成
@@ -71,21 +71,21 @@ git lfs pull
 3. 右键点击 "EchoAlchemist" 项目，选择 "Build"
 4. 等待编译完成
 
-### 方法二：通过 UE4 编辑器
+### 方法二：通过 UE5 编辑器
 
 1. 双击 `EchoAlchemist.uproject` 打开项目
-2. UE4 会提示需要编译，点击 "Yes" 确认
+2. UE5 会提示需要编译，点击 "Yes" 确认
 3. 等待编译完成
 
 ## 步骤四：打开项目
 
 ### 1. 双击 `EchoAlchemist.uproject`
 
-项目将在 UE4 编辑器中打开。
+项目将在 UE5 编辑器中打开。
 
 ### 2. 首次打开可能需要较长时间
 
-UE4 需要：
+UE5 需要：
 - 编译着色器
 - 加载资产
 - 初始化插件
@@ -96,7 +96,7 @@ UE4 需要：
 
 ### 1. 打开插件管理器
 
-在 UE4 编辑器中，选择 `Edit` -> `Plugins`。
+在 UE5 编辑器中，选择 `Edit` -> `Plugins`。
 
 ### 2. 验证以下插件已启用
 
@@ -110,7 +110,7 @@ UE4 需要：
 
 ### 1. 打开源码管理设置
 
-在 UE4 编辑器中，选择 `Edit` -> `Editor Preferences` -> `Source Control`。
+在 UE5 编辑器中，选择 `Edit` -> `Editor Preferences` -> `Source Control`。
 
 ### 2. 选择 Git 提供方
 
@@ -127,7 +127,7 @@ UE4 需要：
 
 ## 步骤七：测试 Remote Control API
 
-### 1. 确保 UE4 编辑器已打开项目
+### 1. 确保 UE5 编辑器已打开项目
 
 ### 2. 打开浏览器
 
@@ -163,7 +163,7 @@ python test_remote_control.py
 
 ## 步骤八：测试 Python 编辑器脚本（可选）
 
-### 1. 在 UE4 编辑器中打开 Output Log
+### 1. 在 UE5 编辑器中打开 Output Log
 
 选择 `Window` -> `Developer Tools` -> `Output Log`。
 
@@ -172,7 +172,7 @@ python test_remote_control.py
 在 Output Log 的 Cmd 输入框中输入：
 
 ```
-py Scripts/ue4_editor_example.py
+py Scripts/ue5_editor_example.py
 ```
 
 按 Enter 执行。
@@ -183,24 +183,24 @@ py Scripts/ue4_editor_example.py
 
 ## 常见问题
 
-### Q1: 编译失败，提示找不到 UE4 头文件
+### Q1: 编译失败，提示找不到 UE5 头文件
 
 **解决方案**：
-1. 确保 UE4 4.27.2 已正确安装
+1. 确保 UE5 5.7 已正确安装
 2. 重新生成项目文件（右键 `.uproject` -> Generate Visual Studio project files）
 3. 在 Visual Studio 中清理并重新生成解决方案
 
 ### Q2: 打开项目时提示模块缺失
 
 **解决方案**：
-点击 "Yes" 让 UE4 自动编译缺失的模块。
+点击 "Yes" 让 UE5 自动编译缺失的模块。
 
 ### Q3: Remote Control API 无法访问
 
 **解决方案**：
 1. 确保 Remote Control 插件已启用
 2. 检查 `Config/DefaultEngine.ini` 中的配置
-3. 重启 UE4 编辑器
+3. 重启 UE5 编辑器
 4. 检查防火墙是否阻止了 30010 端口
 
 ### Q4: Git LFS 文件下载失败
@@ -248,18 +248,18 @@ git push origin main
 2. Manus 创建 Pull Request
 3. 您在 GitHub 上审核并合并 PR
 4. 在本地执行 `git pull` 拉取更新
-5. UE4 编辑器会自动检测文件变化并重新加载
+5. UE5 编辑器会自动检测文件变化并重新加载
 
 ### 您更新项目
 
-1. 在 UE4 中进行开发
+1. 在 UE5 中进行开发
 2. 通过 Git 提交并推送
 3. Manus 拉取更新以了解项目状态
 
 ## 下一步
 
 - 阅读 [项目结构说明](PROJECT_STRUCTURE.md)
-- 阅读 [人机协同开发规范](../../ue4-human-ai-collab/docs/collaboration_specification.md)
+- 阅读 [人机协同开发规范](../../ue5-human-ai-collab/docs/collaboration_specification.md)
 - 开始开发！
 
 ## 需要帮助？

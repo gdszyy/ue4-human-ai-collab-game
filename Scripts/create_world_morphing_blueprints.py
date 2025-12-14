@@ -1,10 +1,10 @@
 """
 自动创建WorldMorphingSystem蓝图资产
 
-此脚本在UE4编辑器内运行，自动创建测试和可视化所需的蓝图。
+此脚本在UE5编辑器内运行，自动创建测试和可视化所需的蓝图。
 
 运行方法：
-1. 在UE4编辑器中打开项目
+1. 在UE5编辑器中打开项目
 2. 在Output Log中输入：py "Scripts/create_world_morphing_blueprints.py"
 
 创建的蓝图：

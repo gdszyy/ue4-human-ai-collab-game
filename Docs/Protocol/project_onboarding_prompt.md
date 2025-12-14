@@ -32,12 +32,12 @@
 
 **第一步：项目上下文同步**
 
-1.  **克隆项目仓库**: `gh repo clone gdszyy/ue4-human-ai-collab`
+1.  **克隆项目仓库**: `gh repo clone gdszyy/ue5-human-ai-collab`
 2.  **学习核心规范**: 完整阅读`docs/`目录下的所有文档，以理解我们的协作模式、工作流和所有已建立的规范。
 3.  **分析游戏设计**: 深入阅读游戏设计文档（GDD），以理解游戏的核心愿景、机制和故事背景。
     *   GDD访问方式: `manus-mcp-cli tool call notion-fetch --server notion --input '{"page_id": "2b8bacf5f26781c0b16ccec48d9750cc"}'`
 4.  **审查现有任务**: 访问我们的Linear项目，审查所有现存的Epic和Issue，以了解项目的开发历史、当前进度和未来规划。
-    *   Linear项目访问方式: `manus-mcp-cli tool call list_issues --server linear --input '{"filter": {"project": {"name": {"eq": "UE4游戏开发 - 人机协同MVP"}}}}'`
+    *   Linear项目访问方式: `manus-mcp-cli tool call list_issues --server linear --input '{"filter": {"project": {"name": {"eq": "UE5游戏开发 - 人机协同MVP"}}}}'`
 
 **第二步：提出贡献建议**
 

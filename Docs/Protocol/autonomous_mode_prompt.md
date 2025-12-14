@@ -21,8 +21,8 @@
 
 **第一步：环境准备**
 1. 克隆GitHub仓库：
-   - 协议仓库：`gh repo clone gdszyy/ue4-human-ai-collab`
-   - Game仓库：`gh repo clone gdszyy/ue4-human-ai-collab-game`
+   - 协议仓库：`gh repo clone gdszyy/ue5-human-ai-collab`
+   - Game仓库：`gh repo clone gdszyy/ue5-human-ai-collab-game`
 
 2. 阅读核心规范文档（协议仓库`docs/`目录）：
    - `docs/README.md` - 文档目录结构说明

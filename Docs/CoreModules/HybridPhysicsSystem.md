@@ -7,7 +7,7 @@
 ## 核心类
 
 ### 1. AMarbleActor
-高精度Actor实现，用于核心弹珠（第0-1代）。使用UE4原生物理引擎进行模拟，提供最高的物理精度。
+高精度Actor实现，用于核心弹珠（第0-1代）。使用UE5原生物理引擎进行模拟，提供最高的物理精度。
 
 ### 2. UMarbleActorPool
 Actor对象池管理器，复用Actor对象以提升性能。避免频繁创建和销毁Actor带来的性能开销。
@@ -182,7 +182,7 @@ ActorPool->Release(Marble);
 
 ### 集成步骤（待实现）
 
-1. 在UE4编辑器中创建Niagara粒子系统资源
+1. 在UE5编辑器中创建Niagara粒子系统资源
 2. 配置粒子物理属性（速度、碰撞、生命周期等）
 3. 在蓝图中将Niagara资源绑定到PhysicsSystem
 4. 实现粒子碰撞事件处理
@@ -220,7 +220,7 @@ ActorPool->Release(Marble);
 
 **Actor数量**：超过100个Actor时帧率开始下降。
 
-**物理计算**：Actor使用UE4原生物理引擎，CPU开销较大。
+**物理计算**：Actor使用UE5原生物理引擎，CPU开销较大。
 
 **碰撞检测**：Actor碰撞检测由引擎处理，性能优秀。
 
@@ -236,7 +236,7 @@ ActorPool->Release(Marble);
 ### 与碰撞检测系统的集成
 
 ```
-// 1. Actor碰撞由UE4引擎处理
+// 1. Actor碰撞由UE5引擎处理
 Marble->OnComponentHit.AddDynamic(this, &AMyActor::OnMarbleHit);
 
 // 2. 在碰撞事件中同步到碰撞管理器

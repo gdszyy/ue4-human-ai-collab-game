@@ -10,7 +10,7 @@
 
 本文档定义了《回声炼金师》项目采用的核心开发模式：**Manus 实现 C++ 核心模块 + 用户通过蓝图连接**。
 
-这是 UE4 开发的最佳实践之一，也是最适合人机协同开发的模式。
+这是 UE5 开发的最佳实践之一，也是最适合人机协同开发的模式。
 
 ---
 
@@ -21,7 +21,7 @@
 | 角色 | 职责 | 工具 |
 |------|------|------|
 | **Manus** | C++ 核心逻辑实现 | Git, C++, Python |
-| **用户** | 蓝图连接和可视化内容 | UE4 Editor, Blueprint, Git |
+| **用户** | 蓝图连接和可视化内容 | UE5 Editor, Blueprint, Git |
 
 ### 工作流程
 
@@ -204,7 +204,7 @@ bool CombineElements(const FString& Element1, const FString& Element2, FElement&
 # 1. 拉取最新代码
 git pull origin main
 
-# 2. 关闭 UE4 编辑器（如果打开）
+# 2. 关闭 UE5 编辑器（如果打开）
 
 # 3. 右键 EchoAlchemist.uproject -> Generate Visual Studio project files
 
@@ -212,7 +212,7 @@ git pull origin main
 
 # 5. 在 Visual Studio 中编译（F7）
 
-# 6. 编译成功后，打开 UE4 编辑器
+# 6. 编译成功后，打开 UE5 编辑器
 ```
 
 ### 2. 在蓝图中使用 C++ 模块
@@ -417,10 +417,10 @@ Source/EchoAlchemist/
 - ✅ C++ 代码可以写单元测试
 - ✅ 蓝图逻辑简单，不容易出错
 
-#### 5. 符合 UE4 最佳实践
+#### 5. 符合 UE5 最佳实践
 
 - ✅ Epic Games 官方推荐
-- ✅ 大型 UE4 项目都是这样做的
+- ✅ 大型 UE5 项目都是这样做的
 
 ---
 
@@ -430,7 +430,7 @@ Source/EchoAlchemist/
 
 **A**: 不能。蓝图是二进制文件（`.uasset`），无法通过纯文本方式创建。但 Manus 可以：
 - 创建 C++ 基类，用户在蓝图中继承
-- 生成 Python 脚本，用户在 UE4 中执行
+- 生成 Python 脚本，用户在 UE5 中执行
 - 提供详细的蓝图设计文档
 
 ### Q2: 如果 C++ 代码编译失败怎么办？
@@ -445,7 +445,7 @@ Source/EchoAlchemist/
 **A**: 
 - 蓝图文件（`.uasset`）是二进制，Git 无法合并
 - 建议：不要同时在多个地方修改同一个蓝图
-- 如果冲突，使用 UE4 的 "Diff" 工具手动合并
+- 如果冲突，使用 UE5 的 "Diff" 工具手动合并
 
 ### Q4: Manus 如何知道蓝图的使用效果？
 
@@ -459,7 +459,7 @@ Source/EchoAlchemist/
 **A**: 
 - Python 可以用于编辑器自动化（如批量创建资产）
 - 但游戏运行时逻辑建议用 C++ + 蓝图
-- Python 性能不如 C++，且 UE4 的 Python API 有限
+- Python 性能不如 C++，且 UE5 的 Python API 有限
 
 ---
 
@@ -488,7 +488,7 @@ Source/EchoAlchemist/
 - [人机协同开发规范](collaboration_specification.md)
 - [两阶段工作流规范](workflow_specification.md)
 - [MHP 模板](mhp_template.md)
-- [项目结构说明](https://github.com/gdszyy/ue4-human-ai-collab-game/blob/main/Docs/PROJECT_STRUCTURE.md)
+- [项目结构说明](https://github.com/gdszyy/ue5-human-ai-collab-game/blob/main/Docs/PROJECT_STRUCTURE.md)
 
 ---
 

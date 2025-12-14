@@ -62,13 +62,13 @@
 
 #### 2.1 Git仓库
 
-- [ ] **协议仓库**: `gdszyy/ue4-human-ai-collab`
+- [ ] **协议仓库**: `gdszyy/ue5-human-ai-collab`
   - 存储：TDD、MHP、规范文档、索引表
-  - 路径：`/home/ubuntu/ue4-human-ai-collab`
+  - 路径：`/home/ubuntu/ue5-human-ai-collab`
 
-- [ ] **Game仓库**: `gdszyy/ue4-human-ai-collab-game`
+- [ ] **Game仓库**: `gdszyy/ue5-human-ai-collab-game`
   - 存储：C++代码、蓝图、文档、测试
-  - 路径：`/home/ubuntu/ue4-human-ai-collab-game`
+  - 路径：`/home/ubuntu/ue5-human-ai-collab-game`
 
 #### 2.2 Linear项目
 
@@ -115,7 +115,7 @@
   - 粘合层：BlueprintLibrary（蓝图接口）
   - 视觉层：蓝图实现
 
-- [ ] **90%开发工作由ManusAI通过UE4 API完成**
+- [ ] **90%开发工作由ManusAI通过UE5 API完成**
   - Manus负责C++核心逻辑
   - 用户负责蓝图连接
   - 通过Git同步代码
@@ -123,7 +123,7 @@
 - [ ] **所有代码必须包含完整的注释和蓝图使用示例**
   - 头文件必须包含类、函数、参数的注释
   - 头文件必须包含蓝图使用示例
-  - 遵循UE4命名规范
+  - 遵循UE5命名规范
 
 #### 3.3 交接阶段要求
 
@@ -181,8 +181,8 @@
 - ✅ C++核心模块+蓝图连接开发模式
 
 ### ✅ 项目资源
-- ✅ 协议仓库: `ue4-human-ai-collab`
-- ✅ Game仓库: `ue4-human-ai-collab-game`
+- ✅ 协议仓库: `ue5-human-ai-collab`
+- ✅ Game仓库: `ue5-human-ai-collab-game`
 - ✅ Linear项目: [ue4游戏开发-人机协同mvp](https://linear.app/voidzyy/project/ue4游戏开发-人机协同mvp-f7f494ca8063)
 - ✅ GDD: [Notion GDD v4.0](https://www.notion.so/v4-0-2b8bacf5f26781c0b16ccec48d9750cc)
 - ✅ 索引表: `docs/task_resource_mapping.md`
@@ -190,7 +190,7 @@
 ### ✅ 工作要求
 - ✅ 设计任务必须先创建TDD
 - ✅ 实现任务必须遵循四层架构
-- ✅ 90%开发工作由ManusAI通过UE4 API完成
+- ✅ 90%开发工作由ManusAI通过UE5 API完成
 - ✅ 对话结束前必须执行自检流程
 - ✅ 任务完成后必须更新索引表
 

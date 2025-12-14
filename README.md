@@ -1,6 +1,6 @@
 # 《回声炼金师》(Echo Alchemist)
 
-基于人机协同开发模式的 UE4 4.27 游戏项目。
+基于人机协同开发模式的 UE5 5.7 游戏项目。
 
 ## 项目简介
 
@@ -15,7 +15,7 @@
 
 **第一步：快速启动**
 1. 克隆项目仓库：
-   gh repo clone gdszyy/ue4-human-ai-collab-game
+   gh repo clone gdszyy/ue5-human-ai-collab-game
 
 2. 阅读快速入门指南：
    Docs/QUICKSTART.md
@@ -31,7 +31,7 @@
 
 ### 环境要求
 
-- **Unreal Engine**: 4.27.2
+- **Unreal Engine**: 5.7
 - **Visual Studio**: 2019 或 2022
 - **Git**: >= 2.30（已安装 Git LFS）
 - **操作系统**: Windows 10/11
@@ -39,8 +39,8 @@
 ### 克隆项目
 
 ```bash
-git clone https://github.com/gdszyy/ue4-human-ai-collab-game.git
-cd ue4-human-ai-collab-game
+git clone https://github.com/gdszyy/ue5-human-ai-collab-game.git
+cd ue5-human-ai-collab-game
 git lfs install
 git lfs pull
 ```
@@ -50,7 +50,7 @@ git lfs pull
 1. 右键点击 `EchoAlchemist.uproject`
 2. 选择 "Generate Visual Studio project files"
 3. 双击 `EchoAlchemist.uproject` 打开项目
-4. 等待 UE4 编译 C++ 代码
+4. 等待 UE5 编译 C++ 代码
 
 详细步骤请参考 [本地环境配置指南](Docs/LOCAL_SETUP_GUIDE.md)。
 
@@ -58,21 +58,21 @@ git lfs pull
 
 ### 已启用的插件
 
-- **Remote Control**: 支持通过 HTTP/WebSocket 远程控制 UE4
+- **Remote Control**: 支持通过 HTTP/WebSocket 远程控制 UE5
 - **Python Script Plugin**: 支持 Python 编辑器自动化
 - **Editor Scripting Utilities**: 编辑器脚本工具
 
 ### Remote Control API
 
 - **端口**: 30010
-- **测试**: 打开 UE4 后访问 `http://localhost:30010/remote/info`
+- **测试**: 打开 UE5 后访问 `http://localhost:30010/remote/info`
 - **文档**: [Remote Control API 官方文档](https://dev.epicgames.com/documentation/en-us/unreal-engine/remote-control-for-unreal-engine)
 
 ## 项目结构
 
 ```
-ue4-human-ai-collab-game/
-├── EchoAlchemist.uproject    # UE4 项目文件
+ue5-human-ai-collab-game/
+├── EchoAlchemist.uproject    # UE5 项目文件
 ├── Config/                    # 项目配置
 ├── Content/                   # 游戏资产
 │   ├── Blueprints/           # 蓝图
@@ -120,13 +120,13 @@ chore: 构建/工具
 
 - [本地环境配置指南](Docs/LOCAL_SETUP_GUIDE.md)
 - [项目结构说明](Docs/PROJECT_STRUCTURE.md)
-- [人机协同开发规范](https://github.com/gdszyy/ue4-human-ai-collab/blob/master/docs/collaboration_specification.md)
-- [两阶段工作流规范](https://github.com/gdszyy/ue4-human-ai-collab/blob/master/docs/workflow_specification.md)
+- [人机协同开发规范](https://github.com/gdszyy/ue5-human-ai-collab/blob/master/docs/collaboration_specification.md)
+- [两阶段工作流规范](https://github.com/gdszyy/ue5-human-ai-collab/blob/master/docs/workflow_specification.md)
 
 ## 项目管理
 
 - **任务管理**: [Linear](https://linear.app)
-- **代码仓库**: [GitHub](https://github.com/gdszyy/ue4-human-ai-collab-game)
+- **代码仓库**: [GitHub](https://github.com/gdszyy/ue5-human-ai-collab-game)
 - **游戏设计文档**: [Notion](https://www.notion.so/2b8bacf5f26781c0b16ccec48d9750cc)
 
 ## 许可证

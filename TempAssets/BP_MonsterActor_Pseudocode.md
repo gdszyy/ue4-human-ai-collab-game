@@ -1,6 +1,6 @@
 # BP_MonsterActor 蓝图伪代码
 
-本文档提供BP_MonsterActor蓝图的详细实现伪代码，您可以按照这些伪代码在UE4蓝图编辑器中实现。
+本文档提供BP_MonsterActor蓝图的详细实现伪代码，您可以按照这些伪代码在UE5蓝图编辑器中实现。
 
 ---
 

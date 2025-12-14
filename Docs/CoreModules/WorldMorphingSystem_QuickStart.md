@@ -4,13 +4,13 @@
 
 ## 前置条件
 
-- ✅ UE4 4.27 已安装
+- ✅ UE5 5.7 已安装
 - ✅ 项目已克隆并打开
 - ✅ C++代码已编译成功
 
 ## 步骤1: 自动创建蓝图资产 (1分钟)
 
-在UE4编辑器的Output Log中执行：
+在UE5编辑器的Output Log中执行：
 
 ```
 py "Scripts/create_world_morphing_blueprints.py"
@@ -149,7 +149,7 @@ py "Scripts/test_world_morphing.py"
 
 **A**: 
 1. 重新编译C++代码
-2. 重启UE4编辑器
+2. 重启UE5编辑器
 3. 检查UFUNCTION宏
 
 ### Q: 性能不佳？

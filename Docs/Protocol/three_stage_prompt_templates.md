@@ -26,8 +26,8 @@
 请严格按照以下步骤同步上下文：
 
 **第一步：克隆GitHub仓库**
-1. 协议仓库：`gh repo clone gdszyy/ue4-human-ai-collab`
-2. Game仓库：`gh repo clone gdszyy/ue4-human-ai-collab-game`
+1. 协议仓库：`gh repo clone gdszyy/ue5-human-ai-collab`
+2. Game仓库：`gh repo clone gdszyy/ue5-human-ai-collab-game`
 
 **第二步：阅读核心规范文档**
 请阅读协议仓库`docs/`目录下的以下规范文档：
@@ -105,7 +105,7 @@ manus-mcp-cli tool call notion-fetch --server notion --input '{"page_id": "2b8ba
 - TDD文件：`{系统名称}_tdd.md`
 - MHP文件：`{任务ID}_{任务简称}.md`
 - 交接文档：`{任务ID}_handover.md`
-- C++类：遵循UE4命名规范（U前缀、A前缀、F前缀等）
+- C++类：遵循UE5命名规范（U前缀、A前缀、F前缀等）
 
 **4. 内容规范**
 - 所有文档必须包含：版本号、更新时间、作者

@@ -2,7 +2,7 @@
 
 ## 概述
 
-本文档记录了世界变迁系统从Web模拟器到UE4 C++的完整移植过程。
+本文档记录了世界变迁系统从Web模拟器到UE5 C++的完整移植过程。
 
 ## 实现架构
 
@@ -230,7 +230,7 @@ if (Diff > 0.0f)
 
 ### 3. 未来优化方向
 
-- 多线程：使用UE4的Task Graph并行更新各层
+- 多线程：使用UE5的Task Graph并行更新各层
 - 分块更新：只更新活跃区域
 - LOD：远离玩家的区域降低更新频率
 
@@ -238,7 +238,7 @@ if (Diff > 0.0f)
 
 ### 1. 语言差异
 
-| Web (TypeScript) | UE4 (C++) |
+| Web (TypeScript) | UE5 (C++) |
 | :--- | :--- |
 | `Array<Array<Cell>>` | `TArray<TArray<FCell>>` |
 | `Math.random()` | `FMath::FRand()` |
@@ -247,7 +247,7 @@ if (Diff > 0.0f)
 
 ### 2. 架构差异
 
-| Web | UE4 |
+| Web | UE5 |
 | :--- | :--- |
 | 独立类 `SimulationEngine` | `GameInstanceSubsystem` |
 | 直接调用 | 通过蓝图函数库调用 |
@@ -309,15 +309,15 @@ if (Diff > 0.0f)
 
 ## 后续工作
 
-1. **编译测试：** 在UE4编辑器中编译验证
+1. **编译测试：** 在UE5编辑器中编译验证
 2. **蓝图示例：** 创建演示蓝图
 3. **可视化：** 实现网格渲染
-4. **性能分析：** 使用UE4 Profiler分析瓶颈
+4. **性能分析：** 使用UE5 Profiler分析瓶颈
 5. **文档完善：** 添加更多使用示例和截图
 
 ## 相关文档
 
 - [使用指南](WorldMorphingSystem.md)
-- [技术设计文档](../../ue4-human-ai-collab/docs/tech/world_morphing_system_tdd.md)
-- [MHP文档](../../ue4-human-ai-collab/docs/mhp/VOI-6_world_morphing.md)
-- [交接文档](../../ue4-human-ai-collab/docs/handover/VOI-6_handover.md)
+- [技术设计文档](../../ue5-human-ai-collab/docs/tech/world_morphing_system_tdd.md)
+- [MHP文档](../../ue5-human-ai-collab/docs/mhp/VOI-6_world_morphing.md)
+- [交接文档](../../ue5-human-ai-collab/docs/handover/VOI-6_handover.md)

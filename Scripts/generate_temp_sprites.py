@@ -277,8 +277,8 @@ def main():
     print(f"   骨架精灵: {SKELETON_DIR}")
     print(f"   部件精灵: {PART_DIR}")
     print(f"\n📝 下一步：")
-    print(f"   1. 将这些精灵导入到UE4项目中")
-    print(f"   2. 在UE4中创建Paper2D精灵资源")
+    print(f"   1. 将这些精灵导入到UE5项目中")
+    print(f"   2. 在UE5中创建Paper2D精灵资源")
     print(f"   3. 使用这些精灵测试怪兽生成系统")
     print(f"   4. 正式版本需要替换为美术设计的精灵")
 

@@ -213,9 +213,9 @@ Event Tick
 
 ## 7. 相关技术文档
 
-- [世界变迁系统 TDD](../../ue4-human-ai-collab/docs/tech/world_morphing_system_tdd.md)
-- [交互式模拟器](../../ue4-human-ai-collab/docs/tech/simulator/)
-- [MHP文档](../../ue4-human-ai-collab/docs/mhp/VOI-6_world_morphing.md)
+- [世界变迁系统 TDD](../../ue5-human-ai-collab/docs/tech/world_morphing_system_tdd.md)
+- [交互式模拟器](../../ue5-human-ai-collab/docs/tech/simulator/)
+- [MHP文档](../../ue5-human-ai-collab/docs/mhp/VOI-6_world_morphing.md)
 
 ## 8. 示例项目
 

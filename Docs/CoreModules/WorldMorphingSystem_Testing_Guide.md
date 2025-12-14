@@ -21,7 +21,7 @@
 在开始测试前，确保C++代码已成功编译：
 
 **步骤：**
-1. 关闭UE4编辑器（如果已打开）
+1. 关闭UE5编辑器（如果已打开）
 2. 右键点击 `EchoAlchemist.uproject`
 3. 选择 "Generate Visual Studio project files"
 4. 打开 `EchoAlchemist.sln`
@@ -42,7 +42,7 @@ pip install matplotlib numpy
 
 ### 3. 启用Python插件
 
-在UE4编辑器中：
+在UE5编辑器中：
 1. Edit → Plugins
 2. 搜索 "Python"
 3. 启用 "Python Editor Script Plugin"
@@ -56,7 +56,7 @@ pip install matplotlib numpy
 
 #### 运行方法
 
-1. 在UE4编辑器中打开项目
+1. 在UE5编辑器中打开项目
 2. 点击 "Play" 按钮进入PIE模式
 3. 打开 Output Log (Window → Developer Tools → Output Log)
 4. 在Cmd输入框中输入：
@@ -187,7 +187,7 @@ python Scripts/generate_heatmaps.py
 
 #### 预期输出
 
-**UE4编辑器内：**
+**UE5编辑器内：**
 ```
 ============================================================
   WorldMorphingSystem 可视化
@@ -241,7 +241,7 @@ python Scripts/generate_heatmaps.py
 
 #### 运行方法
 
-在UE4编辑器的Output Log中输入：
+在UE5编辑器的Output Log中输入：
 
 ```
 py "Scripts/create_world_morphing_blueprints.py"
@@ -449,7 +449,7 @@ WorldMorphingBlueprintLibrary 已在C++中实现
 
 #### 测试方法
 
-1. 在UE4编辑器中打开 "Window → Developer Tools → Session Frontend"
+1. 在UE5编辑器中打开 "Window → Developer Tools → Session Frontend"
 2. 选择 "Profiler" 标签
 3. 启动PIE模式
 4. 记录内存使用情况
@@ -548,7 +548,7 @@ WorldMorphingBlueprintLibrary 已在C++中实现
 1. 重新编译C++代码
 2. 检查UFUNCTION宏是否正确标记
 3. 关闭并重新打开蓝图
-4. 重启UE4编辑器
+4. 重启UE5编辑器
 
 #### 问题3: 可视化不显示
 
@@ -649,7 +649,7 @@ WorldMorphingBlueprintLibrary 已在C++中实现
 
 - **测试日期**: YYYY-MM-DD
 - **测试人员**: [姓名]
-- **UE4版本**: 4.27
+- **UE5版本**: 5.7
 - **测试环境**: [Windows/Mac/Linux]
 
 ## 测试结果

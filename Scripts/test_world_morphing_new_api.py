@@ -9,7 +9,7 @@ WorldMorphingSystem 测试套件 (新API版本)
 - Configuration: 参数配置
 
 运行方法:
-1. 在UE4编辑器中打开项目
+1. 在UE5编辑器中打开项目
 2. 打开WorldMorphingTest关卡
 3. 点击Play按钮进入PIE模式
 4. 在Output Log中输入: py "Scripts/test_world_morphing_new_api.py"
@@ -29,7 +29,7 @@ def log_section(title):
     log_separator()
 
 def get_world_context():
-    """获取世界上下文对象（UE4 PIE模式兼容）
+    """获取世界上下文对象（UE5 PIE模式兼容）
     
     关键：需要返回一个能够通过 GetWorld() 获取到有效 World 的对象。
     在PIE模式下，最好的选择是直接返回 None，让 C++ 代码使用 GEngine 的当前世界。
@@ -123,7 +123,7 @@ def test_visualization_module():
         cell = unreal.WorldMorphingVisualization.get_cell_state(world_context, 25, 25)
         unreal.log(f"✅ 位置 (25, 25) 的单元格:")
         
-        # 注意：Python中访问UE4的布尔属性时，前缀b_会被转换
+        # 注意：Python中访问UE5的布尔属性时，前缀b_会被转换
         # bExists -> b_exists 或 exists
         try:
             exists = cell.b_exists

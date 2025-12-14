@@ -9,7 +9,7 @@
 ## 1. 项目概述
 
 *   **项目名称**: 《回声炼金师》(EchoAlchemist)
-*   **引擎版本**: Unreal Engine 4 (UE4)
+*   **引擎版本**: Unreal Engine 5 (UE5)
 *   **核心模式**: 人机协同开发,我(Manus)负责C++核心模块实现,您(用户)负责蓝图连接与游戏设计。
 
 ---
@@ -33,7 +33,7 @@
     *   使用C++实现所有核心系统、算法和性能敏感的逻辑。
     *   通过`UFUNCTION(BlueprintCallable)`等方式将接口暴露给蓝图。
     *   编写并提交所有相关的代码、单元测试和使用文档到GitHub。
-    *   **确保所有代码兼容UE4，禁止使用UE5专属特性**。
+    *   **确保所有代码兼容UE5，禁止使用UE5专属特性**。
 
 *   **您的职责 (用户)**:
     *   在UE编辑器中,通过蓝图调用我提供的C++接口,实现具体游戏玩法、UI和关卡设计。
@@ -57,9 +57,9 @@
 
 ---
 
-## 5. UE4兼容性要求
+## 5. UE5兼容性要求
 
-**⚠️ 重要**: 本项目使用Unreal Engine 4,所有代码必须严格兼容UE4。
+**⚠️ 重要**: 本项目使用Unreal Engine 5,所有代码必须严格兼容UE5。
 
 ### 禁止使用的UE5专属特性
 
@@ -69,7 +69,7 @@
 *   **世界**: World Partition (使用Level Streaming)
 *   **其他**: One File Per Actor、Motion Warping等
 
-### 推荐使用的UE4 API
+### 推荐使用的UE5 API
 
 *   **反射宏**: `UCLASS()`, `UPROPERTY()`, `UFUNCTION()`
 *   **输入处理**: `UInputComponent::BindAction/BindAxis`
@@ -98,7 +98,7 @@
 | **协同开发规范** | `Docs/Protocol/collaboration_specification.md` | 详细定义了工具链、Git规范、交付物规则等。 |
 | **工作流规范** | `Docs/Protocol/workflow_specification.md` | 两阶段工作流的详细状态定义和协作流程。 |
 | **TDD规范** | `Docs/Protocol/tdd_specification.md` | 技术设计文档(TDD)的编写规范和四层架构定义。 |
-| **自检流程** | `Docs/Protocol/self_check_specification.md` | 对话结束前的交付物自检清单,包含UE4兼容性检查。 |
+| **自检流程** | `Docs/Protocol/self_check_specification.md` | 对话结束前的交付物自检清单,包含UE5兼容性检查。 |
 | **首次对话检查清单** | `Docs/Protocol/first_conversation_checklist.md` | 每个对话开始时必须执行的检查清单。 |
 | **C++/蓝图开发** | `Docs/Protocol/cpp_blueprint_workflow.md` | C++与蓝图协作开发的详细技术规范和示例。 |
 | **游戏核心模块** | `Docs/CoreModules/` | 各个C++核心模块的设计和使用文档。 |
@@ -118,7 +118,7 @@
 - ✅ 我已理解《自检流程规范》
 
 ### 项目资源
-- ✅ Game仓库: `ue4-human-ai-collab-game`
+- ✅ Game仓库: `ue5-human-ai-collab-game`
 - ✅ Linear项目: https://linear.app/voidzyy/project/ue4游戏开发-人机协同mvp-f7f494ca8063
 - ✅ 索引表: `Docs/Protocol/task_resource_mapping.md`
 
@@ -127,8 +127,8 @@
 - ✅ 所有实现任务必须遵循四层架构
 - ✅ 所有任务完成后必须更新索引表
 - ✅ 对话结束前必须执行自检流程
-- ✅ 90%开发工作由ManusAI通过UE4 API完成
-- ✅ **所有代码必须兼容UE4，禁止使用UE5专属特性**
+- ✅ 90%开发工作由ManusAI通过UE5 API完成
+- ✅ **所有代码必须兼容UE5，禁止使用UE5专属特性**
 
 ---
 
@@ -136,7 +136,7 @@
 
 当您启动一个新的Manus开发者实例时,我会按照以下流程工作:
 
-1. **克隆仓库**: `gh repo clone gdszyy/ue4-human-ai-collab-game`
+1. **克隆仓库**: `gh repo clone gdszyy/ue5-human-ai-collab-game`
 2. **阅读本文档**: 理解核心协作规范和工作流程
 3. **获取任务列表**: 使用Linear MCP工具列出所有待处理任务
 4. **选择任务**: 根据您的指示或任务优先级选择一个任务
@@ -160,7 +160,7 @@
 ### v2.0 (2025-11-30)
 - 整合协议仓库到Game仓库的`Docs/Protocol/`目录
 - 更新所有文档路径为单仓库模式
-- 添加UE4兼容性要求章节
+- 添加UE5兼容性要求章节
 - 添加首次对话检查清单章节
 - 添加快速启动流程章节
 - 强调禁止使用UE5专属特性

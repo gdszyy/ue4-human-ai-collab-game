@@ -153,7 +153,7 @@ DynMaterial->SetVectorParameterValue(FName(TEXT("PrimaryColor")), Palette.Primar
 
 ## 测试
 
-调色板生成器包含全面的单元测试,覆盖栖息地色谱、生态调色板、体型影响、稀有度调整、词条强调色、完整生成、战斗修改和兼容性等所有核心功能。在UE4编辑器中运行自动化测试:
+调色板生成器包含全面的单元测试,覆盖栖息地色谱、生态调色板、体型影响、稀有度调整、词条强调色、完整生成、战斗修改和兼容性等所有核心功能。在UE5编辑器中运行自动化测试:
 
 ```
 Session Frontend > Automation > EchoAlchemist.PCG.PaletteGenerator

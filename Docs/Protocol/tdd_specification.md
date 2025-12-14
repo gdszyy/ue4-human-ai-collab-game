@@ -104,7 +104,7 @@ SystemName
 
 ### 3.1 数据结构定义
 
-[定义所有数据结构，使用UE4的C++语法]
+[定义所有数据结构，使用UE5的C++语法]
 
 \`\`\`cpp
 USTRUCT(BlueprintType)
@@ -277,7 +277,7 @@ VOI-11的TDD（`docs/tech/monster_generation_system_tdd.md`）也是最佳实践
    - AppearanceComposer输入输出
 
 3. **详细的实现指南**
-   - UE4 Paper2D实现步骤
+   - UE5 Paper2D实现步骤
    - 调色板替换材质实现
    - 蓝图伪代码
 
@@ -330,7 +330,7 @@ TDD和MHP（Manus Handover Protocol）是两个不同的文档：
 
 ## 5. TDD的存储位置
 
-### 5.1 协议仓库（ue4-human-ai-collab）
+### 5.1 协议仓库（ue5-human-ai-collab）
 
 TDD应该存储在协议仓库的`docs/tech/`目录下：
 
@@ -343,7 +343,7 @@ docs/
 │   └── ...
 ```
 
-### 5.2 Game仓库（ue4-human-ai-collab-game）
+### 5.2 Game仓库（ue5-human-ai-collab-game）
 
 Game仓库的`Docs/CoreModules/`目录下应该存储**实现文档**，而不是TDD：
 

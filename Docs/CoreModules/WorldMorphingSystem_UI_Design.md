@@ -520,4 +520,4 @@ Slider_ExpansionThreshold->SetToolTipText(
 5. ✅ **性能优化** - 减少不必要的更新
 6. ✅ **辅助功能** - 键盘快捷键和工具提示
 
-按照本设计文档，您可以在UE4的UMG编辑器中创建完整的UI界面。
+按照本设计文档，您可以在UE5的UMG编辑器中创建完整的UI界面。
