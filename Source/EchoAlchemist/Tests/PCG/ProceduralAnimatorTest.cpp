@@ -5,7 +5,7 @@
 
 #if WITH_DEV_AUTOMATION_TESTS
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_IdleAnimation, "EchoAlchemist.PCG.ProceduralAnimator.IdleAnimation", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_IdleAnimation, "EchoAlchemist.PCG.ProceduralAnimator.IdleAnimation", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_IdleAnimation::RunTest(const FString& Parameters)
 {
@@ -54,7 +54,7 @@ bool FProceduralAnimatorTest_IdleAnimation::RunTest(const FString& Parameters)
     return true;
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_WalkAnimation, "EchoAlchemist.PCG.ProceduralAnimator.WalkAnimation", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_WalkAnimation, "EchoAlchemist.PCG.ProceduralAnimator.WalkAnimation", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_WalkAnimation::RunTest(const FString& Parameters)
 {
@@ -109,7 +109,7 @@ bool FProceduralAnimatorTest_WalkAnimation::RunTest(const FString& Parameters)
     return true;
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_AttackAnimation, "EchoAlchemist.PCG.ProceduralAnimator.AttackAnimation", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_AttackAnimation, "EchoAlchemist.PCG.ProceduralAnimator.AttackAnimation", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_AttackAnimation::RunTest(const FString& Parameters)
 {
@@ -158,7 +158,7 @@ bool FProceduralAnimatorTest_AttackAnimation::RunTest(const FString& Parameters)
     return true;
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_DeathAnimation, "EchoAlchemist.PCG.ProceduralAnimator.DeathAnimation", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_DeathAnimation, "EchoAlchemist.PCG.ProceduralAnimator.DeathAnimation", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_DeathAnimation::RunTest(const FString& Parameters)
 {
@@ -217,7 +217,7 @@ bool FProceduralAnimatorTest_DeathAnimation::RunTest(const FString& Parameters)
     return true;
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_GenerateAnimation, "EchoAlchemist.PCG.ProceduralAnimator.GenerateAnimation", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_GenerateAnimation, "EchoAlchemist.PCG.ProceduralAnimator.GenerateAnimation", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_GenerateAnimation::RunTest(const FString& Parameters)
 {
@@ -258,7 +258,7 @@ bool FProceduralAnimatorTest_GenerateAnimation::RunTest(const FString& Parameter
     return true;
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_DifferentDurations, "EchoAlchemist.PCG.ProceduralAnimator.DifferentDurations", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_DifferentDurations, "EchoAlchemist.PCG.ProceduralAnimator.DifferentDurations", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_DifferentDurations::RunTest(const FString& Parameters)
 {
@@ -294,7 +294,7 @@ bool FProceduralAnimatorTest_DifferentDurations::RunTest(const FString& Paramete
     return true;
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_EmptySkeleton, "EchoAlchemist.PCG.ProceduralAnimator.EmptySkeleton", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_EmptySkeleton, "EchoAlchemist.PCG.ProceduralAnimator.EmptySkeleton", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_EmptySkeleton::RunTest(const FString& Parameters)
 {
@@ -313,7 +313,7 @@ bool FProceduralAnimatorTest_EmptySkeleton::RunTest(const FString& Parameters)
     return true;
 }
 
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_ComplexSkeleton, "EchoAlchemist.PCG.ProceduralAnimator.ComplexSkeleton", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FProceduralAnimatorTest_ComplexSkeleton, "EchoAlchemist.PCG.ProceduralAnimator.ComplexSkeleton", EAutomationTestFlags::ProductFilter | EAutomationTestFlags::ProductFilter)
 
 bool FProceduralAnimatorTest_ComplexSkeleton::RunTest(const FString& Parameters)
 {

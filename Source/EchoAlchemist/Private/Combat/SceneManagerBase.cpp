@@ -30,3 +30,10 @@ void USceneManagerBase::ApplyBounceCoefficient(FVector& Velocity) const
 {
 	Velocity *= BounceCoefficient;
 }
+
+FVector USceneManagerBase::GetLaunchVector(const FVector& StartPosition, float TargetAngle)
+{
+	// 默认实现：水平发射
+	float Radians = FMath::DegreesToRadians(TargetAngle);
+	return FVector(FMath::Cos(Radians), FMath::Sin(Radians), 0.0f);
+}

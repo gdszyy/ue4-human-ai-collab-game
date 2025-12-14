@@ -43,6 +43,36 @@ public:
 	 * 默认坐标转换：屏幕坐标 = 逻辑坐标
 	 */
 	virtual FVector ScreenToWorld(const FVector& ScreenPosition) const override;
+	
+	/**
+	 * 获取场景类型（子类必须重写）
+	 */
+	virtual FString GetSceneType() const override { return TEXT("Base"); }
+	
+	/**
+	 * 更新位置和速度（子类必须重写）
+	 */
+	virtual void Advance(FVector& Position, FVector& Velocity, float DeltaTime) override {}
+	
+	/**
+	 * 获取发射向量（默认实现：水平发射）
+	 */
+	virtual FVector GetLaunchVector(const FVector& StartPosition, float TargetAngle) override;
+	
+	/**
+	 * 检查是否超出边界（默认实现：始终返回false）
+	 */
+	virtual bool IsOutOfBounds(const FVector& Position) const override { return false; }
+	
+	/**
+	 * 应用环境力（默认实现：无操作）
+	 */
+	virtual void ApplyEnvironmentalForces(FVector& Velocity, float DeltaTime) override {}
+	
+	/**
+	 * 处理边界交互（默认实现：无操作）
+	 */
+	virtual void HandleBoundaryInteraction(FVector& Position, FVector& Velocity) override {}
 
 protected:
 	// ========== 共同属性 ==========
