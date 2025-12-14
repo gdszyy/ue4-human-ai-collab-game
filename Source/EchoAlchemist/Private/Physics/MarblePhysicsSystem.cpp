@@ -46,10 +46,10 @@ FGuid UMarblePhysicsSystem::LaunchMarble(const FMarbleLaunchParams& Params)
 	FMarbleState NewMarble;
 	NewMarble.Position = Params.LaunchPosition;
 	NewMarble.Velocity = Params.LaunchDirection.GetSafeNormal() * Params.LaunchSpeed;
-	NewMarble.Radius = Params.Radius;
+	NewMarble.EffectRadius = Params.EffectRadius;
 	NewMarble.Mass = Params.Mass;
-	NewMarble.Potency = Params.Potency;
-	NewMarble.MaxPotency = Params.Potency;
+	NewMarble.PotencyMultiplier = Params.PotencyMultiplier;
+	NewMarble.MaxPotency = Params.PotencyMultiplier;
 	NewMarble.Generation = Params.Generation;
 	NewMarble.CreationTime = CurrentGameTime;
 	NewMarble.LastUpdateTime = CurrentGameTime;
@@ -189,18 +189,18 @@ bool UMarblePhysicsSystem::HandleBoundary(FMarbleState& Marble)
 	bool bHitBoundary = false;
 	
 	// 检查X轴边界
-	if (Marble.Position.X - Marble.Radius < Boundary.Min.X)
+	if (Marble.Position.X - Marble.EffectRadius < Boundary.Min.X)
 	{
-		Marble.Position.X = Boundary.Min.X + Marble.Radius;
+		Marble.Position.X = Boundary.Min.X + Marble.EffectRadius;
 		if (SceneConfig.BoundaryBehavior == EBoundaryBehavior::Boundary_Bounce)
 		{
 			Marble.Velocity.X = FMath::Abs(Marble.Velocity.X);
 		}
 		bHitBoundary = true;
 	}
-	else if (Marble.Position.X + Marble.Radius > Boundary.Max.X)
+	else if (Marble.Position.X + Marble.EffectRadius > Boundary.Max.X)
 	{
-		Marble.Position.X = Boundary.Max.X - Marble.Radius;
+		Marble.Position.X = Boundary.Max.X - Marble.EffectRadius;
 		if (SceneConfig.BoundaryBehavior == EBoundaryBehavior::Boundary_Bounce)
 		{
 			Marble.Velocity.X = -FMath::Abs(Marble.Velocity.X);
@@ -209,18 +209,18 @@ bool UMarblePhysicsSystem::HandleBoundary(FMarbleState& Marble)
 	}
 	
 	// 检查Y轴边界
-	if (Marble.Position.Y - Marble.Radius < Boundary.Min.Y)
+	if (Marble.Position.Y - Marble.EffectRadius < Boundary.Min.Y)
 	{
-		Marble.Position.Y = Boundary.Min.Y + Marble.Radius;
+		Marble.Position.Y = Boundary.Min.Y + Marble.EffectRadius;
 		if (SceneConfig.BoundaryBehavior == EBoundaryBehavior::Boundary_Bounce)
 		{
 			Marble.Velocity.Y = FMath::Abs(Marble.Velocity.Y);
 		}
 		bHitBoundary = true;
 	}
-	else if (Marble.Position.Y + Marble.Radius > Boundary.Max.Y)
+	else if (Marble.Position.Y + Marble.EffectRadius > Boundary.Max.Y)
 	{
-		Marble.Position.Y = Boundary.Max.Y - Marble.Radius;
+		Marble.Position.Y = Boundary.Max.Y - Marble.EffectRadius;
 		if (SceneConfig.BoundaryBehavior == EBoundaryBehavior::Boundary_Bounce)
 		{
 			Marble.Velocity.Y = -FMath::Abs(Marble.Velocity.Y);
@@ -229,18 +229,18 @@ bool UMarblePhysicsSystem::HandleBoundary(FMarbleState& Marble)
 	}
 	
 	// 检查Z轴边界
-	if (Marble.Position.Z - Marble.Radius < Boundary.Min.Z)
+	if (Marble.Position.Z - Marble.EffectRadius < Boundary.Min.Z)
 	{
-		Marble.Position.Z = Boundary.Min.Z + Marble.Radius;
+		Marble.Position.Z = Boundary.Min.Z + Marble.EffectRadius;
 		if (SceneConfig.BoundaryBehavior == EBoundaryBehavior::Boundary_Bounce)
 		{
 			Marble.Velocity.Z = FMath::Abs(Marble.Velocity.Z);
 		}
 		bHitBoundary = true;
 	}
-	else if (Marble.Position.Z + Marble.Radius > Boundary.Max.Z)
+	else if (Marble.Position.Z + Marble.EffectRadius > Boundary.Max.Z)
 	{
-		Marble.Position.Z = Boundary.Max.Z - Marble.Radius;
+		Marble.Position.Z = Boundary.Max.Z - Marble.EffectRadius;
 		if (SceneConfig.BoundaryBehavior == EBoundaryBehavior::Boundary_Bounce)
 		{
 			Marble.Velocity.Z = -FMath::Abs(Marble.Velocity.Z);
@@ -251,7 +251,7 @@ bool UMarblePhysicsSystem::HandleBoundary(FMarbleState& Marble)
 	// 如果碰到边界且行为是删除，标记为无效
 	if (bHitBoundary && SceneConfig.BoundaryBehavior == EBoundaryBehavior::Boundary_Delete)
 	{
-		Marble.Potency = 0.0f;  // 标记为无效
+		Marble.PotencyMultiplier = 0.0f;  // 标记为无效
 		return false;
 	}
 	
@@ -261,7 +261,7 @@ bool UMarblePhysicsSystem::HandleBoundary(FMarbleState& Marble)
 bool UMarblePhysicsSystem::ShouldRemoveMarble(const FMarbleState& Marble) const
 {
 	// 检查药效强度（仅战斗场景）
-	if (SceneConfig.bUsePotencySystem && Marble.Potency <= 0.0f)
+	if (SceneConfig.bUsePotencySystem && Marble.PotencyMultiplier <= 0.0f)
 	{
 		return true;
 	}

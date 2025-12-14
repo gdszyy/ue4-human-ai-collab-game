@@ -64,6 +64,25 @@ struct FGravityWellParams
 	/** 是否在弹珠到达中心时销毁 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
 	bool bDestroyOnReach = false;
+
+	/** 创建时间（游戏时间） */
+	UPROPERTY(BlueprintReadOnly, Category = "Effect")
+	float CreationTime = 0.0f;
+
+	/** 唯一标识符 */
+	UPROPERTY(BlueprintReadOnly, Category = "Effect")
+	FGuid ID;
+
+	FGravityWellParams()
+	{
+		ID = FGuid::NewGuid();
+	}
+
+	/** 检查是否已过期 */
+	FORCEINLINE bool IsExpired(float CurrentTime) const
+	{
+		return Duration > 0.0f && (CurrentTime - CreationTime) >= Duration;
+	}
 };
 
 /**
@@ -95,6 +114,29 @@ struct FWormholeParams
 	/** 持续时间（单位：秒，0表示永久） */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
 	float Duration = 10.0f;
+
+	/** 创建时间（游戏时间） */
+	UPROPERTY(BlueprintReadOnly, Category = "Effect")
+	float CreationTime = 0.0f;
+
+	/** 唯一标识符 */
+	UPROPERTY(BlueprintReadOnly, Category = "Effect")
+	FGuid ID;
+
+	/** 是否保留速度 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
+	bool bPreserveVelocity = false;
+
+	FWormholeParams()
+	{
+		ID = FGuid::NewGuid();
+	}
+
+	/** 检查是否已过期 */
+	FORCEINLINE bool IsExpired(float CurrentTime) const
+	{
+		return Duration > 0.0f && (CurrentTime - CreationTime) >= Duration;
+	}
 };
 
 /**
@@ -126,6 +168,10 @@ struct FSplitParams
 	/** 子弹珠半径倍率 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
 	float RadiusMultiplier = 0.7f;
+
+	/** 最大分裂深度 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
+	int32 MaxSplitDepth = 3;
 };
 
 /**
@@ -180,6 +226,14 @@ struct FChainTriggerParams
 	/** 次级弹珠半径 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
 	float SecondaryRadius = 5.0f;
+
+	/** 伤害倍率 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
+	float DamageMultiplier = 1.0f;
+
+	/** 最大连锁深度 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effect")
+	int32 MaxChainDepth = 2;
 };
 
 /**

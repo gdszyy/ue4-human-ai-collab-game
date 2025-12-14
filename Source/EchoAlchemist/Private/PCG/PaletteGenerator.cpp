@@ -318,8 +318,13 @@ UTexture2D* UPaletteGenerator::GenerateLUTTextureFromPalette(const FPalette& Pal
         return nullptr;
     }
 
-    // Lock the texture for editing
-    FTexture2DMipMap& Mip = LUTTexture->PlatformData->Mips[0];
+    // Lock the texture for editing (UE5 API)
+    FTexturePlatformData* PlatformData = LUTTexture->GetPlatformData();
+    if (!PlatformData || PlatformData->Mips.Num() == 0)
+    {
+        return nullptr;
+    }
+    FTexture2DMipMap& Mip = PlatformData->Mips[0];
     void* Data = Mip.BulkData.Lock(LOCK_READ_WRITE);
     uint8* PixelData = static_cast<uint8*>(Data);
 

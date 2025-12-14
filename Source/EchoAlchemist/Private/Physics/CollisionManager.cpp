@@ -260,7 +260,7 @@ bool UCollisionManager::CheckCircleCircle(const FCollisionBody& BodyA, const FCo
 	float Distance = Delta.Size();
 	
 	// 计算半径和
-	float RadiusSum = BodyA.Radius + BodyB.Radius;
+	float RadiusSum = BodyA.EffectRadius + BodyB.EffectRadius;
 	
 	// 检查是否碰撞
 	if (Distance < RadiusSum)
@@ -282,7 +282,7 @@ bool UCollisionManager::CheckCircleCircle(const FCollisionBody& BodyA, const FCo
 		}
 		
 		// 计算碰撞点（两个圆心连线上，距离A的半径处）
-		OutEvent.HitPoint = BodyA.Position + OutEvent.HitNormal * BodyA.Radius;
+		OutEvent.HitPoint = BodyA.Position + OutEvent.HitNormal * BodyA.EffectRadius;
 		
 		return true;
 	}
@@ -310,12 +310,12 @@ bool UCollisionManager::CheckCircleRectangle(const FCollisionBody& Circle, const
 	float Distance = Delta.Size();
 	
 	// 检查是否碰撞
-	if (Distance < Circle.Radius)
+	if (Distance < Circle.EffectRadius)
 	{
 		// 填充碰撞事件
 		OutEvent.BodyA = Circle.ID;
 		OutEvent.BodyB = Rectangle.ID;
-		OutEvent.PenetrationDepth = Circle.Radius - Distance;
+		OutEvent.PenetrationDepth = Circle.EffectRadius - Distance;
 		OutEvent.HitPoint = ClosestPoint;
 		
 		// 计算碰撞法线

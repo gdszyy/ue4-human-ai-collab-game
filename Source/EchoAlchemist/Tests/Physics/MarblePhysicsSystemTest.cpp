@@ -59,9 +59,9 @@ bool FMarblePhysicsSystemLaunchTest::RunTest(const FString& Parameters)
 	Params.LaunchPosition = FVector(0, 0, 100);
 	Params.LaunchDirection = FVector(1, 0, 0);
 	Params.LaunchSpeed = 1000.0f;
-	Params.Radius = 10.0f;
+	Params.EffectRadius = 10.0f;
 	Params.Mass = 1.0f;
-	Params.Potency = 5.0f;
+	Params.PotencyMultiplier = 5.0f;
 
 	// 发射魔力露珠
 	FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
@@ -76,9 +76,9 @@ bool FMarblePhysicsSystemLaunchTest::RunTest(const FString& Parameters)
 	TestTrue(TEXT("Marble state should be found"), bFound);
 	TestEqual(TEXT("Position should match"), State.Position, Params.LaunchPosition);
 	TestEqual(TEXT("Velocity should match"), State.Velocity, Params.LaunchDirection * Params.LaunchSpeed);
-	TestEqual(TEXT("Radius should match"), State.Radius, Params.Radius);
+	TestEqual(TEXT("Radius should match"), State.EffectRadius, Params.EffectRadius);
 	TestEqual(TEXT("Mass should match"), State.Mass, Params.Mass);
-	TestEqual(TEXT("Potency should match"), State.Potency, Params.Potency);
+	TestEqual(TEXT("Potency should match"), State.PotencyMultiplier, Params.PotencyMultiplier);
 
 	return true;
 }
@@ -103,9 +103,9 @@ bool FMarblePhysicsSystemTickTest::RunTest(const FString& Parameters)
 	Params.LaunchPosition = FVector(0, 0, 100);
 	Params.LaunchDirection = FVector(1, 0, 0);
 	Params.LaunchSpeed = 1000.0f;
-	Params.Radius = 10.0f;
+	Params.EffectRadius = 10.0f;
 	Params.Mass = 1.0f;
-	Params.Potency = 5.0f;
+	Params.PotencyMultiplier = 5.0f;
 	FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
 
 	// 记录初始位置
@@ -147,9 +147,9 @@ bool FMarblePhysicsSystemBoundaryTest::RunTest(const FString& Parameters)
 	Params.LaunchPosition = FVector(90, 0, 50);
 	Params.LaunchDirection = FVector(1, 0, 0);
 	Params.LaunchSpeed = 100.0f;
-	Params.Radius = 10.0f;
+	Params.EffectRadius = 10.0f;
 	Params.Mass = 1.0f;
-	Params.Potency = 5.0f;
+	Params.PotencyMultiplier = 5.0f;
 	FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
 
 	// 记录初始速度
@@ -175,7 +175,7 @@ bool FMarblePhysicsSystemBoundaryTest::RunTest(const FString& Parameters)
 
 // 测试：药效强度消耗
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMarblePhysicsSystemPotencyTest, 
-	"EchoAlchemist.Physics.MarblePhysicsSystem.Potency", 
+	"EchoAlchemist.Physics.MarblePhysicsSystem.PotencyMultiplier", 
 	EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter)
 
 bool FMarblePhysicsSystemPotencyTest::RunTest(const FString& Parameters)
@@ -193,9 +193,9 @@ bool FMarblePhysicsSystemPotencyTest::RunTest(const FString& Parameters)
 	Params.LaunchPosition = FVector(0, 0, 100);
 	Params.LaunchDirection = FVector(1, 0, 0);
 	Params.LaunchSpeed = 1000.0f;
-	Params.Radius = 10.0f;
+	Params.EffectRadius = 10.0f;
 	Params.Mass = 1.0f;
-	Params.Potency = 3.0f;  // 初始药效强度为3
+	Params.PotencyMultiplier = 3.0f;  // 初始药效强度为3
 	FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
 
 	// 模拟碰撞消耗药效（手动调用，实际应该由碰撞检测系统触发）
@@ -230,9 +230,9 @@ bool FMarblePhysicsSystemMultipleTest::RunTest(const FString& Parameters)
 		Params.LaunchPosition = FVector(i * 100.0f, 0, 100);
 		Params.LaunchDirection = FVector(1, 0, 0);
 		Params.LaunchSpeed = 1000.0f;
-		Params.Radius = 10.0f;
+		Params.EffectRadius = 10.0f;
 		Params.Mass = 1.0f;
-		Params.Potency = 5.0f;
+		Params.PotencyMultiplier = 5.0f;
 		
 		FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
 		MarbleIDs.Add(MarbleID);

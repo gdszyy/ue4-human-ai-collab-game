@@ -19,8 +19,8 @@
  *    ```
  *    FGravityWellParams Params;
  *    Params.Position = GetActorLocation();
- *    Params.Strength = 500.0f;
- *    Params.Radius = 300.0f;
+ *    Params.GravityStrength = 500.0f;
+ *    Params.EffectRadius = 300.0f;
  *    
  *    FGuid SingularityID = EffectsManager->CreateGravitySingularity(Params);
  *    ```
@@ -28,9 +28,9 @@
  * 2. 创建虫洞
  *    ```
  *    FWormholeParams Params;
- *    Params.EntryPosition = EntryLocation;
+ *    Params.EntrancePosition = EntryLocation;
  *    Params.ExitPosition = ExitLocation;
- *    Params.EntryRadius = 50.0f;
+ *    Params.EntranceRadius = 50.0f;
  *    
  *    FGuid WormholeID = EffectsManager->CreateWormhole(Params);
  *    ```

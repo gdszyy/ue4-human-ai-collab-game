@@ -18,7 +18,7 @@ public:
     {
     }
 
-    virtual uint32 GetTestFlags() const override
+    virtual EAutomationTestFlags GetTestFlags() const override
     {
         return EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::EngineFilter;
     }

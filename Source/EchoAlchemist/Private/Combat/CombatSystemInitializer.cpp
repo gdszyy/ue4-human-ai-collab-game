@@ -81,7 +81,8 @@ UCombatManager* UCombatSystemInitializer::InitializeCombatSystemWithConfig(
     PhysicsConfig.SceneType = EPhysicsSceneType::Combat;
     PhysicsConfig.BoundsMin = FVector(-1000.0f, -1000.0f, -1000.0f);
     PhysicsConfig.BoundsMax = FVector(1000.0f, 1000.0f, 1000.0f);
-    PhysicsConfig.Gravity = FVector(0.0f, 0.0f, -980.0f);
+    PhysicsConfig.GravityDirection = FVector(0, 0, -1);
+    PhysicsConfig.GravityStrength = 980.0f;
     PhysicsSystem->InitializeScene(PhysicsConfig);
 
     // 5. Create Collision Manager

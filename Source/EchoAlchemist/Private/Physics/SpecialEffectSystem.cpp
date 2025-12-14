@@ -94,9 +94,9 @@ int32 USpecialEffectSystem::ApplySplitEffect(const FMarbleState& MarbleState, co
 		FMarbleState NewMarble;
 		NewMarble.ID = FGuid::NewGuid();
 		NewMarble.Position = MarbleState.Position;
-		NewMarble.Radius = MarbleState.Radius * Params.RadiusMultiplier;
+		NewMarble.EffectRadius = MarbleState.EffectRadius * Params.RadiusMultiplier;
 		NewMarble.Mass = MarbleState.Mass * FMath::Pow(Params.RadiusMultiplier, 3.0f);  // 质量与体积成正比
-		NewMarble.Potency = MarbleState.Potency * Params.PotencyMultiplier;
+		NewMarble.PotencyMultiplier = MarbleState.PotencyMultiplier * Params.PotencyMultiplier;
 		NewMarble.Generation = MarbleState.Generation + 1;
 		NewMarble.bIsActive = true;
 		
@@ -172,9 +172,9 @@ int32 USpecialEffectSystem::ApplyChainTrigger(FVector TriggerPosition, FVector T
 		FMarbleState SecondaryMarble;
 		SecondaryMarble.ID = FGuid::NewGuid();
 		SecondaryMarble.Position = TriggerPosition;
-		SecondaryMarble.Radius = Params.SecondaryRadius;
+		SecondaryMarble.EffectRadius = Params.SecondaryRadius;
 		SecondaryMarble.Mass = 1.0f;  // 默认质量
-		SecondaryMarble.Potency = Params.PotencyMultiplier;
+		SecondaryMarble.PotencyMultiplier = Params.PotencyMultiplier;
 		SecondaryMarble.Generation = 1;  // 次级弹珠为第1代
 		SecondaryMarble.bIsActive = true;
 		

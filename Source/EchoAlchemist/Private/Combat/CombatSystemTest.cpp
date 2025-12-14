@@ -282,7 +282,7 @@ bool UCombatSystemTest::TestDamageCalculator()
 		FMarbleState Marble;
 		Marble.BaseDamage = 10.0f;
 		Marble.HitCount = 3;
-		Marble.Potency = 100.0f;
+		Marble.PotencyMultiplier = 100.0f;
 		Marble.MaxPotency = 100.0f;
 		
 		FDamageInfo DamageInfo = UDamageCalculator::CalculateDamage(Marble, FGuid::NewGuid());
@@ -342,7 +342,7 @@ bool UCombatSystemTest::TestPhysicsIntegrator()
 		Params.LaunchDirection = FVector(1.0f, 0.0f, 0.0f);
 		Params.LaunchSpeed = 1000.0f;
 		Params.BaseDamage = 10.0f;
-		Params.Potency = 100.0f;
+		Params.PotencyMultiplier = 100.0f;
 		
 		FGuid MarbleID = Integrator->LaunchMarble(Params);
 		bool bTest1 = MarbleID.IsValid() && Integrator->GetMarbleCount() == 1;
@@ -378,7 +378,7 @@ bool UCombatSystemTest::TestPhysicsIntegrator()
 		Params.LaunchDirection = FVector(1.0f, 0.0f, 0.0f);
 		Params.LaunchSpeed = 1000.0f;
 		Params.BaseDamage = 10.0f;
-		Params.Potency = 100.0f;
+		Params.PotencyMultiplier = 100.0f;
 		Integrator->LaunchMarble(Params);
 		
 		// 更新多帧，等待碰撞

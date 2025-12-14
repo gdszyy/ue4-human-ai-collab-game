@@ -111,6 +111,10 @@ struct FMarbleState
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Time")
 	float LastUpdateTime = 0.0f;
 
+	/** 是否激活 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State")
+	bool bIsActive = true;
+
 	/** 构造函数 - 生成唯一ID */
 	FMarbleState()
 	{
