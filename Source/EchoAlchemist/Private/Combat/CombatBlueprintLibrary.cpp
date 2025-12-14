@@ -46,7 +46,7 @@ FMarbleState UCombatBlueprintLibrary::CreateMarbleState(
 	Marble.Position = Position;
 	Marble.Velocity = Velocity;
 	Marble.BaseDamage = BaseDamage;
-	Marble.Potency = Potency;
+	Marble.PotencyMultiplier = Potency;
 	Marble.MaxPotency = Potency;
 	Marble.HitCount = 0;
 	return Marble;

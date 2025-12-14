@@ -31,7 +31,7 @@
  *    FMarbleState State;
  *    State.Position = SpawnLocation;
  *    State.Velocity = LaunchDirection * LaunchSpeed;
- *    State.Radius = 10.0f;
+ *    State.EffectRadius = 10.0f;
  *    Marble->InitializeFromState(State);
  *    ```
  * 

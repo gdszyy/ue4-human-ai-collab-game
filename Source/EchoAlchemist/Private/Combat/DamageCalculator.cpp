@@ -12,7 +12,7 @@ FDamageInfo UDamageCalculator::CalculateDamage(const FMarbleState& Marble, FGuid
 	DamageInfo.PotionType = Marble.PotionType;
 	DamageInfo.TargetID = TargetID;
 	DamageInfo.HitCount = Marble.HitCount;
-	DamageInfo.PotencyRemaining = Marble.Potency;
+	DamageInfo.PotencyRemaining = Marble.PotencyMultiplier;
 	
 	// 基础伤害
 	DamageInfo.BaseDamage = Marble.BaseDamage;
@@ -30,7 +30,7 @@ FDamageInfo UDamageCalculator::CalculateDamage(const FMarbleState& Marble, FGuid
 	// 药效强度削减
 	const float PotencyRequired = GetPotencyRequired(Marble.PotionType);
 	DamageInfo.PotencyRequired = PotencyRequired;
-	DamageInfo.PotencyReduction = CalculatePotencyReduction(Marble.Potency, PotencyRequired);
+	DamageInfo.PotencyReduction = CalculatePotencyReduction(Marble.PotencyMultiplier, PotencyRequired);
 	
 	// 最终伤害 = (基础伤害 + 伤害加成) × 药效削减系数
 	DamageInfo.FinalDamage = (DamageInfo.BaseDamage + DamageInfo.DamageBonus) * DamageInfo.PotencyReduction;

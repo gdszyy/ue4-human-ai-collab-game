@@ -39,7 +39,7 @@ class UNiagaraSystem;
  *    Params.LaunchPosition = GetActorLocation();
  *    Params.LaunchDirection = GetActorForwardVector();
  *    Params.LaunchSpeed = 1000.0f;
- *    Params.Potency = 5.0f;
+ *    Params.PotencyMultiplier = 5.0f;
  *    
  *    // 发射
  *    FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);

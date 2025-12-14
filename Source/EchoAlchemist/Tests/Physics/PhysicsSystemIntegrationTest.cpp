@@ -70,9 +70,9 @@ bool FPhysicsSystemIntegrationCombatTest::RunTest(const FString& Parameters)
 		Params.LaunchPosition = FVector(i * 100.0f - 450.0f, 0, 100);
 		Params.LaunchDirection = FVector(0, 0, 1);  // 向上发射
 		Params.LaunchSpeed = 500.0f;
-		Params.Radius = 10.0f;
+		Params.EffectRadius = 10.0f;
 		Params.Mass = 1.0f;
-		Params.Potency = 5.0f;
+		Params.PotencyMultiplier = 5.0f;
 		Params.Generation = 0;  // 第0代，使用Actor
 		
 		FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
@@ -86,7 +86,7 @@ bool FPhysicsSystemIntegrationCombatTest::RunTest(const FString& Parameters)
 		Body.ID = MarbleID;
 		Body.Position = State.Position;
 		Body.ShapeType = EEchoCollisionShapeType::Circle;
-		Body.Radius = State.Radius;
+		Body.EffectRadius = State.EffectRadius;
 		
 		CollisionManager->RegisterBody(Body);
 	}
@@ -235,9 +235,9 @@ bool FPhysicsSystemIntegrationWorkbenchTest::RunTest(const FString& Parameters)
 		Params.LaunchPosition = FVector(i * 100.0f - 100.0f, 0, 400);
 		Params.LaunchDirection = FVector(0, 0, -1);  // 向下发射
 		Params.LaunchSpeed = 200.0f;
-		Params.Radius = 10.0f;
+		Params.EffectRadius = 10.0f;
 		Params.Mass = 1.0f;
-		Params.Potency = 0.0f;  // 工作台场景不使用药效强度
+		Params.PotencyMultiplier = 0.0f;  // 工作台场景不使用药效强度
 		Params.Generation = 0;
 		
 		FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
@@ -251,7 +251,7 @@ bool FPhysicsSystemIntegrationWorkbenchTest::RunTest(const FString& Parameters)
 		Body.ID = MarbleID;
 		Body.Position = State.Position;
 		Body.ShapeType = EEchoCollisionShapeType::Circle;
-		Body.Radius = State.Radius;
+		Body.EffectRadius = State.EffectRadius;
 		
 		CollisionManager->RegisterBody(Body);
 	}
@@ -263,7 +263,7 @@ bool FPhysicsSystemIntegrationWorkbenchTest::RunTest(const FString& Parameters)
 		InjectionPoint.ID = FGuid::NewGuid();
 		InjectionPoint.Position = FVector(i * 100.0f - 200.0f, 0, 200);
 		InjectionPoint.ShapeType = EEchoCollisionShapeType::Circle;
-		InjectionPoint.Radius = 20.0f;
+		InjectionPoint.EffectRadius = 20.0f;
 		
 		CollisionManager->RegisterBody(InjectionPoint);
 		InjectionPointIDs.Add(InjectionPoint.ID);
@@ -368,9 +368,9 @@ bool FPhysicsSystemIntegrationGenerationTest::RunTest(const FString& Parameters)
 	Gen0Params.LaunchPosition = FVector(0, 0, 100);
 	Gen0Params.LaunchDirection = FVector(1, 0, 0);
 	Gen0Params.LaunchSpeed = 1000.0f;
-	Gen0Params.Radius = 10.0f;
+	Gen0Params.EffectRadius = 10.0f;
 	Gen0Params.Mass = 1.0f;
-	Gen0Params.Potency = 5.0f;
+	Gen0Params.PotencyMultiplier = 5.0f;
 	Gen0Params.Generation = 0;  // 第0代
 	
 	FGuid Gen0ID = PhysicsSystem->LaunchMarble(Gen0Params);
@@ -467,9 +467,9 @@ bool FPhysicsSystemIntegrationStressTest::RunTest(const FString& Parameters)
 			FMath::FRandRange(-1, 1)
 		).GetSafeNormal();
 		Params.LaunchSpeed = FMath::FRandRange(500, 1000);
-		Params.Radius = 10.0f;
+		Params.EffectRadius = 10.0f;
 		Params.Mass = 1.0f;
-		Params.Potency = 5.0f;
+		Params.PotencyMultiplier = 5.0f;
 		Params.Generation = i < 50 ? 0 : 2;  // 前50个用Actor，后50个用粒子
 		
 		FGuid MarbleID = PhysicsSystem->LaunchMarble(Params);
@@ -483,7 +483,7 @@ bool FPhysicsSystemIntegrationStressTest::RunTest(const FString& Parameters)
 		Body.ID = MarbleID;
 		Body.Position = State.Position;
 		Body.ShapeType = EEchoCollisionShapeType::Circle;
-		Body.Radius = State.Radius;
+		Body.EffectRadius = State.EffectRadius;
 		
 		CollisionManager->RegisterBody(Body);
 	}

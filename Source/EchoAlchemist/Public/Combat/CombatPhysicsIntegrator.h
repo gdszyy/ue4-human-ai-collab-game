@@ -41,7 +41,7 @@
  * Params.LaunchPosition = PlayerPosition;
  * Params.LaunchDirection = AimDirection;
  * Params.LaunchSpeed = 1000.0f;
- * Params.Potency = 5.0f;
+ * Params.PotencyMultiplier = 5.0f;
  * Integrator->LaunchMarble(Params);
  * 
  * // 每帧更新

@@ -22,8 +22,8 @@ bool FSpecialEffectsGravitySingularityTest::RunTest(const FString& Parameters)
 	// 创建引力奇点
 	FGravityWellParams Params;
 	Params.Position = FVector(0, 0, 0);
-	Params.Strength = 500.0f;
-	Params.Radius = 300.0f;
+	Params.GravityStrength = 500.0f;
+	Params.EffectRadius = 300.0f;
 	Params.Duration = 0.0f;  // 永久
 
 	FGuid SingularityID = EffectsManager->CreateGravitySingularity(Params);
@@ -70,11 +70,11 @@ bool FSpecialEffectsWormholeTest::RunTest(const FString& Parameters)
 
 	// 创建虫洞
 	FWormholeParams Params;
-	Params.EntryPosition = FVector(0, 0, 0);
+	Params.EntrancePosition = FVector(0, 0, 0);
 	Params.ExitPosition = FVector(1000, 0, 0);
-	Params.EntryRadius = 50.0f;
+	Params.EntranceRadius = 50.0f;
 	Params.bPreserveVelocity = true;
-	Params.VelocityMultiplier = 1.0f;
+	Params.ExitSpeedMultiplier = 1.0f;
 
 	FGuid WormholeID = EffectsManager->CreateWormhole(Params);
 
@@ -115,15 +115,15 @@ bool FSpecialEffectsMarbleSplitTest::RunTest(const FString& Parameters)
 	FMarbleState ParentMarble;
 	ParentMarble.Position = FVector(0, 0, 0);
 	ParentMarble.Velocity = FVector(1000, 0, 0);
-	ParentMarble.Potency = 5.0f;
+	ParentMarble.PotencyMultiplier = 5.0f;
 	ParentMarble.Generation = 0;
 
 	// 创建分裂参数
 	FSplitParams Params;
 	Params.SplitCount = 3;
 	Params.SpeedMultiplier = 0.8f;
-	Params.AngleSpread = 60.0f;
-	Params.PotencyRatio = 0.5f;
+	Params.AngleRange = 60.0f;
+	Params.PotencyMultiplier = 0.5f;
 
 	// 应用分裂效果
 	TArray<FMarbleState> ChildMarbles;
@@ -143,7 +143,7 @@ bool FSpecialEffectsMarbleSplitTest::RunTest(const FString& Parameters)
 		TestEqual(TEXT("Child generation should be parent+1"), Child.Generation, ParentMarble.Generation + 1);
 
 		// 验证药效强度（应该是父代的一半）
-		TestEqual(TEXT("Child potency should be half of parent"), Child.Potency, ParentMarble.Potency * Params.PotencyRatio);
+		TestEqual(TEXT("Child potency should be half of parent"), Child.PotencyMultiplier, ParentMarble.PotencyMultiplier * Params.PotencyMultiplier);
 
 		// 验证速度大小（应该是父代的80%）
 		float ChildSpeed = Child.Velocity.Size();
@@ -173,26 +173,26 @@ bool FSpecialEffectsSpeedModifierTest::RunTest(const FString& Parameters)
 
 	// 创建加速参数
 	FEchoSpeedModifierParams BoostParams;
-	BoostParams.Multiplier = 1.5f;  // 加速50%
+	BoostParams.SpeedMultiplier = 1.5f;  // 加速50%
 
 	// 应用加速效果
 	EffectsManager->ApplySpeedModifier(Marble, BoostParams);
 
 	// 验证速度增加
 	float BoostedSpeed = Marble.Velocity.Size();
-	float ExpectedSpeed = InitialSpeed * BoostParams.Multiplier;
+	float ExpectedSpeed = InitialSpeed * BoostParams.SpeedMultiplier;
 	TestTrue(TEXT("Speed should be boosted by 50%"), FMath::IsNearlyEqual(BoostedSpeed, ExpectedSpeed, 1.0f));
 
 	// 创建减速参数
 	FEchoSpeedModifierParams SlowParams;
-	SlowParams.Multiplier = 0.5f;  // 减速50%
+	SlowParams.SpeedMultiplier = 0.5f;  // 减速50%
 
 	// 应用减速效果
 	EffectsManager->ApplySpeedModifier(Marble, SlowParams);
 
 	// 验证速度降低
 	float SlowedSpeed = Marble.Velocity.Size();
-	ExpectedSpeed = BoostedSpeed * SlowParams.Multiplier;
+	ExpectedSpeed = BoostedSpeed * SlowParams.SpeedMultiplier;
 	TestTrue(TEXT("Speed should be slowed by 50%"), FMath::IsNearlyEqual(SlowedSpeed, ExpectedSpeed, 1.0f));
 
 	return true;
@@ -217,10 +217,10 @@ bool FSpecialEffectsChainReactionTest::RunTest(const FString& Parameters)
 
 	// 创建连锁触发参数
 	FChainTriggerParams Params;
-	Params.ProjectileCount = 4;
-	Params.ProjectileSpeed = 800.0f;
-	Params.AngleSpread = 90.0f;
-	Params.Potency = 2.0f;
+	Params.SecondaryCount = 4;
+	Params.SecondarySpeed = 800.0f;
+	Params.AngleRange = 90.0f;
+	Params.PotencyMultiplier = 2.0f;
 	Params.DamageMultiplier = 0.5f;
 
 	// 应用连锁触发效果
@@ -241,7 +241,7 @@ bool FSpecialEffectsChainReactionTest::RunTest(const FString& Parameters)
 		TestEqual(TEXT("Projectile generation should be trigger+1"), Projectile.Generation, TriggerMarble.Generation + 1);
 
 		// 验证药效强度
-		TestEqual(TEXT("Projectile potency should match params"), Projectile.Potency, Params.Potency);
+		TestEqual(TEXT("Projectile potency should match params"), Projectile.PotencyMultiplier, Params.PotencyMultiplier);
 
 		// 验证伤害倍率
 		float ExpectedDamage = TriggerMarble.BaseDamage * Params.DamageMultiplier;
@@ -249,7 +249,7 @@ bool FSpecialEffectsChainReactionTest::RunTest(const FString& Parameters)
 
 		// 验证速度大小
 		float ProjectileSpeed = Projectile.Velocity.Size();
-		TestTrue(TEXT("Projectile speed should match params"), FMath::IsNearlyEqual(ProjectileSpeed, Params.ProjectileSpeed, 1.0f));
+		TestTrue(TEXT("Projectile speed should match params"), FMath::IsNearlyEqual(ProjectileSpeed, Params.SecondarySpeed, 1.0f));
 	}
 
 	return true;
@@ -268,17 +268,17 @@ bool FSpecialEffectsExpirationTest::RunTest(const FString& Parameters)
 	// 创建临时引力奇点（持续3秒）
 	FGravityWellParams SingularityParams;
 	SingularityParams.Position = FVector(0, 0, 0);
-	SingularityParams.Strength = 500.0f;
-	SingularityParams.Radius = 300.0f;
+	SingularityParams.GravityStrength = 500.0f;
+	SingularityParams.EffectRadius = 300.0f;
 	SingularityParams.Duration = 3.0f;
 
 	FGuid SingularityID = EffectsManager->CreateGravitySingularity(SingularityParams);
 
 	// 创建临时虫洞（持续2秒）
 	FWormholeParams WormholeParams;
-	WormholeParams.EntryPosition = FVector(0, 0, 0);
+	WormholeParams.EntrancePosition = FVector(0, 0, 0);
 	WormholeParams.ExitPosition = FVector(1000, 0, 0);
-	WormholeParams.EntryRadius = 50.0f;
+	WormholeParams.EntranceRadius = 50.0f;
 	WormholeParams.Duration = 2.0f;
 
 	FGuid WormholeID = EffectsManager->CreateWormhole(WormholeParams);
@@ -322,7 +322,7 @@ bool FSpecialEffectsMaxSplitDepthTest::RunTest(const FString& Parameters)
 	FMarbleState ParentMarble;
 	ParentMarble.Position = FVector(0, 0, 0);
 	ParentMarble.Velocity = FVector(1000, 0, 0);
-	ParentMarble.Potency = 5.0f;
+	ParentMarble.PotencyMultiplier = 5.0f;
 	ParentMarble.Generation = 2;  // 已达到最大深度
 
 	// 创建分裂参数（最大深度为2）

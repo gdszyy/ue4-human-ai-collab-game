@@ -56,7 +56,7 @@ void AMarbleActor::InitializeFromState(const FMarbleState& State)
 	// 设置半径
 	if (SphereComponent)
 	{
-		SphereComponent->SetSphereRadius(State.Radius);
+		SphereComponent->SetSphereRadius(State.EffectRadius);
 		
 		// 设置质量
 		SphereComponent->SetMassOverrideInKg(NAME_None, State.Mass, true);
@@ -65,7 +65,7 @@ void AMarbleActor::InitializeFromState(const FMarbleState& State)
 	// 设置网格缩放
 	if (MeshComponent)
 	{
-		float Scale = State.Radius / 10.0f;  // 假设默认网格半径为10cm
+		float Scale = State.EffectRadius / 10.0f;  // 假设默认网格半径为10cm
 		MeshComponent->SetWorldScale3D(FVector(Scale));
 	}
 
@@ -81,7 +81,7 @@ void AMarbleActor::InitializeFromState(const FMarbleState& State)
 	SetActorEnableCollision(true);
 
 	UE_LOG(LogTemp, Verbose, TEXT("[MarbleActor] Initialized: ID=%s, Radius=%.2f, Mass=%.2f"),
-		*MarbleID.ToString(), State.Radius, State.Mass);
+		*MarbleID.ToString(), State.EffectRadius, State.Mass);
 }
 
 void AMarbleActor::Launch(FVector Direction, float Speed)

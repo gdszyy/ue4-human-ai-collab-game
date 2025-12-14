@@ -113,9 +113,9 @@ bool FSpecialEffectSplitTest::RunTest(const FString& Parameters)
 	Marble.ID = FGuid::NewGuid();
 	Marble.Position = FVector(0, 0, 100);
 	Marble.Velocity = FVector(1000, 0, 0);
-	Marble.Radius = 10.0f;
+	Marble.EffectRadius = 10.0f;
 	Marble.Mass = 1.0f;
-	Marble.Potency = 5.0f;
+	Marble.PotencyMultiplier = 5.0f;
 	Marble.Generation = 0;
 
 	// 创建分裂参数
@@ -135,8 +135,8 @@ bool FSpecialEffectSplitTest::RunTest(const FString& Parameters)
 		TestTrue(TEXT("NewMarble ID should be valid"), NewMarble.ID.IsValid());
 		TestTrue(TEXT("NewMarble ID should be different from parent"), NewMarble.ID != Marble.ID);
 		TestEqual(TEXT("NewMarble generation should be parent+1"), NewMarble.Generation, Marble.Generation + 1);
-		TestTrue(TEXT("NewMarble radius should be smaller"), NewMarble.Radius < Marble.Radius);
-		TestTrue(TEXT("NewMarble potency should be smaller"), NewMarble.Potency < Marble.Potency);
+		TestTrue(TEXT("NewMarble radius should be smaller"), NewMarble.EffectRadius < Marble.EffectRadius);
+		TestTrue(TEXT("NewMarble potency should be smaller"), NewMarble.PotencyMultiplier < Marble.PotencyMultiplier);
 	}
 
 	return true;
@@ -158,7 +158,7 @@ bool FSpecialEffectSpeedModifierTest::RunTest(const FString& Parameters)
 	Marble.ID = FGuid::NewGuid();
 	Marble.Position = FVector(0, 0, 100);
 	Marble.Velocity = FVector(1000, 0, 0);
-	Marble.Radius = 10.0f;
+	Marble.EffectRadius = 10.0f;
 
 	float OriginalSpeed = Marble.Velocity.Size();
 
@@ -218,7 +218,7 @@ bool FSpecialEffectChainTriggerTest::RunTest(const FString& Parameters)
 	for (const FMarbleState& Secondary : SecondaryMarbles)
 	{
 		TestTrue(TEXT("Secondary ID should be valid"), Secondary.ID.IsValid());
-		TestEqual(TEXT("Secondary radius should match params"), Secondary.Radius, Params.SecondaryRadius);
+		TestEqual(TEXT("Secondary radius should match params"), Secondary.EffectRadius, Params.SecondaryRadius);
 		
 		float Speed = Secondary.Velocity.Size();
 		TestEqual(TEXT("Secondary speed should match params"), Speed, Params.SecondarySpeed, 1.0f);

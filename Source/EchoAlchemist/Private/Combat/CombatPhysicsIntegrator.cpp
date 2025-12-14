@@ -50,7 +50,7 @@ FGuid UCombatPhysicsIntegrator::LaunchMarble(const FMarbleLaunchParams& Params)
 	if (PhysicsSystem->GetMarbleState(MarbleID, MarbleState))
 	{
 		// 注册碰撞体
-		RegisterMarbleCollisionBody(MarbleID, MarbleState.Position, MarbleState.Radius);
+		RegisterMarbleCollisionBody(MarbleID, MarbleState.Position, MarbleState.EffectRadius);
 		
 		UE_LOG(LogTemp, Log, TEXT("CombatPhysicsIntegrator: Launched marble %s at (%.1f, %.1f, %.1f)"),
 			*MarbleID.ToString(), MarbleState.Position.X, MarbleState.Position.Y, MarbleState.Position.Z);
@@ -268,7 +268,7 @@ void UCombatPhysicsIntegrator::RegisterMarbleCollisionBody(FGuid MarbleID, FVect
 	Body.ID = FGuid::NewGuid();
 	Body.Position = Position;
 	Body.ShapeType = EEchoCollisionShapeType::Circle;
-	Body.Radius = Radius;
+	Body.EffectRadius = Radius;
 	Body.bIsStatic = false;
 	
 	// 注册碰撞体
@@ -294,7 +294,7 @@ void UCombatPhysicsIntegrator::RegisterEnemyCollisionBody(FGuid EnemyID, FVector
 	Body.ID = FGuid::NewGuid();
 	Body.Position = Position;
 	Body.ShapeType = EEchoCollisionShapeType::Circle;
-	Body.Radius = Radius;
+	Body.EffectRadius = Radius;
 	Body.bIsStatic = false;
 	
 	// 注册碰撞体

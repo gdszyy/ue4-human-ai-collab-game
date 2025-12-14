@@ -14,7 +14,7 @@ FGuid USpecialEffectsManager::CreateGravitySingularity(const FGravityWellParams&
 	GravitySingularities.Add(SingularityID, NewParams);
 	
 	UE_LOG(LogTemp, Log, TEXT("[SpecialEffectsManager] Gravity singularity created: ID=%s, Strength=%.2f, Radius=%.2f"),
-		*SingularityID.ToString(), Params.Strength, Params.Radius);
+		*SingularityID.ToString(), Params.GravityStrength, Params.EffectRadius);
 	
 	return SingularityID;
 }
@@ -49,7 +49,7 @@ FGuid USpecialEffectsManager::CreateWormhole(const FWormholeParams& Params)
 	Wormholes.Add(WormholeID, NewParams);
 	
 	UE_LOG(LogTemp, Log, TEXT("[SpecialEffectsManager] Wormhole created: ID=%s, Entry=%s, Exit=%s"),
-		*WormholeID.ToString(), *Params.EntryPosition.ToString(), *Params.ExitPosition.ToString());
+		*WormholeID.ToString(), *Params.EntrancePosition.ToString(), *Params.ExitPosition.ToString());
 	
 	return WormholeID;
 }
@@ -106,7 +106,7 @@ int32 USpecialEffectsManager::ApplyMarbleSplit(const FMarbleState& ParentMarble,
 	
 	// 计算分裂方向
 	TArray<FVector> Directions;
-	CalculateSplitDirections(ParentMarble.Velocity, Params.SplitCount, Params.AngleSpread, Directions);
+	CalculateSplitDirections(ParentMarble.Velocity, Params.SplitCount, Params.AngleRange, Directions);
 	
 	// 计算子代速度大小
 	float ChildSpeed = ParentMarble.Velocity.Size() * Params.SpeedMultiplier;
@@ -117,10 +117,10 @@ int32 USpecialEffectsManager::ApplyMarbleSplit(const FMarbleState& ParentMarble,
 		FMarbleState ChildMarble;
 		ChildMarble.Position = ParentMarble.Position;
 		ChildMarble.Velocity = Directions[i] * ChildSpeed;
-		ChildMarble.Radius = ParentMarble.Radius;
+		ChildMarble.EffectRadius = ParentMarble.EffectRadius;
 		ChildMarble.Mass = ParentMarble.Mass;
-		ChildMarble.Potency = ParentMarble.Potency * Params.PotencyRatio;
-		ChildMarble.MaxPotency = ParentMarble.MaxPotency * Params.PotencyRatio;
+		ChildMarble.PotencyMultiplier = ParentMarble.PotencyMultiplier * Params.PotencyMultiplier;
+		ChildMarble.MaxPotency = ParentMarble.MaxPotency * Params.PotencyMultiplier;
 		ChildMarble.Generation = ParentMarble.Generation + 1;
 		ChildMarble.PotionType = ParentMarble.PotionType;
 		ChildMarble.BaseDamage = ParentMarble.BaseDamage;
@@ -139,10 +139,10 @@ int32 USpecialEffectsManager::ApplyMarbleSplit(const FMarbleState& ParentMarble,
 void USpecialEffectsManager::ApplySpeedModifier(FMarbleState& Marble, const FEchoSpeedModifierParams& Params)
 {
 	// 应用速度倍率
-	Marble.Velocity *= Params.Multiplier;
+	Marble.Velocity *= Params.SpeedMultiplier;
 	
 	UE_LOG(LogTemp, Verbose, TEXT("[SpecialEffectsManager] Speed modifier applied: Marble=%s, Multiplier=%.2f"),
-		*Marble.ID.ToString(), Params.Multiplier);
+		*Marble.ID.ToString(), Params.SpeedMultiplier);
 }
 
 int32 USpecialEffectsManager::ApplyChainReaction(const FMarbleState& TriggerMarble, 
@@ -161,18 +161,18 @@ int32 USpecialEffectsManager::ApplyChainReaction(const FMarbleState& TriggerMarb
 	
 	// 计算发射方向
 	TArray<FVector> Directions;
-	CalculateChainDirections(TriggerMarble.Velocity, Params.ProjectileCount, Params.AngleSpread, Directions);
+	CalculateChainDirections(TriggerMarble.Velocity, Params.SecondaryCount, Params.AngleRange, Directions);
 	
 	// 生成次级魔药
-	for (int32 i = 0; i < Params.ProjectileCount; ++i)
+	for (int32 i = 0; i < Params.SecondaryCount; ++i)
 	{
 		FMarbleState Projectile;
 		Projectile.Position = TriggerMarble.Position;
-		Projectile.Velocity = Directions[i] * Params.ProjectileSpeed;
-		Projectile.Radius = TriggerMarble.Radius * 0.8f;  // 次级魔药稍小
+		Projectile.Velocity = Directions[i] * Params.SecondarySpeed;
+		Projectile.EffectRadius = TriggerMarble.EffectRadius * 0.8f;  // 次级魔药稍小
 		Projectile.Mass = TriggerMarble.Mass * 0.8f;
-		Projectile.Potency = Params.Potency;
-		Projectile.MaxPotency = Params.Potency;
+		Projectile.PotencyMultiplier = Params.PotencyMultiplier;
+		Projectile.MaxPotency = Params.PotencyMultiplier;
 		Projectile.Generation = TriggerMarble.Generation + 1;
 		Projectile.PotionType = TriggerMarble.PotionType;
 		Projectile.BaseDamage = TriggerMarble.BaseDamage * Params.DamageMultiplier;
@@ -183,7 +183,7 @@ int32 USpecialEffectsManager::ApplyChainReaction(const FMarbleState& TriggerMarb
 	}
 	
 	UE_LOG(LogTemp, Log, TEXT("[SpecialEffectsManager] Chain reaction: Trigger=%s, Projectiles=%d, Generation=%d"),
-		*TriggerMarble.ID.ToString(), Params.ProjectileCount, TriggerMarble.Generation + 1);
+		*TriggerMarble.ID.ToString(), Params.SecondaryCount, TriggerMarble.Generation + 1);
 	
 	return OutProjectiles.Num();
 }
@@ -226,14 +226,14 @@ void USpecialEffectsManager::ApplyGravityFields(FMarbleState& Marble, float Delt
 		float Distance = Delta.Size();
 		
 		// 检查是否在影响范围内
-		if (Distance > Singularity.Radius || Distance < KINDA_SMALL_NUMBER)
+		if (Distance > Singularity.EffectRadius || Distance < KINDA_SMALL_NUMBER)
 		{
 			continue;
 		}
 		
 		// 计算引力加速度（平方反比定律）
 		FVector Direction = Delta / Distance;
-		float Acceleration = Singularity.Strength * (1.0f - Distance / Singularity.Radius);
+		float Acceleration = Singularity.GravityStrength * (1.0f - Distance / Singularity.EffectRadius);
 		
 		// 应用引力
 		Marble.Velocity += Direction * Acceleration * DeltaTime;
@@ -247,11 +247,11 @@ void USpecialEffectsManager::ApplyWormholes(FMarbleState& Marble)
 		const FWormholeParams& Wormhole = Pair.Value;
 		
 		// 计算距离
-		FVector Delta = Wormhole.EntryPosition - Marble.Position;
+		FVector Delta = Wormhole.EntrancePosition - Marble.Position;
 		float Distance = Delta.Size();
 		
 		// 检查是否进入虫洞
-		if (Distance <= Wormhole.EntryRadius)
+		if (Distance <= Wormhole.EntranceRadius)
 		{
 			// 传送到出口
 			Marble.Position = Wormhole.ExitPosition;
@@ -259,7 +259,7 @@ void USpecialEffectsManager::ApplyWormholes(FMarbleState& Marble)
 			// 处理速度
 			if (Wormhole.bPreserveVelocity)
 			{
-				Marble.Velocity *= Wormhole.VelocityMultiplier;
+				Marble.Velocity *= Wormhole.ExitSpeedMultiplier;
 			}
 			else
 			{
@@ -270,12 +270,12 @@ void USpecialEffectsManager::ApplyWormholes(FMarbleState& Marble)
 					FMath::FRandRange(-1.0f, 1.0f)
 				).GetSafeNormal();
 				
-				float Speed = Marble.Velocity.Size() * Wormhole.VelocityMultiplier;
+				float Speed = Marble.Velocity.Size() * Wormhole.ExitSpeedMultiplier;
 				Marble.Velocity = RandomDirection * Speed;
 			}
 			
 			UE_LOG(LogTemp, Verbose, TEXT("[SpecialEffectsManager] Marble teleported: ID=%s, From=%s, To=%s"),
-				*Marble.ID.ToString(), *Wormhole.EntryPosition.ToString(), *Wormhole.ExitPosition.ToString());
+				*Marble.ID.ToString(), *Wormhole.EntrancePosition.ToString(), *Wormhole.ExitPosition.ToString());
 			
 			// 只传送一次，跳出循环
 			break;
