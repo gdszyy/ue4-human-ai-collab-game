@@ -139,7 +139,7 @@ VOI-11任务已到达MHP，具体表现为：
 | **Death** | 8-12帧 | 否 | `FB_Forest_Medium_Death` |
 
 **创建步骤**：
-1. 在UE4中导入精灵序列帧
+1. 在UE5中导入精灵序列帧
 2. 使用Paper2D Sprite Editor创建Flipbook
 3. 设置帧率（建议：12-24 FPS）
 4. 设置循环模式
@@ -170,7 +170,7 @@ VOI-11任务已到达MHP，具体表现为：
 - `AccentColor`：强调色（高光）
 
 **创建步骤**：
-1. 在UE4中创建新材质：`M_PaletteSwap_Master`
+1. 在UE5中创建新材质：`M_PaletteSwap_Master`
 2. 添加上述节点结构
 3. 将参数标记为 `Scalar Parameter` 或 `Vector Parameter`
 4. 保存材质
@@ -439,10 +439,10 @@ Function Spawn Monster Population(Location, Radius, Density)
 
 ### 6.1 单元测试
 
-Manus已创建4个单元测试文件，用户可以在UE4编辑器中运行这些测试。
+Manus已创建4个单元测试文件，用户可以在UE5编辑器中运行这些测试。
 
 **运行步骤**：
-1. 打开UE4编辑器
+1. 打开UE5编辑器
 2. 菜单栏 → Window → Test Automation
 3. 在Test Automation窗口中找到 `PCG` 类别
 4. 选择所有测试用例

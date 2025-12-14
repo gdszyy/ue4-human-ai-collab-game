@@ -1,11 +1,11 @@
 """
-UE4 编辑器内 Python 脚本示例
+UE5 编辑器内 Python 脚本示例
 
-此脚本需要在 UE4 编辑器内运行，不能在外部 Python 环境中运行。
+此脚本需要在 UE5 编辑器内运行，不能在外部 Python 环境中运行。
 
 运行方法：
-1. 在 UE4 编辑器中，打开 Window -> Developer Tools -> Output Log
-2. 在 Output Log 的 Cmd 输入框中输入：py "Scripts/ue4_editor_example.py"
+1. 在 UE5 编辑器中，打开 Window -> Developer Tools -> Output Log
+2. 在 Output Log 的 Cmd 输入框中输入：py "Scripts/ue5_editor_example.py"
 3. 或者在编辑器菜单中选择 File -> Execute Python Script，然后选择此文件
 """
 
@@ -14,7 +14,7 @@ import unreal
 def main():
     """主函数"""
     unreal.log("=" * 60)
-    unreal.log("UE4 编辑器 Python 脚本示例")
+    unreal.log("UE5 编辑器 Python 脚本示例")
     unreal.log("=" * 60)
     
     # 获取编辑器资产库

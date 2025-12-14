@@ -5,7 +5,7 @@
 - **Linear任务：** VOI-6
 - **任务标题：** 设计世界变迁系统
 - **当前状态：** In Review → 待更新为 Done
-- **开发阶段：** Design → Implementation (UE4核心功能)
+- **开发阶段：** Design → Implementation (UE5核心功能)
 
 ## 交付内容
 
@@ -125,7 +125,7 @@ Source/EchoAlchemist/
 
 ### 已完成的目标
 
-✅ 将Web模拟器完整移植到UE4 C++
+✅ 将Web模拟器完整移植到UE5 C++
 ✅ 保持算法的物理真实性和涌现行为
 ✅ 提供蓝图友好的API接口
 ✅ 实现参数化配置
@@ -144,7 +144,7 @@ Source/EchoAlchemist/
 
 ### 1. 编译验证（必需）
 
-- [ ] 在UE4编辑器中打开项目
+- [ ] 在UE5编辑器中打开项目
 - [ ] 编译C++代码
 - [ ] 修复可能的编译错误（头文件包含、模块依赖等）
 
@@ -156,7 +156,7 @@ Source/EchoAlchemist/
 
 ### 3. 性能测试（推荐）
 
-- [ ] 使用UE4 Profiler分析性能
+- [ ] 使用UE5 Profiler分析性能
 - [ ] 测试不同网格尺寸的帧率
 - [ ] 优化瓶颈（如果存在）
 
@@ -210,8 +210,8 @@ Get Cell At (X, Y)
 
 - [使用指南](WorldMorphingSystem.md) - 如何在蓝图中使用
 - [实现总结](WorldMorphingSystem_Implementation.md) - 算法细节和架构设计
-- [TDD](../../ue4-human-ai-collab/docs/tech/world_morphing_system_tdd.md) - 原始技术设计文档
-- [MHP](../../ue4-human-ai-collab/docs/mhp/VOI-6_world_morphing.md) - 任务规划文档
+- [TDD](../../ue5-human-ai-collab/docs/tech/world_morphing_system_tdd.md) - 原始技术设计文档
+- [MHP](../../ue5-human-ai-collab/docs/mhp/VOI-6_world_morphing.md) - 任务规划文档
 
 ### 代码
 
@@ -221,16 +221,16 @@ Get Cell At (X, Y)
 
 ### 原始模拟器
 
-- Web模拟器：`ue4-human-ai-collab/docs/tech/simulator/`
-- 核心引擎：`ue4-human-ai-collab/docs/tech/simulator/client/src/lib/simulation/engine.ts`
+- Web模拟器：`ue5-human-ai-collab/docs/tech/simulator/`
+- 核心引擎：`ue5-human-ai-collab/docs/tech/simulator/client/src/lib/simulation/engine.ts`
 
 ## 联系方式
 
 如有问题或建议，请通过以下方式联系：
 
 - **Linear任务：** VOI-6
-- **GitHub仓库：** gdszyy/ue4-human-ai-collab-game
-- **文档仓库：** gdszyy/ue4-human-ai-collab
+- **GitHub仓库：** gdszyy/ue5-human-ai-collab-game
+- **文档仓库：** gdszyy/ue5-human-ai-collab
 
 ## 版本历史
 

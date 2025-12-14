@@ -1,6 +1,6 @@
 # WorldMorphingSystem 蓝图实现指南
 
-本文档提供详细的蓝图实现步骤，帮助您在UE4中创建完整的世界变迁系统可视化和交互。
+本文档提供详细的蓝图实现步骤，帮助您在UE5中创建完整的世界变迁系统可视化和交互。
 
 ## 目录
 
@@ -16,7 +16,7 @@
 
 ### 步骤1: 运行自动创建脚本
 
-在UE4编辑器的Output Log中执行:
+在UE5编辑器的Output Log中执行:
 
 ```
 py "Scripts/create_world_morphing_blueprints.py"

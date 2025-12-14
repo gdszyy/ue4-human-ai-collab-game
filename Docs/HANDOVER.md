@@ -14,8 +14,8 @@
 ### 项目简介
 
 **项目名称**：EchoAlchemist  
-**项目类型**：UE4 游戏项目  
-**引擎版本**：Unreal Engine 4.27  
+**项目类型**：UE5 游戏项目  
+**引擎版本**：Unreal Engine 5.27  
 **开发语言**：C++, Blueprint  
 **版本控制**：Git (GitHub)
 
@@ -25,7 +25,7 @@
 
 主要目录：
 ```
-ue4-human-ai-collab-game/
+ue5-human-ai-collab-game/
 ├── Source/EchoAlchemist/          # C++ 源代码
 │   ├── Public/                    # 公共头文件
 │   │   └── Physics/               # 物理系统
@@ -47,7 +47,7 @@ ue4-human-ai-collab-game/
 
 ### 必需软件
 
-1. **Unreal Engine 4.27**
+1. **Unreal Engine 5.27**
 2. **Visual Studio 2019/2022**（Windows）或 **Xcode**（macOS）
 3. **Git**
 
@@ -58,7 +58,7 @@ ue4-human-ai-collab-game/
 快速开始：
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/gdszyy/ue4-human-ai-collab-game.git
+git clone https://github.com/gdszyy/ue5-human-ai-collab-game.git
 
 # 2. 生成项目文件
 右键 .uproject 文件 -> Generate Visual Studio project files
@@ -236,7 +236,7 @@ if (Target.bBuildDeveloperTools ||
 ### Q3: 如何运行测试？
 
 **A**: 
-1. 打开 UE4 编辑器
+1. 打开 UE5 编辑器
 2. Window -> Test Automation
 3. 搜索测试名称（例如：`EchoAlchemist.Physics`）
 4. 选择测试
@@ -257,7 +257,7 @@ if (Target.bBuildDeveloperTools ||
 ### 项目维护者
 
 - **GitHub**：[gdszyy](https://github.com/gdszyy)
-- **仓库**：[ue4-human-ai-collab-game](https://github.com/gdszyy/ue4-human-ai-collab-game)
+- **仓库**：[ue5-human-ai-collab-game](https://github.com/gdszyy/ue5-human-ai-collab-game)
 
 ### 获取帮助
 
@@ -288,7 +288,7 @@ if (Target.bBuildDeveloperTools ||
 
 2. **测试代码必须有宏保护**
    - 使用 `#if WITH_DEV_AUTOMATION_TESTS`
-   - 这是 UE4 的标准做法
+   - 这是 UE5 的标准做法
 
 3. **遇到问题先查疑难杂症知识库**
    - 很多问题已经有解决方案
@@ -321,9 +321,9 @@ if (Target.bBuildDeveloperTools ||
 
 ### 外部资源
 
-- [UE4 官方文档](https://docs.unrealengine.com/4.27/)
-- [UE4 C++ API Reference](https://docs.unrealengine.com/4.27/en-US/API/)
-- [UE4 Automation Testing](https://docs.unrealengine.com/4.27/en-US/TestingAndOptimization/Automation/)
+- [UE5 官方文档](https://docs.unrealengine.com/5.7/)
+- [UE5 C++ API Reference](https://docs.unrealengine.com/5.7/en-US/API/)
+- [UE5 Automation Testing](https://docs.unrealengine.com/5.7/en-US/TestingAndOptimization/Automation/)
 
 ---
 

@@ -1,8 +1,8 @@
-# [001] UE4 自动化测试无法执行（显示"0次测试"）
+# [001] UE5 自动化测试无法执行（显示"0次测试"）
 
 ## 问题现象
 
-在 UE4 Test Automation 窗口中运行测试时：
+在 UE5 Test Automation 窗口中运行测试时：
 
 - ✅ **测试能被识别**：在测试列表中能看到测试名称和数量
 - ❌ **测试无法执行**：点击 "Run Tests" 后显示 "0次测试/0次失败/0秒"
@@ -27,7 +27,7 @@
 
 ## 环境信息
 
-- **UE4 版本**：4.27, 5.0+
+- **UE5 版本**：5.7, 5.0+
 - **操作系统**：Windows, macOS, Linux
 - **编译配置**：Development Editor, DebugGame Editor
 - **相关模块**：AutomationController, UnrealEd
@@ -121,9 +121,9 @@ bool FMyTest::RunTest(const FString& Parameters)
    - 但 `AutomationController` 模块在 Shipping 配置下不可用
    - 导致链接错误或测试无法注册
 
-2. **UE4 的标准做法**：
+2. **UE5 的标准做法**：
    - 所有测试代码都应该用 `WITH_DEV_AUTOMATION_TESTS` 包裹
-   - 这是 UE4 官方推荐的做法
+   - 这是 UE5 官方推荐的做法
    - 引擎内部的测试代码都遵循这个规范
 
 ---
@@ -263,11 +263,11 @@ public class EchoAlchemist : ModuleRules
 
 1. **Clean Solution**（清理解决方案）
 2. **Rebuild Solution**（重新生成解决方案）
-3. **重启 UE4 编辑器**
+3. **重启 UE5 编辑器**
 
 **步骤 5：验证修复**
 
-1. 打开 UE4 编辑器
+1. 打开 UE5 编辑器
 2. Window -> Test Automation
 3. 搜索测试名称
 4. 点击 "Run Tests"
@@ -462,13 +462,13 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMyTest, "MyGame.MyTest",
 
 ### 官方文档
 
-- [UE4 Automation Test Framework](https://docs.unrealengine.com/4.27/en-US/TestingAndOptimization/Automation/)
+- [UE5 Automation Test Framework](https://docs.unrealengine.com/5.7/en-US/TestingAndOptimization/Automation/)
 - [Write C++ Tests in Unreal Engine](https://dev.epicgames.com/documentation/en-us/unreal-engine/write-cplusplus-tests-in-unreal-engine)
-- [EAutomationTestFlags API Reference](https://docs.unrealengine.com/4.27/en-US/API/Runtime/Core/Misc/EAutomationTestFlags/)
+- [EAutomationTestFlags API Reference](https://docs.unrealengine.com/5.7/en-US/API/Runtime/Core/Misc/EAutomationTestFlags/)
 
 ### 社区讨论
 
-- [UE4 Forum: How to create an automation test?](https://forums.unrealengine.com/t/how-do-i-create-an-automation-test/425003)
+- [UE5 Forum: How to create an automation test?](https://forums.unrealengine.com/t/how-do-i-create-an-automation-test/425003)
 - [Reddit: Writing automated C++ tests](https://www.reddit.com/r/unrealengine/comments/jlzytd/writing_automated_c_tests/)
 
 ### 相关源码
@@ -493,4 +493,4 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMyTest, "MyGame.MyTest",
 **严重性**：🔴 高（测试完全无法运行）  
 **修复难度**：🟢 低（批量替换标志即可）  
 **相关提交**：`2b5c844`, `cd497b2`  
-**UE4 版本**：4.27, 5.0+
+**UE5 版本**：5.7, 5.0+

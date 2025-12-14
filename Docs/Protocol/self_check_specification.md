@@ -86,11 +86,11 @@
 - [ ] 实现文件（`.cpp`）是否已创建？
 - [ ] 头文件是否包含完整的注释（类、函数、参数）？
 - [ ] 头文件是否包含蓝图使用示例？
-- [ ] 代码是否遵循UE4命名规范？
+- [ ] 代码是否遵循UE5命名规范？
 - [ ] 代码是否存储在正确的目录下（`Source/EchoAlchemist/Public|Private/`）？
-- [ ] **代码是否兼容UE4？**（使用UE4 API而非UE5专属API）
+- [ ] **代码是否兼容UE5？**（使用UE5 API而非UE5专属API）
 - [ ] **是否避免使用UE5专属特性？**（如Enhanced Input System、Nanite、Lumen等）
-- [ ] **是否使用UE4兼容的宏和类型？**（如`UCLASS()`, `UPROPERTY()`, `UFUNCTION()`等）
+- [ ] **是否使用UE5兼容的宏和类型？**（如`UCLASS()`, `UPROPERTY()`, `UFUNCTION()`等）
 
 #### 2.2.2 测试代码
 
@@ -116,7 +116,7 @@
 - [ ] Linear任务是否已创建？
 - [ ] 任务标题是否清晰？
 - [ ] 任务描述是否完整？
-- [ ] 任务是否包含"开发模式说明"（ManusAI通过UE4 API完成90%开发工作）？
+- [ ] 任务是否包含"开发模式说明"（ManusAI通过UE5 API完成90%开发工作）？
 - [ ] 任务是否包含"模块解耦原则"说明？
 - [ ] 任务是否关联到正确的项目？
 - [ ] 任务是否设置了正确的优先级？
@@ -141,8 +141,8 @@
 
 对于所有文档和代码，必须检查：
 
-- [ ] 所有文档是否已提交到协议仓库（`ue4-human-ai-collab`）？
-- [ ] 所有代码是否已提交到Game仓库（`ue4-human-ai-collab-game`）？
+- [ ] 所有文档是否已提交到协议仓库（`ue5-human-ai-collab`）？
+- [ ] 所有代码是否已提交到Game仓库（`ue5-human-ai-collab-game`）？
 - [ ] 提交消息是否符合Conventional Commits规范？
 - [ ] 提交消息是否清晰描述了变更内容？
 
@@ -177,13 +177,13 @@
 #### 文档
 - [x] TDD: `docs/tech/{系统名称}_tdd.md`
 - [x] MHP: `docs/mhp/VOI-{任务ID}_{任务简称}.md`
-- [x] 实现文档: `ue4-human-ai-collab-game/Docs/CoreModules/{模块名称}.md`
+- [x] 实现文档: `ue5-human-ai-collab-game/Docs/CoreModules/{模块名称}.md`
 
 #### 代码
 - [x] 头文件: `Source/EchoAlchemist/Public/{模块路径}/{类名}.h`
 - [x] 实现文件: `Source/EchoAlchemist/Private/{模块路径}/{类名}.cpp`
 - [x] 测试文件: `Source/EchoAlchemist/Tests/{模块路径}/{类名}Test.cpp`
-- [x] **UE4兼容性检查**: 所有代码均使用UE4 API，未使用UE5专属特性
+- [x] **UE5兼容性检查**: 所有代码均使用UE5 API，未使用UE5专属特性
 
 #### Linear任务
 - [x] 任务ID: VOI-{任务ID}
@@ -301,8 +301,8 @@ docs/task_resource_mapping.md
 - ✅ 我已阅读并理解《自检流程规范》
 
 ### 2. 项目资源
-- ✅ 协议仓库: `ue4-human-ai-collab`
-- ✅ Game仓库: `ue4-human-ai-collab-game`
+- ✅ 协议仓库: `ue5-human-ai-collab`
+- ✅ Game仓库: `ue5-human-ai-collab-game`
 - ✅ Linear项目: https://linear.app/voidzyy/project/ue4游戏开发-人机协同mvp-f7f494ca8063
 - ✅ 索引表: `docs/task_resource_mapping.md`
 
@@ -311,8 +311,8 @@ docs/task_resource_mapping.md
 - ✅ 所有实现任务必须遵循四层架构
 - ✅ 所有任务完成后必须更新索引表
 - ✅ 对话结束前必须执行自检流程
-- ✅ 90%开发工作由ManusAI通过UE4 API完成
-- ✅ **所有代码必须兼容UE4，禁止使用UE5专属特性**
+- ✅ 90%开发工作由ManusAI通过UE5 API完成
+- ✅ **所有代码必须兼容UE5，禁止使用UE5专属特性**
 
 ### 4. 本次任务
 - **任务ID**: [任务ID]
@@ -426,10 +426,10 @@ Workflow::Done:
 ## 更新日志
 
 ### v1.1 (2025-11-30)
-- 在C++代码检查清单中添加**UE4兼容性检查**项
+- 在C++代码检查清单中添加**UE5兼容性检查**项
 - 强调禁止使用UE5专属特性（Enhanced Input System、Nanite、Lumen等）
-- 在自检报告模板中添加UE4兼容性检查项
-- 在首次对话检查清单中添加UE4兼容性要求
+- 在自检报告模板中添加UE5兼容性检查项
+- 在首次对话检查清单中添加UE5兼容性要求
 
 ### v1.0 (2025-11-29)
 - 初始版本发布

@@ -5,7 +5,7 @@
 
 运行方法：
 1. 确保已安装依赖: pip install matplotlib numpy
-2. 先在UE4中运行 visualize_world_morphing.py 导出数据
+2. 先在UE5中运行 visualize_world_morphing.py 导出数据
 3. 在外部Python环境运行: python Scripts/generate_heatmaps.py
 
 输出：
@@ -31,7 +31,7 @@ def load_data():
     
     if not os.path.exists(data_file):
         print(f"❌ 数据文件不存在: {data_file}")
-        print("请先在UE4编辑器中运行 visualize_world_morphing.py")
+        print("请先在UE5编辑器中运行 visualize_world_morphing.py")
         return None
     
     with open(data_file, 'r') as f:

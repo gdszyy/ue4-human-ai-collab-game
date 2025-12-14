@@ -2,7 +2,7 @@
 
 **项目**: 《回声炼金师》  
 **日期**: 2025年12月13日  
-**状态**: 已清理UE4项目文件，等待UE5项目重建
+**状态**: 已清理UE5项目文件，等待UE5项目重建
 
 ---
 
@@ -13,7 +13,7 @@
 以下文件和目录已完整保留，包含所有核心C++代码：
 
 ```
-ue4-human-ai-collab-game/
+ue5-human-ai-collab-game/
 ├── Source/                          # ✅ 核心C++源代码（完整保留）
 │   └── EchoAlchemist/
 │       ├── Public/                  # 公共头文件
@@ -47,12 +47,12 @@ ue4-human-ai-collab-game/
 └── .gitattributes                   # ✅ Git LFS配置
 ```
 
-### 🗑️ 已移除的UE4文件
+### 🗑️ 已移除的UE5文件
 
 以下文件已被移除，将由UE5重新生成：
 
-- ❌ `EchoAlchemist.uproject` - UE4项目文件
-- ❌ `Config/` - UE4配置目录
+- ❌ `EchoAlchemist.uproject` - UE5项目文件
+- ❌ `Config/` - UE5配置目录
 - ❌ `Binaries/` - 编译二进制文件
 - ❌ `Intermediate/` - 中间编译文件
 - ❌ `Saved/` - 保存的编辑器数据
@@ -88,14 +88,14 @@ ue4-human-ai-collab-game/
 cd /path/to/temp/EchoAlchemist
 
 # 复制.uproject文件
-cp EchoAlchemist.uproject /path/to/ue4-human-ai-collab-game/
+cp EchoAlchemist.uproject /path/to/ue5-human-ai-collab-game/
 
 # 复制Config目录
-cp -r Config/ /path/to/ue4-human-ai-collab-game/
+cp -r Config/ /path/to/ue5-human-ai-collab-game/
 
 # 复制Target.cs文件（如果与现有的不同）
-cp Source/EchoAlchemistEditor.Target.cs /path/to/ue4-human-ai-collab-game/Source/
-cp Source/EchoAlchemist.Target.cs /path/to/ue4-human-ai-collab-game/Source/
+cp Source/EchoAlchemistEditor.Target.cs /path/to/ue5-human-ai-collab-game/Source/
+cp Source/EchoAlchemist.Target.cs /path/to/ue5-human-ai-collab-game/Source/
 ```
 
 ### 第三步：验证模块构建配置
@@ -120,7 +120,7 @@ PublicDependencyModuleNames.AddRange(new string[] {
 
 ```bash
 # 在项目根目录
-cd /path/to/ue4-human-ai-collab-game
+cd /path/to/ue5-human-ai-collab-game
 
 # 右键点击 EchoAlchemist.uproject
 # 选择 "Generate Visual Studio project files"
@@ -172,7 +172,7 @@ cd /path/to/ue4-human-ai-collab-game
 ### 第八步：提交到Git
 
 ```bash
-cd /path/to/ue4-human-ai-collab-game
+cd /path/to/ue5-human-ai-collab-game
 
 # 添加新生成的文件
 git add EchoAlchemist.uproject

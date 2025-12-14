@@ -43,8 +43,8 @@
 
 ## 运行方式
 
-### 在UE4编辑器中运行
-1. 打开UE4项目
+### 在UE5编辑器中运行
+1. 打开UE5项目
 2. 编译C++代码
 3. 打开 Window -> Test Automation
 4. 搜索 "EchoAlchemist.Physics"
@@ -79,9 +79,9 @@ UnrealEditor-Cmd.exe ProjectPath -ExecCmds="Automation RunTests EchoAlchemist.Ph
 - 性能压力测试应通过（物理更新<5ms，碰撞检测<5ms）
 
 ## 注意事项
-1. MarbleActorPoolTest需要World对象，必须在UE4编辑器中运行
+1. MarbleActorPoolTest需要World对象，必须在UE5编辑器中运行
 2. 性能测试结果可能因硬件配置而异
-3. 部分测试需要完整的UE4环境才能运行
+3. 部分测试需要完整的UE5环境才能运行
 
 ## 相关任务
 - VOI-24: 物理系统核心框架

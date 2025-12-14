@@ -8,7 +8,7 @@
 
 ## 概述
 
-本文档记录了所有Linear任务与协议仓库（`ue4-human-ai-collab`）、Game仓库（`ue4-human-ai-collab-game`）资源之间的映射关系，便于快速定位和追溯。
+本文档记录了所有Linear任务与协议仓库（`ue5-human-ai-collab`）、Game仓库（`ue5-human-ai-collab-game`）资源之间的映射关系，便于快速定位和追溯。
 
 ### 索引表的作用
 
@@ -85,10 +85,10 @@
 
 ## 附录：资源路径说明
 
-### 协议仓库（ue4-human-ai-collab）
+### 协议仓库（ue5-human-ai-collab）
 
 ```
-ue4-human-ai-collab/
+ue5-human-ai-collab/
 ├── docs/
 │   ├── tech/                          # TDD存放目录
 │   │   ├── world_morphing_system_tdd.md
@@ -100,10 +100,10 @@ ue4-human-ai-collab/
 │   └── task_resource_mapping.md       # 本文件
 ```
 
-### Game仓库（ue4-human-ai-collab-game）
+### Game仓库（ue5-human-ai-collab-game）
 
 ```
-ue4-human-ai-collab-game/
+ue5-human-ai-collab-game/
 ├── Source/
 │   └── EchoAlchemist/
 │       ├── Public/                    # 头文件

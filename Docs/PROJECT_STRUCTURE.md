@@ -2,13 +2,13 @@
 
 ## 项目概述
 
-本项目是基于 **UE4 4.27** 的游戏开发项目，采用人机协同开发模式。
+本项目是基于 **UE5 5.7** 的游戏开发项目，采用人机协同开发模式。
 
 ## 目录结构
 
 ```
-ue4-human-ai-collab-game/
-├── EchoAlchemist.uproject          # UE4 项目文件
+ue5-human-ai-collab-game/
+├── EchoAlchemist.uproject          # UE5 项目文件
 ├── Config/                          # 项目配置文件
 │   ├── DefaultEngine.ini           # 引擎配置
 │   ├── DefaultEditor.ini           # 编辑器配置
@@ -29,7 +29,7 @@ ue4-human-ai-collab-game/
 │   └── EchoAlchemistEditor.Target.cs # 编辑器构建目标
 ├── Scripts/                         # Python 脚本
 │   ├── test_remote_control.py      # Remote Control API 测试脚本
-│   └── ue4_editor_example.py       # UE4 编辑器内脚本示例
+│   └── ue5_editor_example.py       # UE5 编辑器内脚本示例
 ├── Docs/                            # 项目文档
 │   ├── PROJECT_STRUCTURE.md        # 本文件
 │   └── LOCAL_SETUP_GUIDE.md        # 本地环境配置指南
@@ -42,7 +42,7 @@ ue4-human-ai-collab-game/
 
 ### 已启用的插件
 
-1. **RemoteControl**: 远程控制 API，支持通过 HTTP/WebSocket 远程操作 UE4
+1. **RemoteControl**: 远程控制 API，支持通过 HTTP/WebSocket 远程操作 UE5
 2. **PythonScriptPlugin**: Python 脚本支持，用于编辑器自动化
 3. **EditorScriptingUtilities**: 编辑器脚本工具
 
@@ -118,7 +118,7 @@ chore: 构建/工具相关
 ### Git LFS
 
 大文件类型已配置 Git LFS 跟踪：
-- `.uasset`, `.umap`: UE4 资产文件
+- `.uasset`, `.umap`: UE5 资产文件
 - `.fbx`: 3D 模型
 - `.png`, `.jpg`: 图片
 - `.wav`, `.mp3`: 音频
@@ -130,16 +130,16 @@ chore: 构建/工具相关
 1. Manus 在沙盒中修改项目文件
 2. Manus 推送到 Git 仓库
 3. 本地执行 `git pull` 拉取更新
-4. UE4 编辑器自动检测并重新加载
+4. UE5 编辑器自动检测并重新加载
 
 ### 本地 → Manus
 
-1. 在本地 UE4 中进行开发
+1. 在本地 UE5 中进行开发
 2. 提交并推送到 Git 仓库
 3. Manus 拉取更新以了解项目状态
 
 ## 相关文档
 
 - [本地环境配置指南](LOCAL_SETUP_GUIDE.md)
-- [人机协同开发规范](../../ue4-human-ai-collab/docs/collaboration_specification.md)
-- [工作流规范](../../ue4-human-ai-collab/docs/workflow_specification.md)
+- [人机协同开发规范](../../ue5-human-ai-collab/docs/collaboration_specification.md)
+- [工作流规范](../../ue5-human-ai-collab/docs/workflow_specification.md)

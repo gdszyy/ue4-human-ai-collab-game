@@ -1,11 +1,11 @@
 """
 WorldMorphingSystem 可视化测试脚本
 
-此脚本在UE4编辑器内运行，生成世界状态的可视化数据并导出为图片。
+此脚本在UE5编辑器内运行，生成世界状态的可视化数据并导出为图片。
 
 运行方法：
 1. 确保已安装 matplotlib: pip install matplotlib
-2. 在 UE4 编辑器中运行 PIE 模式
+2. 在 UE5 编辑器中运行 PIE 模式
 3. 在 Output Log 中输入：py "Scripts/visualize_world_morphing.py"
 
 输出：
@@ -19,7 +19,7 @@ import unreal
 import os
 
 def get_world_context():
-    """获取世界上下文对象（UE4 PIE模式兼容）"""
+    """获取世界上下文对象（UE5 PIE模式兼容）"""
     try:
         # 方法1: 尝试获取所有 Actor
         try:

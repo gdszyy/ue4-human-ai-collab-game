@@ -381,7 +381,7 @@ case EAdditiveType::Bounce:
 Window -> Developer Tools -> Session Frontend -> Automation -> 运行所有测试
 
 // 或在命令行中
-UE4Editor.exe ProjectName -ExecCmds="Automation RunTests EchoAlchemist.Alchemy"
+UE5Editor.exe ProjectName -ExecCmds="Automation RunTests EchoAlchemist.Alchemy"
 ```
 
 ---
@@ -449,7 +449,7 @@ A: 配方强度由基础效果和添加剂效果共同决定。可以通过调�
 
 **Manus AI** - 自主开发者模式
 
-**项目**: 《回声炼金师》UE4游戏开发
+**项目**: 《回声炼金师》UE5游戏开发
 
 **任务**: VOI-12 - 炼金配方系统
 
